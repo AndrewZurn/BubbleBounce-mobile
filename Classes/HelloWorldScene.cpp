@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -36,10 +37,10 @@ bool HelloWorld::init() {
     std::cout << randomX << " : " << randomY << std::endl;
     ballSprite = CCSprite::create(getRandomBallColor().c_str());
     ballSprite->setPosition(ccp(randomX, randomY));
-    this->addChild(ballSprite, 1);
+    this->addChild(ballSprite, ZIndexBalls);
   }
   
-  this->addChild(background, 0);
+  this->addChild(background, ZIndexBackground);
   
   return true;
 }
