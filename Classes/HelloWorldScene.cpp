@@ -4,16 +4,15 @@ USING_NS_CC;
 
 CCScene* HelloWorld::scene()
 {
+  srand (time(NULL));
+  
   // 'scene' is an autorelease object
   CCScene *scene = CCScene::create();
   
-  // 'layer' is an autorelease object
-//  HelloWorld *layer = HelloWorld::create();
-  
   HelloWorld *backgroundLayer = HelloWorld::create();
   
-  // add layer as a child to scene
-  scene->addChild(backgroundLayer );
+  // add layers as a child to scene
+  scene->addChild(backgroundLayer);
   
   // return the scene
   return scene;
@@ -30,70 +29,42 @@ bool HelloWorld::init() {
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
+  CCSprite* ballSprite = NULL;
+  for (int i = 0; i < 10; i++) {
+    int randomX = rand() % (int)(windowSize.width + 1);
+    int randomY = rand() % (int)(windowSize.height + 1);
+    std::cout << randomX << " : " << randomY << std::endl;
+    ballSprite = CCSprite::create(getRandomBallColor().c_str());
+    ballSprite->setPosition(ccp(randomX, randomY));
+    this->addChild(ballSprite, 1);
+  }
+  
   this->addChild(background, 0);
   
   return true;
 }
 
-// on "init" you need to initialize your instance
-/*bool HelloWorld::init()
- {
- //////////////////////////////
- // 1. super init first
- if ( !CCLayer::init() )
- {
- return false;
- }
- 
- CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
- CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
- 
- /////////////////////////////
- // 2. add a menu item with "X" image, which is clicked to quit the program
- //    you may modify it.
- 
- // add a "close" icon to exit the progress. it's an autorelease object
- CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
- "CloseNormal.png",
- "CloseSelected.png",
- this,
- menu_selector(HelloWorld::menuCloseCallback));
- 
- pCloseItem->setPosition(ccp(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,
- origin.y + pCloseItem->getContentSize().height/2));
- 
- // create menu, it's an autorelease object
- CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
- pMenu->setPosition(CCPointZero);
- this->addChild(pMenu, 1);
- 
- /////////////////////////////
- // 3. add your codes below...
- 
- // add a label shows "Hello World"
- // create and initialize a label
- 
- CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Arial", 24);
- 
- // position the label on the center of the screen
- pLabel->setPosition(ccp(origin.x + visibleSize.width/2,
- origin.y + visibleSize.height - pLabel->getContentSize().height));
- 
- // add the label as a child to this layer
- this->addChild(pLabel, 1);
- 
- // add "HelloWorld" splash screen"
- CCSprite* pSprite = CCSprite::create("HelloWorld.png");
- 
- // position the sprite on the center of the screen
- pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
- 
- // add the sprite as a child to this layer
- this->addChild(pSprite, 0);
- 
- return true;
- } */
-
+std::string HelloWorld::getRandomBallColor() {
+  double random = ((double) rand() / (RAND_MAX));
+  
+  std::cout << "random number: " << random << std::endl;
+  
+  if( random <= 0.2 ) {
+    return "blueball.png";
+  }
+  else if( random <= 0.4 ) {
+    return "orangeball.png";
+  }
+  else if( random <= 0.6 ) {
+    return "pinkball.png";
+  }
+  else if( random <= 0.8 ) {
+    return "redball.png";
+  }
+  else {
+    return "blueball.png";
+  }
+}
 
 void HelloWorld::menuCloseCallback(CCObject* pSender)
 {

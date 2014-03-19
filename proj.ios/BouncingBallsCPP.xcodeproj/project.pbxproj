@@ -240,6 +240,20 @@
 		379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* GUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* SceneReader.cpp */; };
 		46513EB1187BFBA200B5ABE1 /* UITouchGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */; };
+		499B8C8018D9371C000F55E5 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7018D9371C000F55E5 /* background.png */; };
+		499B8C8118D9371C000F55E5 /* blueball.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7218D9371C000F55E5 /* blueball.png */; };
+		499B8C8218D9371C000F55E5 /* blueballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7318D9371C000F55E5 /* blueballselected.png */; };
+		499B8C8318D9371C000F55E5 /* orangeball.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7418D9371C000F55E5 /* orangeball.png */; };
+		499B8C8418D9371C000F55E5 /* orangeballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7518D9371C000F55E5 /* orangeballselected.png */; };
+		499B8C8518D9371C000F55E5 /* pinkball.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7618D9371C000F55E5 /* pinkball.png */; };
+		499B8C8618D9371C000F55E5 /* pinkballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7718D9371C000F55E5 /* pinkballselected.png */; };
+		499B8C8718D9371C000F55E5 /* redball.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7818D9371C000F55E5 /* redball.png */; };
+		499B8C8818D9371C000F55E5 /* redballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7918D9371C000F55E5 /* redballselected.png */; };
+		499B8C8918D9371C000F55E5 /* yellowball.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7A18D9371C000F55E5 /* yellowball.png */; };
+		499B8C8A18D9371C000F55E5 /* yellowballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7B18D9371C000F55E5 /* yellowballselected.png */; };
+		499B8C8B18D9371C000F55E5 /* bouncinballslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */; };
+		499B8C8C18D9371C000F55E5 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7E18D9371C000F55E5 /* arial.ttf */; };
+		499B8C8D18D9371C000F55E5 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -758,6 +772,20 @@
 		379BB99417F03F3700829B88 /* SceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneReader.h; sourceTree = "<group>"; };
 		46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITouchGroup.cpp; sourceTree = "<group>"; };
 		46513EB0187BFBA200B5ABE1 /* UITouchGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchGroup.h; sourceTree = "<group>"; };
+		499B8C7018D9371C000F55E5 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		499B8C7218D9371C000F55E5 /* blueball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueball.png; path = balls/blueball.png; sourceTree = "<group>"; };
+		499B8C7318D9371C000F55E5 /* blueballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueballselected.png; path = balls/blueballselected.png; sourceTree = "<group>"; };
+		499B8C7418D9371C000F55E5 /* orangeball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orangeball.png; path = balls/orangeball.png; sourceTree = "<group>"; };
+		499B8C7518D9371C000F55E5 /* orangeballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orangeballselected.png; path = balls/orangeballselected.png; sourceTree = "<group>"; };
+		499B8C7618D9371C000F55E5 /* pinkball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pinkball.png; path = balls/pinkball.png; sourceTree = "<group>"; };
+		499B8C7718D9371C000F55E5 /* pinkballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pinkballselected.png; path = balls/pinkballselected.png; sourceTree = "<group>"; };
+		499B8C7818D9371C000F55E5 /* redball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redball.png; path = balls/redball.png; sourceTree = "<group>"; };
+		499B8C7918D9371C000F55E5 /* redballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redballselected.png; path = balls/redballselected.png; sourceTree = "<group>"; };
+		499B8C7A18D9371C000F55E5 /* yellowball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowball.png; path = balls/yellowball.png; sourceTree = "<group>"; };
+		499B8C7B18D9371C000F55E5 /* yellowballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowballselected.png; path = balls/yellowballselected.png; sourceTree = "<group>"; };
+		499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouncinballslogo.png; sourceTree = "<group>"; };
+		499B8C7E18D9371C000F55E5 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
+		499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1887,9 +1915,31 @@
 			path = CocoStudio;
 			sourceTree = "<group>";
 		};
+		499B8C7D18D9371C000F55E5 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				499B8C7E18D9371C000F55E5 /* arial.ttf */,
+				499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				499B8C7218D9371C000F55E5 /* blueball.png */,
+				499B8C7318D9371C000F55E5 /* blueballselected.png */,
+				499B8C7418D9371C000F55E5 /* orangeball.png */,
+				499B8C7518D9371C000F55E5 /* orangeballselected.png */,
+				499B8C7618D9371C000F55E5 /* pinkball.png */,
+				499B8C7718D9371C000F55E5 /* pinkballselected.png */,
+				499B8C7818D9371C000F55E5 /* redball.png */,
+				499B8C7918D9371C000F55E5 /* redballselected.png */,
+				499B8C7A18D9371C000F55E5 /* yellowball.png */,
+				499B8C7B18D9371C000F55E5 /* yellowballselected.png */,
+				499B8C7018D9371C000F55E5 /* background.png */,
+				499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */,
+				499B8C7D18D9371C000F55E5 /* fonts */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
@@ -1974,16 +2024,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499B8C8318D9371C000F55E5 /* orangeball.png in Resources */,
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
+				499B8C8018D9371C000F55E5 /* background.png in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
+				499B8C8118D9371C000F55E5 /* blueball.png in Resources */,
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
 				D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */,
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
+				499B8C8918D9371C000F55E5 /* yellowball.png in Resources */,
+				499B8C8D18D9371C000F55E5 /* Marker Felt.ttf in Resources */,
+				499B8C8A18D9371C000F55E5 /* yellowballselected.png in Resources */,
+				499B8C8218D9371C000F55E5 /* blueballselected.png in Resources */,
+				499B8C8718D9371C000F55E5 /* redball.png in Resources */,
+				499B8C8418D9371C000F55E5 /* orangeballselected.png in Resources */,
 				D41A0AD1160F154A004552AE /* Default-568h@2x.png in Resources */,
+				499B8C8518D9371C000F55E5 /* pinkball.png in Resources */,
+				499B8C8818D9371C000F55E5 /* redballselected.png in Resources */,
+				499B8C8B18D9371C000F55E5 /* bouncinballslogo.png in Resources */,
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
+				499B8C8618D9371C000F55E5 /* pinkballselected.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				499B8C8C18D9371C000F55E5 /* arial.ttf in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2266,7 +2330,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
@@ -2314,7 +2378,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
