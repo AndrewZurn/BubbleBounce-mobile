@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C2716923-402F-4320-8D60-A4B26AE8C6D3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BouncingBallsCPP</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>21AAE7DE-6C52-49BF-83F1-175E1FF9525E</key>
+		<string>https://bitbucket.org/awzurn/bouncingballs-cocos2dx.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>proj.ios/BouncingBallsCPP.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>21AAE7DE-6C52-49BF-83F1-175E1FF9525E</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/awzurn/bouncingballs-cocos2dx.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>21AAE7DE-6C52-49BF-83F1-175E1FF9525E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>21AAE7DE-6C52-49BF-83F1-175E1FF9525E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BouncingBallsCPP</string>
+		</dict>
+	</array>
+</dict>
+</plist>
