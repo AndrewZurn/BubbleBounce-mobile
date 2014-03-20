@@ -1,9 +1,17 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+//
+//  GameScene.h
+//  BouncingBallsCPP
+//
+//  Created by Andrew Zurn on 3/19/14.
+//
+//
+
+#ifndef BouncingBallsCPP_GameScene_h
+#define BouncingBallsCPP_GameScene_h
 
 #include "cocos2d.h"
 
-class HelloWorld : public cocos2d::CCLayer
+class GameScene : public cocos2d::CCLayer
 {
 private:
   
@@ -21,7 +29,7 @@ public:
   std::string getRandomBallColor();
   
   // implement the "static node()" method manually
-  CREATE_FUNC(HelloWorld);
+  CREATE_FUNC(GameScene);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif

@@ -1,16 +1,23 @@
-#include "HelloWorldScene.h"
+//
+//  GameScene.cpp
+//  BouncingBallsCPP
+//
+//  Created by Andrew Zurn on 3/19/14.
+//
+//
+#include "GameScene.h"
 #include "Constants.h"
 
 USING_NS_CC;
 
-CCScene* HelloWorld::scene()
+CCScene* GameScene::scene()
 {
   srand (time(NULL));
   
   // 'scene' is an autorelease object
   CCScene *scene = CCScene::create();
   
-  HelloWorld *backgroundLayer = HelloWorld::create();
+  GameScene *backgroundLayer = GameScene::create();
   
   // add layers as a child to scene
   scene->addChild(backgroundLayer);
@@ -19,7 +26,7 @@ CCScene* HelloWorld::scene()
   return scene;
 }
 
-bool HelloWorld::init() {
+bool GameScene::init() {
   if ( !CCLayer::init() ) {
     return false;
   }
@@ -45,7 +52,7 @@ bool HelloWorld::init() {
   return true;
 }
 
-std::string HelloWorld::getRandomBallColor() {
+std::string GameScene::getRandomBallColor() {
   double random = ((double) rand() / (RAND_MAX));
   
   if( random <= 0.2 ) {
@@ -63,16 +70,4 @@ std::string HelloWorld::getRandomBallColor() {
   else {
     return "blueball.png";
   }
-}
-
-void HelloWorld::menuCloseCallback(CCObject* pSender)
-{
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
-	CCMessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-#else
-  CCDirector::sharedDirector()->end();
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  exit(0);
-#endif
-#endif
 }
