@@ -38,8 +38,10 @@ Ball* Ball::createBall(int displayWidth, int displayHeight) {
 //}
 
 bool Ball::compareColor(Ball otherBall) {
-	//TODO
-  return true;
+	if ( strcmp(_ballColor, otherBall.getBallColor()) == 0) {
+    return true;
+  }
+  return false;
 }
 
 void Ball::calculateNewVelocities(Ball thisBall, Ball otherBall) {
@@ -50,11 +52,6 @@ float Ball::distanceTo(Ball thisBall, Ball otherBall) {
 	//TODO
   return 0.0;
 }
-
-//void Ball::setRandomCoordinates(Ball[] otherBalls,
-//			int displayWidth, int displayHeight) {
-//TODO
-//}
 
 const char* Ball::getRandomBallColor() {
   double random = ((double) rand() / (RAND_MAX));
