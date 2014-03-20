@@ -16,7 +16,7 @@ private:
   int _y;
   int _xVelocity;
   int _yVelocity;
-  int _radius; //can I get this by finding the size of CCSprite* ball?
+  int _radius;
   const char* _ballColor;
   
   //need list of balls for collisionArray
@@ -27,6 +27,7 @@ private:
   int _displayWidth;
   int _speed;
   
+  //game functionalities
   static cocos2d::CCPoint getRandomPoint();
   static int getRandomVelocity();
   static const char* getRandomBallColor();

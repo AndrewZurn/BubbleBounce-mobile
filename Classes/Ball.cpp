@@ -39,22 +39,22 @@ void Ball::updateBallPositions(std::vector<Ball> ballList) {
   this->setX(this->getX() + this->getXVelocity());
   this->setY(this->getY() + this->getYVelocity());
   
-  if (this->getX() >= this->getDisplayWidth()/* - this.getBitmap().getBitmap().getWidth() */) {
+  if (this->getX() + this->getRadius() >= this->getDisplayWidth() ) {
     this->setXVelocity( -(this->getXVelocity() ));
     this->setX(this->getX() - 10); //10 is used to give a good pad if the ball were to get stuck
   }
   
-  if(this->getX() < 0){
+  if(this->getX() - this->getRadius() < 0){
     this->setXVelocity( -(this->getXVelocity() ));
     this->setX(this->getX() + 10);
   }
   
-  if (this->getY() >= this->getDisplayHeight()/* - this.getBitmap().getBitmap().getWidth() */) {
+  if (this->getY() + this->getRadius() >= this->getDisplayHeight() ) {
     this->setYVelocity(-(this->getYVelocity()));
     this->setY(this->getY() - 10); //10 is used to give a good pad if the ball were to get stuck
   }
   
-  if(this->getY() < 0){
+  if(this->getY() - this->getRadius() < 0){
     this->setYVelocity(-(this->getYVelocity()));
     this->setY(this->getY() + 10);
   }
