@@ -255,6 +255,9 @@
 		499B8C8D18D9371C000F55E5 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */; };
 		49A4BE5C18DA871F007CE796 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5918DA871F007CE796 /* Ball.cpp */; };
 		49A4BE5F18DA987D007CE796 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5E18DA987D007CE796 /* GameScene.cpp */; };
+		49A4BE6218DA9977007CE796 /* FirstScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE6118DA9977007CE796 /* FirstScene.cpp */; };
+		49A4BE6518DA9998007CE796 /* LossScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE6418DA9998007CE796 /* LossScene.cpp */; };
+		49A4BE6918DA99B3007CE796 /* RankingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE6718DA99B3007CE796 /* RankingScene.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -790,6 +793,13 @@
 		49A4BE5B18DA871F007CE796 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
 		49A4BE5D18DA984F007CE796 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		49A4BE5E18DA987D007CE796 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
+		49A4BE6018DA9961007CE796 /* FirstScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstScene.h; sourceTree = "<group>"; };
+		49A4BE6118DA9977007CE796 /* FirstScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirstScene.cpp; sourceTree = "<group>"; };
+		49A4BE6318DA998A007CE796 /* LossScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LossScene.h; sourceTree = "<group>"; };
+		49A4BE6418DA9998007CE796 /* LossScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LossScene.cpp; sourceTree = "<group>"; };
+		49A4BE6618DA99A8007CE796 /* RankingsScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankingsScene.h; sourceTree = "<group>"; };
+		49A4BE6718DA99B3007CE796 /* RankingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RankingScene.cpp; sourceTree = "<group>"; };
+		49A4BE6818DA99B3007CE796 /* RankingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingScene.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1330,6 +1340,13 @@
 				49A4BE5B18DA871F007CE796 /* Constants.h */,
 				49A4BE5D18DA984F007CE796 /* GameScene.h */,
 				49A4BE5E18DA987D007CE796 /* GameScene.cpp */,
+				49A4BE6018DA9961007CE796 /* FirstScene.h */,
+				49A4BE6118DA9977007CE796 /* FirstScene.cpp */,
+				49A4BE6318DA998A007CE796 /* LossScene.h */,
+				49A4BE6418DA9998007CE796 /* LossScene.cpp */,
+				49A4BE6618DA99A8007CE796 /* RankingsScene.h */,
+				49A4BE6718DA99B3007CE796 /* RankingScene.cpp */,
+				49A4BE6818DA99B3007CE796 /* RankingScene.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -2143,6 +2160,7 @@
 				15A3D9AB1682F7F9002FB0C5 /* cpSpace.c in Sources */,
 				15A3D9AC1682F7F9002FB0C5 /* cpSpaceComponent.c in Sources */,
 				15A3D9AD1682F7F9002FB0C5 /* cpSpaceHash.c in Sources */,
+				49A4BE6518DA9998007CE796 /* LossScene.cpp in Sources */,
 				15A3D9AE1682F7F9002FB0C5 /* cpSpaceQuery.c in Sources */,
 				15A3D9AF1682F7F9002FB0C5 /* cpSpaceStep.c in Sources */,
 				15A3D9B01682F7F9002FB0C5 /* cpSpatialIndex.c in Sources */,
@@ -2223,6 +2241,7 @@
 				298B29C618D0668400C1920F /* TextFieldReader.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
 				1A8F3B74175E05DA00049216 /* AttachmentLoader.cpp in Sources */,
+				49A4BE6918DA99B3007CE796 /* RankingScene.cpp in Sources */,
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
 				1A8F3B76175E05DA00049216 /* BoneData.cpp in Sources */,
 				1A8F3B77175E05DA00049216 /* CCSkeleton.cpp in Sources */,
@@ -2242,6 +2261,7 @@
 				298B29C418D0668400C1920F /* ScrollViewReader.cpp in Sources */,
 				1AB87035175E0A84005D39BF /* WebSocket.cpp in Sources */,
 				375BD4C51868411B0024609E /* TriggerMng.cpp in Sources */,
+				49A4BE6218DA9977007CE796 /* FirstScene.cpp in Sources */,
 				1A9CE8781765A12C000E3062 /* AssetsManager.cpp in Sources */,
 				379BB99A17F03F3700829B88 /* CCArmatureAnimation.cpp in Sources */,
 				379BB99B17F03F3700829B88 /* CCProcessBase.cpp in Sources */,
