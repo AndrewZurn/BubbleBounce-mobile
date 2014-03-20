@@ -45,13 +45,32 @@ bool Ball::compareColor(Ball otherBall) {
 }
 
 void Ball::calculateNewVelocities(Ball thisBall, Ball otherBall) {
-	//TODO
+	int tempVelHolder = thisBall.getXVelocity();
+  thisBall.setXVelocity(otherBall.getXVelocity());
+  otherBall.setXVelocity(tempVelHolder);
+  
+  tempVelHolder = thisBall.getYVelocity();
+  thisBall.setXVelocity(otherBall.getYVelocity());
+  thisBall.setYVelocity(tempVelHolder);
+  
+  thisBall.setX(thisBall.getX() + (thisBall.getXVelocity()));
+  thisBall.setY(thisBall.getY() + (thisBall.getYVelocity()));
+  otherBall.setX(otherBall.getX() + (otherBall.getXVelocity()));
+  otherBall.setX(otherBall.getY() + (otherBall.getYVelocity()));
 }
 
 float Ball::distanceTo(Ball thisBall, Ball otherBall) {
-	//TODO
-  return 0.0;
+	float a = (thisBall.getX() - otherBall.getX()) * (thisBall.getX() - otherBall.getX());
+  float b = (thisBall.getY() - otherBall.getY()) * (thisBall.getY() - otherBall.getY());
+  float distance = (float) sqrt(a + b);
+  
+  if ( distance < 0) {
+    distance = -distance;
+  }
+  return distance;
 }
+
+
 
 const char* Ball::getRandomBallColor() {
   double random = ((double) rand() / (RAND_MAX));
@@ -119,7 +138,7 @@ cocos2d::CCPoint Ball::getRandomPoint() {
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   int randomX = rand() % (int)(windowSize.width + 1);
   int randomY = rand() % (int)(windowSize.height + 1);
-  std::cout << randomX << " : " << randomY << std::endl;
+  
   return ccp(randomX, randomY);
 }
 
