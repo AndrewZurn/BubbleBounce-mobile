@@ -16,10 +16,6 @@ class GameScene : public cocos2d::CCLayer
 private:
   //methods needed for game functionality
   std::string getRandomBallColor();
-  void updateBallPositions();
-  void detectBallToBallCollision();
-  float distanceBallToBall();
-  void updateBallVelocities();
   
 public:
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -30,6 +26,11 @@ public:
   
   // implement the "static node()" method manually
   CREATE_FUNC(GameScene);
+  
+  //touch recognition
+  virtual void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
+  virtual void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
+  virtual void ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
 };
 
 #endif

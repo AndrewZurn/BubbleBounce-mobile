@@ -37,8 +37,6 @@ bool GameScene::init() {
   
   CCSprite* ballSprite = NULL;
   for (int i = 0; i < 10; i++) {
-    int randomX = rand() % (int)(windowSize.width + 1);
-    int randomY = rand() % (int)(windowSize.height + 1);
     
     ballSprite = CCSprite::create(getRandomBallColor().c_str());
     ballSprite->setPosition(ccp(randomX, randomY));
@@ -47,42 +45,34 @@ bool GameScene::init() {
   
   this->addChild(background, ZIndexBackground);
   
+  this->setTouchEnabled(true);
+  
   return true;
 }
 
-std::string GameScene::getRandomBallColor() {
-  double random = ((double) rand() / (RAND_MAX));
-  
-  if( random <= 0.2 ) {
-    return "blueball.png";
-  }
-  else if( random <= 0.4 ) {
-    return "orangeball.png";
-  }
-  else if( random <= 0.6 ) {
-    return "pinkball.png";
-  }
-  else if( random <= 0.8 ) {
-    return "redball.png";
-  }
-  else {
-    return "blueball.png";
-  }
+void GameScene::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
+  //not interested in?
 }
 
-void updateBallPositions() {
-  
+void GameScene::ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
+  //not interested in?
 }
 
-void detectBallToBallCollision() {
+void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
+  CCSetIterator iterator;
+  CCTouch *touch;
+  CCPoint tap;
+  
+  for (iterator = pTouches->begin(); iterator != pTouches->end(); iterator++) {
+    touch = (CCTouch *) (*iterator); //get the object that iterator is pointing at
+    if (touch) {
+      tap = touch->getLocation();
+      CCLog("Touched at %.2f,%.2f", tap.x, tap.y);
+    }
+  }
   
 }
 
-float distanceBallToBall() {
-  
-  return 0.0;
-}
-
-void updateBallVelocities() {
-  
-}
+///////////////////////////////
+// ---- PRIVATE METHODS ---- //
+//////////////////////////////
