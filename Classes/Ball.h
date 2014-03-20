@@ -43,7 +43,6 @@ public:
   void calculateNewVelocities(Ball thisBall, Ball otherBall);
   
   bool compareColor(Ball otherBall);
-  bool operator==(const Ball &ball);
   
   //default getters
   int getX() { return _x; }
