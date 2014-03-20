@@ -12,8 +12,6 @@ USING_NS_CC;
 
 CCScene* GameScene::scene()
 {
-  srand (time(NULL));
-  
   // 'scene' is an autorelease object
   CCScene *scene = CCScene::create();
   
@@ -70,4 +68,21 @@ std::string GameScene::getRandomBallColor() {
   else {
     return "blueball.png";
   }
+}
+
+void updateBallPositions() {
+  
+}
+
+void detectBallToBallCollision() {
+  
+}
+
+float distanceBallToBall() {
+  
+  return 0.0;
+}
+
+void updateBallVelocities() {
+  
 }
