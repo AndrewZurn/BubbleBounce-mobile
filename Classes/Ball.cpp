@@ -18,6 +18,7 @@ Ball* Ball::createBall(int displayWidth, int displayHeight) {
     ballSprite->setDisplayHeight(displayHeight);
     
     CCPoint randomPoint = getRandomPoint();
+    ballSprite->setPosition(randomPoint);
     ballSprite->setX(randomPoint.x);
     ballSprite->setY(randomPoint.y);
     ballSprite->setRadius(ballSprite->getTexture()->getPixelsHigh()/2); //don't know if this will work...
@@ -28,6 +29,8 @@ Ball* Ball::createBall(int displayWidth, int displayHeight) {
     return ballSprite;
   }
   
+  CC_SAFE_DELETE(ballSprite);
+  return NULL;
 }
 
 //void Ball::updateBallPositions(Ball[] ballList) {
@@ -119,11 +122,11 @@ cocos2d::CCPoint Ball::getRandomPoint() {
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   int randomX = rand() % (int)(windowSize.width + 1);
   int randomY = rand() % (int)(windowSize.height + 1);
-  
+  std::cout << randomX << " : " << randomY << std::endl;
   return ccp(randomX, randomY);
 }
 
-int getRandomVelocity() {
+int Ball::getRandomVelocity() {
   double random = ((double) rand() / (RAND_MAX));
   
   if (random >= 0.5) {

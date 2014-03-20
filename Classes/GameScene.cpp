@@ -7,6 +7,7 @@
 //
 #include "GameScene.h"
 #include "Constants.h"
+#include "Ball.h"
 
 USING_NS_CC;
 
@@ -35,11 +36,9 @@ bool GameScene::init() {
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
-  CCSprite* ballSprite = NULL;
+  Ball* ballSprite = NULL;
   for (int i = 0; i < 10; i++) {
-    
-    ballSprite = CCSprite::create(getRandomBallColor().c_str());
-    ballSprite->setPosition(ccp(randomX, randomY));
+    ballSprite = Ball::createBall(windowSize.width, windowSize.height);
     this->addChild(ballSprite, ZIndexBalls);
   }
   
