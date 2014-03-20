@@ -20,7 +20,7 @@ private:
   const char* _ballColor;
   
   //need list of balls for collisionArray
-  //Ball[] collisionArray;
+  std::vector<Ball> _collisionArray;
   
   //game attributes
   int _displayHeight;
@@ -37,10 +37,13 @@ private:
 public:
   static Ball* createBall(int displayWidth, int displayHeight);
   
-//  void updateBallPositions(Ball[] ballList);
-  bool compareColor(Ball otherBall);
+  void updateBallPositions(std::vector<Ball> ballList);
+  void detectCollisions(std::vector<Ball> ballList);
   float distanceTo(Ball thisBall, Ball otherBall);
   void calculateNewVelocities(Ball thisBall, Ball otherBall);
+  
+  bool compareColor(Ball otherBall);
+  bool operator==(const Ball &ball);
   
   //default getters
   int getX() { return _x; }
@@ -49,6 +52,9 @@ public:
   int getYVelocity() { return _yVelocity; }
   int getRadius() { return _radius; }
   const char* getBallColor() { return _ballColor; }
+  std::vector<Ball> getCollisionArray() { return _collisionArray; }
+  int getDisplayWidth() { return _displayWidth; }
+  int getDisplayHeight() { return _displayHeight; }
 	
   //default setters
   void setX(int x) { _x = x; }
