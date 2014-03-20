@@ -34,7 +34,7 @@ bool HelloWorld::init() {
   for (int i = 0; i < 10; i++) {
     int randomX = rand() % (int)(windowSize.width + 1);
     int randomY = rand() % (int)(windowSize.height + 1);
-    std::cout << randomX << " : " << randomY << std::endl;
+    
     ballSprite = CCSprite::create(getRandomBallColor().c_str());
     ballSprite->setPosition(ccp(randomX, randomY));
     this->addChild(ballSprite, ZIndexBalls);
@@ -47,8 +47,6 @@ bool HelloWorld::init() {
 
 std::string HelloWorld::getRandomBallColor() {
   double random = ((double) rand() / (RAND_MAX));
-  
-  std::cout << "random number: " << random << std::endl;
   
   if( random <= 0.2 ) {
     return "blueball.png";

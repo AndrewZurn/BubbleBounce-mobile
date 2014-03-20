@@ -254,6 +254,7 @@
 		499B8C8B18D9371C000F55E5 /* bouncinballslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */; };
 		499B8C8C18D9371C000F55E5 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7E18D9371C000F55E5 /* arial.ttf */; };
 		499B8C8D18D9371C000F55E5 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */; };
+		49A4BE5C18DA871F007CE796 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5918DA871F007CE796 /* Ball.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -786,6 +787,9 @@
 		499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouncinballslogo.png; sourceTree = "<group>"; };
 		499B8C7E18D9371C000F55E5 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
 		499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
+		49A4BE5918DA871F007CE796 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = ../Classes/Ball.cpp; sourceTree = "<group>"; };
+		49A4BE5A18DA871F007CE796 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = ../Classes/Ball.h; sourceTree = "<group>"; };
+		49A4BE5B18DA871F007CE796 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1321,6 +1325,9 @@
 			children = (
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
+				49A4BE5918DA871F007CE796 /* Ball.cpp */,
+				49A4BE5A18DA871F007CE796 /* Ball.h */,
+				49A4BE5B18DA871F007CE796 /* Constants.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 			);
@@ -2079,6 +2086,7 @@
 				15A3D90D1682F7D5002FB0C5 /* b2Math.cpp in Sources */,
 				15A3D90E1682F7D5002FB0C5 /* b2Settings.cpp in Sources */,
 				15A3D90F1682F7D5002FB0C5 /* b2StackAllocator.cpp in Sources */,
+				49A4BE5C18DA871F007CE796 /* Ball.cpp in Sources */,
 				15A3D9101682F7D5002FB0C5 /* b2Timer.cpp in Sources */,
 				15A3D9111682F7D5002FB0C5 /* b2Body.cpp in Sources */,
 				15A3D9121682F7D5002FB0C5 /* b2ContactManager.cpp in Sources */,
