@@ -24,6 +24,7 @@ Ball* Ball::createBall(int displayWidth, int displayHeight) {
     ballSprite->setRadius(ballSprite->getTexture()->getPixelsHigh()/2); //don't know if this will work...
     ballSprite->setXVelocity(getRandomVelocity());
     ballSprite->setY(getRandomVelocity());
+    ballSprite->setState(BallStateNotMoving);
     
     ballSprite -> autorelease();
     return ballSprite;
@@ -66,7 +67,7 @@ void Ball::detectCollisions(std::vector<Ball> ballList) {
   for(iterator = ballList.begin(); iterator != ballList.end(); iterator++) {
     if (!(*this == *iterator)) {
       Ball ball = *iterator;
-      
+    
       //if balls close to overlapping
       if ( this->getX() + this->getRadius() + ball.getRadius() >= ball.getX()
           && this->getX() <= ball.getX() + this->getRadius() + ball.getRadius()

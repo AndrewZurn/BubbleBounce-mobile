@@ -18,6 +18,7 @@ private:
   int _yVelocity;
   int _radius; //can I get this by finding the size of CCSprite* ball?
   const char* _ballColor;
+  int _state;
   
   //need list of balls for collisionArray
   std::vector<Ball> _collisionArray;
@@ -53,6 +54,7 @@ public:
   int getXVelocity() { return _xVelocity; }
   int getYVelocity() { return _yVelocity; }
   int getRadius() { return _radius; }
+  int getState() { return _state; }
   const char* getBallColor() { return _ballColor; }
   std::vector<Ball> getCollisionArray() { return _collisionArray; }
   int getDisplayWidth() { return _displayWidth; }
@@ -69,6 +71,7 @@ public:
   void setBall(const char* ball) { _ball = ball; };
   void setBallSelected(const char* ballSelected) { _ballSelected = ballSelected; }
   void setRadius(int radius) { _radius = radius; }
+  void setState(int state) { _state = state; }
 };
 
 #endif 

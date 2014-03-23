@@ -10,10 +10,12 @@
 #define BouncingBallsCPP_GameScene_h
 
 #include "cocos2d.h"
+#include "Ball.h"
 
 class GameScene : public cocos2d::CCLayer
 {
 private:
+  std::vector<Ball*> _ballArray;
   //methods needed for game functionality
   
 public:
@@ -30,6 +32,9 @@ public:
   virtual void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
   virtual void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
   virtual void ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
+  
+  std::vector<Ball*> getBallArray() { return _ballArray; }
+  void setBallArray(std::vector<Ball*> ballArray) { _ballArray = ballArray; }
 };
 
 #endif
