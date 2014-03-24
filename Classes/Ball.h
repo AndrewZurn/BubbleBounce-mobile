@@ -26,11 +26,12 @@ private:
   std::vector<Ball*> _collisionArray;
   
   //game attributes
-  int _displayHeight;
   int _displayWidth;
+  int _displayHeight;
   int _speed;
   
-  static cocos2d::CCPoint setNonOverlapRandomPoint(std::vector<Ball*> otherBalls);
+  static void setNonOverlapRandomPoint(std::vector<Ball*> otherBalls);
+  static void setBallPositionToOnScreen();
   static int getRandomVelocity();
   static const char* getRandomBallColor();
   static const char* getSelectedBallColor(const char* ball);

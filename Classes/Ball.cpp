@@ -18,12 +18,13 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, int displayWidth, int disp
     
     ballSprite->setDisplayWidth(displayWidth);
     ballSprite->setDisplayHeight(displayHeight);
+    ballSprite->setRadius(ballSprite->getTexture()->getPixelsHigh()/2);
     
-    CCPoint randomPoint = setNonOverlapRandomPoint(otherBalls);
-    ballSprite->setPosition(randomPoint);
-    ballSprite->setRadius(ballSprite->getTexture()->getPixelsHigh()/2); //don't know if this will work...
+    setNonOverlapRandomPoint(otherBalls);
+    setBallPositionToOnScreen();
+    ballSprite->setPosition(ccp(ballSprite->getX(), ballSprite->getY()));
     ballSprite->setXVelocity(getRandomVelocity());
-    ballSprite->setY(getRandomVelocity());
+    ballSprite->setYVelocity(getRandomVelocity());
     ballSprite->setState(BallStateNotMoving);
     
     ballSprite -> autorelease();
@@ -192,7 +193,7 @@ const char* Ball::getBallColorFromFileName(const char* ball) {
 }
 
 //TODO: This needs to be refined further.
-cocos2d::CCPoint Ball::setNonOverlapRandomPoint(std::vector<Ball*> otherBalls) {
+void Ball::setNonOverlapRandomPoint(std::vector<Ball*> otherBalls) {
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   
   int randomX = rand() % (int)(windowSize.width + 1);
@@ -205,15 +206,35 @@ cocos2d::CCPoint Ball::setNonOverlapRandomPoint(std::vector<Ball*> otherBalls) {
   for(iterator = otherBalls.begin(); iterator != otherBalls.end(); iterator++) {
     otherBall = *iterator;
     while ( ballSprite->distanceTo(ballSprite, otherBall) < ballSprite->getRadius()
-           + otherBall->getRadius() + 30) {
+           + otherBall->getRadius()) {
       randomX = rand() % (int)(windowSize.width + 1);
       randomY = rand() % (int)(windowSize.height + 1);
       ballSprite->setX(randomX);
       ballSprite->setY(randomY);
     }
   }
+}
 
-  return ccp(randomX, randomY);
+void Ball::setBallPositionToOnScreen() {
+  CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
+  
+  int radius = ballSprite->getRadius();
+  int x = ballSprite->getX();
+  int y = ballSprite->getY();
+  
+  if (x + radius > windowSize.width) {
+    ballSprite->setX(windowSize.width - (radius * 2) );
+  }
+  else if (x - radius < 0) {
+    ballSprite->setX(radius * 2);
+  }
+  
+  if (y + radius > windowSize.height) {
+    ballSprite->setY(windowSize.height - (radius * 2));
+  }
+  else if (y - radius < 0) {
+    ballSprite->setY(radius * 2);
+  }
 }
 
 int Ball::getRandomVelocity() {
