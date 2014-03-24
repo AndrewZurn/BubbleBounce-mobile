@@ -7,6 +7,8 @@ class Ball : public cocos2d::CCSprite {
   
   
 private:
+  int _ballId;
+  
   //file names for the ball images
   const char* _ball;
   const char* _ballSelected;
@@ -21,14 +23,14 @@ private:
   int _state;
   
   //need list of balls for collisionArray
-  std::vector<Ball> _collisionArray;
+  std::vector<Ball*> _collisionArray;
   
   //game attributes
   int _displayHeight;
   int _displayWidth;
   int _speed;
   
-  static cocos2d::CCPoint getRandomPoint();
+  static cocos2d::CCPoint setNonOverlapRandomPoint(std::vector<Ball*> otherBalls);
   static int getRandomVelocity();
   static const char* getRandomBallColor();
   static const char* getSelectedBallColor(const char* ball);
@@ -36,12 +38,12 @@ private:
   
   
 public:
-  static Ball* createBall(int displayWidth, int displayHeight);
+  static Ball* createBall(std::vector<Ball*> otherBalls, int displayWidth, int displayHeight);
   
-  void updateBallPositions(std::vector<Ball> ballList);
-  void detectCollisions(std::vector<Ball> ballList);
-  float distanceTo(Ball thisBall, Ball otherBall);
-  void calculateNewVelocities(Ball thisBall, Ball otherBall);
+  void updateBallPositions(std::vector<Ball*> ballList);
+  void detectCollisions(std::vector<Ball*> ballList);
+  float distanceTo(Ball *thisBall, Ball *otherBall);
+  void calculateNewVelocities(Ball* thisBall, Ball* otherBall);
   
   bool compareColor(Ball otherBall);
   bool operator==(const Ball &ball) const {
@@ -56,7 +58,7 @@ public:
   int getRadius() { return _radius; }
   int getState() { return _state; }
   const char* getBallColor() { return _ballColor; }
-  std::vector<Ball> getCollisionArray() { return _collisionArray; }
+  std::vector<Ball*> getCollisionArray() { return _collisionArray; }
   int getDisplayWidth() { return _displayWidth; }
   int getDisplayHeight() { return _displayHeight; }
 	

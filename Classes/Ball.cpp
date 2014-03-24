@@ -3,9 +3,11 @@
 
 USING_NS_CC;
 
-Ball* Ball::createBall(int displayWidth, int displayHeight) {
+Ball* ballSprite;
+
+Ball* Ball::createBall(std::vector<Ball*> otherBalls, int displayWidth, int displayHeight) {
   
-  Ball *ballSprite = new Ball();
+  ballSprite = new Ball();
   const char* ballColor = getRandomBallColor();
   const char* ballSelectedColor = getSelectedBallColor(ballColor);
   const char* color = getBallColorFromFileName(ballColor);
@@ -17,16 +19,15 @@ Ball* Ball::createBall(int displayWidth, int displayHeight) {
     ballSprite->setDisplayWidth(displayWidth);
     ballSprite->setDisplayHeight(displayHeight);
     
-    CCPoint randomPoint = getRandomPoint();
+    CCPoint randomPoint = setNonOverlapRandomPoint(otherBalls);
     ballSprite->setPosition(randomPoint);
-    ballSprite->setX(randomPoint.x);
-    ballSprite->setY(randomPoint.y);
     ballSprite->setRadius(ballSprite->getTexture()->getPixelsHigh()/2); //don't know if this will work...
     ballSprite->setXVelocity(getRandomVelocity());
     ballSprite->setY(getRandomVelocity());
     ballSprite->setState(BallStateNotMoving);
     
     ballSprite -> autorelease();
+    
     return ballSprite;
   }
   
@@ -34,7 +35,7 @@ Ball* Ball::createBall(int displayWidth, int displayHeight) {
   return NULL;
 }
 
-void Ball::updateBallPositions(std::vector<Ball> ballList) {
+void Ball::updateBallPositions(std::vector<Ball*> ballList) {
   detectCollisions(ballList);
   
   this->setX(this->getX() + this->getXVelocity());
@@ -62,31 +63,32 @@ void Ball::updateBallPositions(std::vector<Ball> ballList) {
   
 }
 
-void Ball::detectCollisions(std::vector<Ball> ballList) {
-  std::vector<Ball>::iterator iterator;
+void Ball::detectCollisions(std::vector<Ball*> ballList) {
+  std::vector<Ball*>::iterator iterator;
   for(iterator = ballList.begin(); iterator != ballList.end(); iterator++) {
-    if (!(*this == *iterator)) {
-      Ball ball = *iterator;
-    
-      //if balls close to overlapping
-      if ( this->getX() + this->getRadius() + ball.getRadius() >= ball.getX()
-          && this->getX() <= ball.getX() + this->getRadius() + ball.getRadius()
-          && this->getY() + this->getRadius() + ball.getRadius() >= ball.getY()
-          && this->getY() <= ball.getY() + this->getRadius() + ball.getRadius() ) {
+    Ball* ball = *iterator;
+    if (ballSprite->getX() != ball->getX() && ballSprite->getY() != ball->getY()) {
+      
+      // if the bounding rec of ball is over the other bounding rec
+      if ( this->getX() + this->getRadius() + ball->getRadius() >= ball->getX()
+          && this->getX() <= ball->getX() + this->getRadius() + ball->getRadius()
+          && this->getY() + this->getRadius() + ball->getRadius() >= ball->getY()
+          && this->getY() <= ball->getY() + this->getRadius() + ball->getRadius() ) {
         
-        std::vector<Ball> collisionArray = ball.getCollisionArray();
-        if ( distanceTo(*this, ball) <= this->getRadius() + ball.getRadius() ) { //if balls collided
+        std::vector<Ball*> collisionArray = ball->getCollisionArray();
+        
+        //they collided
+        if ( distanceTo(ballSprite, ballSprite) <= ballSprite->getRadius() + ball->getRadius() ) {
           
-          //if ball is not in the collision array
-          if (!(std::find(collisionArray.begin(), collisionArray.end(), ball) != collisionArray.end()) ) {
-            calculateNewVelocities(*this, ball);
+          //if colliding ball is not in the collision array
+          if ( collisionArray.empty() ) {
+            calculateNewVelocities(ballSprite, ball);
             this->getCollisionArray().push_back(ball);
           }
         }
-        else { //balls did not collide, remove ball from collision array
-          if (std::find(collisionArray.begin(), collisionArray.end(), ball) != collisionArray.end() ){
-            std::vector<Ball>::iterator ballIndex = std::find(collisionArray.begin(), collisionArray.end(), ball);
-            this->getCollisionArray().erase(ballIndex);
+        else { //once the balls are not colliding, clear the collision array
+          if ( !collisionArray.empty() ) {
+            ballSprite->getCollisionArray().clear();
           }
         }
       }
@@ -94,24 +96,24 @@ void Ball::detectCollisions(std::vector<Ball> ballList) {
   }
 }
 
-void Ball::calculateNewVelocities(Ball thisBall, Ball otherBall) {
-  int tempVelHolder = thisBall.getXVelocity();
-  thisBall.setXVelocity(otherBall.getXVelocity());
-  otherBall.setXVelocity(tempVelHolder);
+void Ball::calculateNewVelocities(Ball* thisBall, Ball* otherBall) {
+  int tempVelHolder = thisBall->getXVelocity();
+  thisBall->setXVelocity(otherBall->getXVelocity());
+  otherBall->setXVelocity(tempVelHolder);
   
-  tempVelHolder = thisBall.getYVelocity();
-  thisBall.setXVelocity(otherBall.getYVelocity());
-  thisBall.setYVelocity(tempVelHolder);
+  tempVelHolder = thisBall->getYVelocity();
+  thisBall->setXVelocity(otherBall->getYVelocity());
+  thisBall->setYVelocity(tempVelHolder);
   
-  thisBall.setX(thisBall.getX() + (thisBall.getXVelocity()));
-  thisBall.setY(thisBall.getY() + (thisBall.getYVelocity()));
-  otherBall.setX(otherBall.getX() + (otherBall.getXVelocity()));
-  otherBall.setX(otherBall.getY() + (otherBall.getYVelocity()));
+  thisBall->setX(thisBall->getX() + (thisBall->getXVelocity()));
+  thisBall->setY(thisBall->getY() + (thisBall->getYVelocity()));
+  otherBall->setX(otherBall->getX() + (otherBall->getXVelocity()));
+  otherBall->setX(otherBall->getY() + (otherBall->getYVelocity()));
 }
 
-float Ball::distanceTo(Ball thisBall, Ball otherBall) {
-  float a = (thisBall.getX() - otherBall.getX()) * (thisBall.getX() - otherBall.getX());
-  float b = (thisBall.getY() - otherBall.getY()) * (thisBall.getY() - otherBall.getY());
+float Ball::distanceTo(Ball *thisBall, Ball *otherBall) {
+  float a = (thisBall->getX() - otherBall->getX()) * (thisBall->getX() - otherBall->getX());
+  float b = (thisBall->getY() - otherBall->getY()) * (thisBall->getY() - otherBall->getY());
   float distance = (float) sqrt(a + b);
   
   if ( distance < 0) {
@@ -189,11 +191,28 @@ const char* Ball::getBallColorFromFileName(const char* ball) {
   }
 }
 
-cocos2d::CCPoint Ball::getRandomPoint() {
+//TODO: This needs to be refined further.
+cocos2d::CCPoint Ball::setNonOverlapRandomPoint(std::vector<Ball*> otherBalls) {
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
+  
   int randomX = rand() % (int)(windowSize.width + 1);
   int randomY = rand() % (int)(windowSize.height + 1);
+  ballSprite->setX(randomX);
+  ballSprite->setY(randomY);
   
+  Ball* otherBall;
+  std::vector<Ball*>::iterator iterator;
+  for(iterator = otherBalls.begin(); iterator != otherBalls.end(); iterator++) {
+    otherBall = *iterator;
+    while ( ballSprite->distanceTo(ballSprite, otherBall) < ballSprite->getRadius()
+           + otherBall->getRadius() + 30) {
+      randomX = rand() % (int)(windowSize.width + 1);
+      randomY = rand() % (int)(windowSize.height + 1);
+      ballSprite->setX(randomX);
+      ballSprite->setY(randomY);
+    }
+  }
+
   return ccp(randomX, randomY);
 }
 

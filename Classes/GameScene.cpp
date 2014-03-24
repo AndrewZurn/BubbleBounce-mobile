@@ -40,7 +40,7 @@ bool GameScene::init() {
   Ball* ballSprite = NULL;
   std::vector<Ball*> ballArray;
   for (int i = 0; i < 10; i++) {
-    ballSprite = Ball::createBall(windowSize.width, windowSize.height);
+    ballSprite = Ball::createBall(ballArray, windowSize.width, windowSize.height);
     ballArray.push_back(ballSprite);
     this->addChild(ballSprite, ZIndexBalls);
   }
