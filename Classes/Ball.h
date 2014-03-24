@@ -30,8 +30,8 @@ private:
   int _displayHeight;
   int _speed;
   
-  static void setNonOverlapRandomPoint(std::vector<Ball*> otherBalls);
-  static void setBallPositionToOnScreen();
+  static void setNonOverlapRandomPoint(Ball* thisBall, std::vector<Ball*> otherBalls);
+  static void setBallPositionToOnScreen(Ball* thisBall);
   static int getRandomVelocity();
   static const char* getRandomBallColor();
   static const char* getSelectedBallColor(const char* ball);
