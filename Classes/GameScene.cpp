@@ -37,10 +37,13 @@ bool GameScene::init() {
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
   Ball* ballSprite = NULL;
+//  Ball* ballSpriteCopy = NULL;
   std::vector<Ball*> ballArray;
   for (int i = 0; i < 10; i++) {
-    ballSprite = Ball::createBall(ballArray, windowSize.width, windowSize.height);
+    ballSprite = Ball::createBall(ballArray);
+//    ballSpriteCopy = Ball::createCopy(ballSprite->getOriginalBallImage(), ballArray);
     ballArray.push_back(ballSprite);
+//    ballArray.push_back(ballSpriteCopy);
     this->addChild(ballSprite, ZIndexBalls);
   }
   this->setBallArray(ballArray);
@@ -85,7 +88,6 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
   for( i = ballArray.begin(); i != ballArray.end(); i++) {
     ball = (Ball *) (*i);
     if (ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch))) {
-      std::cout << ball->getX() << ":" << ball->getY() << " ball color: " << ball->getBallColor() << std::endl;
       ball->changeBallImage();
     }
   }

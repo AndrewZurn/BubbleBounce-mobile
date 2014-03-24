@@ -7,8 +7,6 @@ class Ball : public cocos2d::CCSprite {
   
   
 private:
-  int _ballId;
-  
   //file names for the ball images
   const char* _ball;
   const char* _ballSelected;
@@ -30,24 +28,27 @@ private:
   int _displayHeight;
   int _speed;
   
-  static void setNonOverlapRandomPoint(Ball* thisBall, std::vector<Ball*> otherBalls);
-  static void setBallPositionToOnScreen(Ball* thisBall);
-  static int getRandomVelocity();
-  static const char* getRandomBallColor();
-  static const char* getSelectedBallColor(const char* ball);
-  static const char* getBallColorFromFileName(const char* ball);
-  
-  
-public:
-  static Ball* createBall(std::vector<Ball*> otherBalls, int displayWidth, int displayHeight);
-  
-  void updateBallPositions(std::vector<Ball*> ballList);
+  //methods used within Ball to update various fields
   void detectCollisions(std::vector<Ball*> ballList);
   float distanceTo(Ball *thisBall, Ball *otherBall);
   void calculateNewVelocities(Ball* thisBall, Ball* otherBall);
+  static void setNonOverlapRandomPoint(Ball* thisBall, std::vector<Ball*> otherBalls);
+  static void setBallPositionToOnScreen(Ball* thisBall);
+  static int getRandomVelocity();
+  static const char* getRandomBallImage();
+  static const char* getSelectedBallColor(const char* ball);
+  static const char* getBallColorFromFileName(const char* ball);
   
+public:
+  //constructors
+  static Ball* createBall(std::vector<Ball*> otherBalls);
+  static Ball* createCopy(const char* color, std::vector<Ball*> otherBalls); //makes a copy of the other ball
+  
+  //external methods to update ball fields
+  void updateBallPositions(std::vector<Ball*> ballList);
   int changeBallImage();
   
+  //comparison methods
   bool compareColor(Ball otherBall);
   bool operator==(const Ball &ball) const {
     return _x == ball._x && _y == ball._y && _ballColor == ball._ballColor;

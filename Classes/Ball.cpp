@@ -3,21 +3,56 @@
 
 USING_NS_CC;
 
-//Ball* ballSprite;
-
-Ball* Ball::createBall(std::vector<Ball*> otherBalls, int displayWidth, int displayHeight) {
+Ball* Ball::createBall(std::vector<Ball*> otherBalls) {
   
   Ball* ballSprite = new Ball();
-  const char* ballColor = getRandomBallColor();
+  const char* ballColor = getRandomBallImage();
   const char* ballSelectedColor = getSelectedBallColor(ballColor);
   const char* color = getBallColorFromFileName(ballColor);
   
+  CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
+  
   if ( ballSprite && ballSprite->initWithFile(ballColor)) {
+    ballSprite->setBall(ballColor);
     ballSprite->setBallSelected(ballSelectedColor);
     ballSprite->setBallColor(color);
     
-    ballSprite->setDisplayWidth(displayWidth);
-    ballSprite->setDisplayHeight(displayHeight);
+    ballSprite->setDisplayWidth(windowSize.width);
+    ballSprite->setDisplayHeight(windowSize.height);
+    ballSprite->setRadius(ballSprite->getTexture()->getPixelsHigh()/2);
+    
+    setNonOverlapRandomPoint(ballSprite, otherBalls);
+    setBallPositionToOnScreen(ballSprite);
+    ballSprite->setPosition(ccp(ballSprite->getX(), ballSprite->getY()));
+    ballSprite->setXVelocity(getRandomVelocity());
+    ballSprite->setYVelocity(getRandomVelocity());
+    ballSprite->setState(BallNotSelected);
+    
+    ballSprite -> autorelease();
+    
+    return ballSprite;
+  }
+  
+  CC_SAFE_DELETE(ballSprite);
+  return NULL;
+}
+
+Ball* Ball::createCopy(const char* originalColor, std::vector<Ball*> otherBalls) {
+  
+  Ball* ballSprite = new Ball();
+  const char* ballColor = originalColor;
+  const char* ballSelectedColor = getSelectedBallColor(ballColor);
+  const char* color = getBallColorFromFileName(ballColor);
+  
+  CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
+  
+  if( ballSprite && ballSprite->initWithFile(ballColor)) {
+    ballSprite->setBall(ballColor);
+    ballSprite->setBallSelected(ballSelectedColor);
+    ballSprite->setBallColor(color);
+    
+    ballSprite->setDisplayWidth(windowSize.width);
+    ballSprite->setDisplayHeight(windowSize.height);
     ballSprite->setRadius(ballSprite->getTexture()->getPixelsHigh()/2);
     
     setNonOverlapRandomPoint(ballSprite, otherBalls);
@@ -130,7 +165,7 @@ bool Ball::compareColor(Ball otherBall) {
   return false;
 }
 
-const char* Ball::getRandomBallColor() {
+const char* Ball::getRandomBallImage() {
   double random = ((double) rand() / (RAND_MAX));
   
   if( random <= 0.2 ) {
