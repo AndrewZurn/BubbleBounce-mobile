@@ -7,8 +7,8 @@
 
 //ball constants
 #define BallSpeed 2
-#define BallStateNotMoving 3
-#define BallStateMoving 4
+#define BallSelected 3
+#define BallNotSelected 4
 
 //exception values
 #define BallSelectedColorNotFound 5

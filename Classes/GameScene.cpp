@@ -36,7 +36,6 @@ bool GameScene::init() {
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
-  
   Ball* ballSprite = NULL;
   std::vector<Ball*> ballArray;
   for (int i = 0; i < 10; i++) {
@@ -62,18 +61,34 @@ void GameScene::ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event
 }
 
 void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
-  CCSetIterator iterator;
-  CCTouch *touch;
+  CCSetIterator i;
+  CCTouch* touch;
   CCPoint tap;
   
-  for (iterator = pTouches->begin(); iterator != pTouches->end(); iterator++) {
-    touch = (CCTouch *) (*iterator); //get the object that iterator is pointing at
-    if (touch) {
-      tap = touch->getLocation();
-      CCLog("Touched at %.2f,%.2f", tap.x, tap.y);
+  //for every touch
+  for (i = pTouches->begin(); i != pTouches->end(); i++) {
+    touch = (CCTouch *) (*i);
+    
+    if (touch) { //if touch was found
+      handleBallTouch(touch);
     }
   }
   
+}
+
+void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
+  std::vector<Ball*>::iterator i;
+  std::vector<Ball*> ballArray = this->getBallArray();
+  Ball* ball;
+  
+  //for each ball in game
+  for( i = ballArray.begin(); i != ballArray.end(); i++) {
+    ball = (Ball *) (*i);
+    if (ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch))) {
+      std::cout << ball->getX() << ":" << ball->getY() << " ball color: " << ball->getBallColor() << std::endl;
+      ball->changeBallImage();
+    }
+  }
 }
 
 ///////////////////////////////

@@ -46,6 +46,8 @@ public:
   float distanceTo(Ball *thisBall, Ball *otherBall);
   void calculateNewVelocities(Ball* thisBall, Ball* otherBall);
   
+  int changeBallImage();
+  
   bool compareColor(Ball otherBall);
   bool operator==(const Ball &ball) const {
     return _x == ball._x && _y == ball._y && _ballColor == ball._ballColor;
@@ -62,6 +64,8 @@ public:
   std::vector<Ball*> getCollisionArray() { return _collisionArray; }
   int getDisplayWidth() { return _displayWidth; }
   int getDisplayHeight() { return _displayHeight; }
+  const char* getSelectedBallImage() { return _ballSelected; }
+  const char* getOriginalBallImage() { return _ball; }
 	
   //default setters
   void setX(int x) { _x = x; }
