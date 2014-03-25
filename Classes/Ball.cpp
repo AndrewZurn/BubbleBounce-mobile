@@ -34,8 +34,6 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color
     ballSprite->setYVelocity(getRandomVelocity());
     ballSprite->setState(BallNotSelected);
     
-//    ballSprite -> autorelease();
-    
     return ballSprite;
   }
   

@@ -15,15 +15,11 @@ static int STARTING_BALLS = 10;
 
 CCScene* GameScene::scene()
 {
-  // 'scene' is an autorelease object
-  CCScene *scene = CCScene::create();
-  
   GameScene *backgroundLayer = GameScene::create();
   
-  // add layers as a child to scene
+  CCScene *scene = CCScene::create();
   scene->addChild(backgroundLayer);
-  
-  // return the scene
+
   return scene;
 }
 
@@ -38,24 +34,26 @@ bool GameScene::init() {
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
+  this->setTouchEnabled(true);
+  this->retain();
+  
   Ball* firstBall = NULL;
   Ball* secondBall = NULL;
   std::vector<Ball*> ballArray;
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
     firstBall = Ball::createBall(ballArray, "");
+    firstBall->retain();
     ballArray.push_back(firstBall);
     this->addChild(firstBall, ZIndexBalls);
     
     secondBall = Ball::createBall(ballArray, firstBall->getOriginalBallImage());
+    secondBall->retain();
     ballArray.push_back(secondBall);
     this->addChild(secondBall, ZIndexBalls);
   }
   this->setBallArray(ballArray);
   
   this->addChild(background, ZIndexBackground);
-  
-  this->setTouchEnabled(true);
-  this->retain();
   
   return true;
 }
@@ -84,6 +82,7 @@ void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event
   
 }
 
+//TODO: Need to remove the balls from ballArray when they are removed from screen.
 void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
   std::vector<Ball*>::iterator i;
   std::vector<Ball*> ballArray = this->getBallArray();
@@ -92,9 +91,11 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
   //for each ball in game
   for( i = ballArray.begin(); i != ballArray.end(); i++) {
     ball = (Ball *) (*i);
+    
     if (ball == this->getSelectedBall()) break;
+    
     if (ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch))) {
-      
+      std::cout << "Touched Color: " << ball->getOriginalBallImage() << std::endl;
       //if no ball was previously touched
       if ( this->getSelectedBall() == NULL ) {
         ball->changeBallImage();
@@ -103,9 +104,12 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       }
       else { //a ball was previously touched
         //if the colors match
+        std::cout << "Selected Color: " << this->getSelectedBall()->getOriginalBallImage() << std::endl;
         if ( ball->compareColor(this->getSelectedBall())) {
           this->removeChild(ball);
+          ball->release();
           this->removeChild(this->getSelectedBall());
+          this->getSelectedBall()->release();
           this->setSelectedBall(NULL);
           break;
         }
@@ -117,6 +121,7 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       }
     }
   }
+  ball = NULL;
   this->retain();
 }
 
