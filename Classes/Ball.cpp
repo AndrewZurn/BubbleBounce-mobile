@@ -34,7 +34,7 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color
     ballSprite->setYVelocity(getRandomVelocity());
     ballSprite->setState(BallNotSelected);
     
-    ballSprite -> autorelease();
+//    ballSprite -> autorelease();
     
     return ballSprite;
   }
@@ -131,7 +131,8 @@ float Ball::distanceTo(Ball *thisBall, Ball *otherBall) {
 }
 
 bool Ball::compareColor(Ball* otherBall) {
-  if ( strcmp(_ballColor, otherBall->getBallColor()) == 0) {
+  if ( strcmp(this->getOriginalBallImage(),
+              otherBall->getOriginalBallImage()) == 0) {
     return true;
   }
   return false;

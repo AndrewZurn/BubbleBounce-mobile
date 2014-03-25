@@ -46,8 +46,7 @@ bool GameScene::init() {
     ballArray.push_back(firstBall);
     this->addChild(firstBall, ZIndexBalls);
     
-    char const* originalBallImage = firstBall->getOriginalBallImage();
-    secondBall = Ball::createBall(ballArray, originalBallImage);
+    secondBall = Ball::createBall(ballArray, firstBall->getOriginalBallImage());
     ballArray.push_back(secondBall);
     this->addChild(secondBall, ZIndexBalls);
   }
@@ -56,6 +55,7 @@ bool GameScene::init() {
   this->addChild(background, ZIndexBackground);
   
   this->setTouchEnabled(true);
+  this->retain();
   
   return true;
 }
@@ -106,15 +106,18 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
         if ( ball->compareColor(this->getSelectedBall())) {
           this->removeChild(ball);
           this->removeChild(this->getSelectedBall());
+          this->setSelectedBall(NULL);
           break;
         }
         else{ //the colors don't match
           this->getSelectedBall()->changeBallImage();
+          this->setSelectedBall(NULL);
           break;
         }
       }
     }
   }
+  this->retain();
 }
 
 ///////////////////////////////

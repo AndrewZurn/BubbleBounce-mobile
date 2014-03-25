@@ -15,7 +15,7 @@
 class GameScene : public cocos2d::CCLayer
 {
 private:
-  Ball* _selectedBall = NULL;
+  Ball* _selectedBall;
   
   std::vector<Ball*> _ballArray;
   //methods needed for game functionality
