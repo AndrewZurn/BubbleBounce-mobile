@@ -3,50 +3,22 @@
 
 USING_NS_CC;
 
-Ball* Ball::createBall(std::vector<Ball*> otherBalls) {
-  
+Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color) {
   Ball* ballSprite = new Ball();
-  const char* ballColor = getRandomBallImage();
+  CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
+  
+  const char* ballColor;
+  if ( strcmp(original_color, "") == 0) {
+    ballColor = getRandomBallImage();
+  }
+  else {
+    ballColor = original_color;
+  }
+
   const char* ballSelectedColor = getSelectedBallColor(ballColor);
   const char* color = getBallColorFromFileName(ballColor);
-  
-  CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   
   if ( ballSprite && ballSprite->initWithFile(ballColor)) {
-    ballSprite->setBall(ballColor);
-    ballSprite->setBallSelected(ballSelectedColor);
-    ballSprite->setBallColor(color);
-    
-    ballSprite->setDisplayWidth(windowSize.width);
-    ballSprite->setDisplayHeight(windowSize.height);
-    ballSprite->setRadius(ballSprite->getTexture()->getPixelsHigh()/2);
-    
-    setNonOverlapRandomPoint(ballSprite, otherBalls);
-    setBallPositionToOnScreen(ballSprite);
-    ballSprite->setPosition(ccp(ballSprite->getX(), ballSprite->getY()));
-    ballSprite->setXVelocity(getRandomVelocity());
-    ballSprite->setYVelocity(getRandomVelocity());
-    ballSprite->setState(BallNotSelected);
-    
-    ballSprite -> autorelease();
-    
-    return ballSprite;
-  }
-  
-  CC_SAFE_DELETE(ballSprite);
-  return NULL;
-}
-
-Ball* Ball::createCopy(const char* originalColor, std::vector<Ball*> otherBalls) {
-  
-  Ball* ballSprite = new Ball();
-  const char* ballColor = originalColor;
-  const char* ballSelectedColor = getSelectedBallColor(ballColor);
-  const char* color = getBallColorFromFileName(ballColor);
-  
-  CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
-  
-  if( ballSprite && ballSprite->initWithFile(ballColor)) {
     ballSprite->setBall(ballColor);
     ballSprite->setBallSelected(ballSelectedColor);
     ballSprite->setBallColor(color);

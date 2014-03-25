@@ -36,15 +36,18 @@ bool GameScene::init() {
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
-  Ball* ballSprite = NULL;
-//  Ball* ballSpriteCopy = NULL;
+  Ball* firstBall = NULL;
+  Ball* secondBall = NULL;
   std::vector<Ball*> ballArray;
   for (int i = 0; i < 10; i++) {
-    ballSprite = Ball::createBall(ballArray);
-//    ballSpriteCopy = Ball::createCopy(ballSprite->getOriginalBallImage(), ballArray);
-    ballArray.push_back(ballSprite);
-//    ballArray.push_back(ballSpriteCopy);
-    this->addChild(ballSprite, ZIndexBalls);
+    firstBall = Ball::createBall(ballArray, "");
+    ballArray.push_back(firstBall);
+    this->addChild(firstBall, ZIndexBalls);
+    
+    char const* originalBallImage = firstBall->getOriginalBallImage();
+    secondBall = Ball::createBall(ballArray, originalBallImage);
+    ballArray.push_back(secondBall);
+    this->addChild(secondBall, ZIndexBalls);
   }
   this->setBallArray(ballArray);
   
