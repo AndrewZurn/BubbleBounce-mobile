@@ -15,6 +15,8 @@
 class GameScene : public cocos2d::CCLayer
 {
 private:
+  Ball* _selectedBall = NULL;
+  
   std::vector<Ball*> _ballArray;
   //methods needed for game functionality
   
@@ -34,8 +36,11 @@ public:
   virtual void ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
   void handleBallTouch(cocos2d::CCTouch* touch);
   
+  Ball* getSelectedBall() { return _selectedBall; }
+  
   std::vector<Ball*> getBallArray() { return _ballArray; }
   void setBallArray(std::vector<Ball*> ballArray) { _ballArray = ballArray; }
+  void setSelectedBall(Ball* ball) { _selectedBall = ball; }
 };
 
 #endif

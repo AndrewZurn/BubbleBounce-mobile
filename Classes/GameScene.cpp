@@ -11,6 +11,8 @@
 
 USING_NS_CC;
 
+static int STARTING_BALLS = 10;
+
 CCScene* GameScene::scene()
 {
   // 'scene' is an autorelease object
@@ -39,7 +41,7 @@ bool GameScene::init() {
   Ball* firstBall = NULL;
   Ball* secondBall = NULL;
   std::vector<Ball*> ballArray;
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < STARTING_BALLS / 2; i++) {
     firstBall = Ball::createBall(ballArray, "");
     ballArray.push_back(firstBall);
     this->addChild(firstBall, ZIndexBalls);
@@ -90,8 +92,27 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
   //for each ball in game
   for( i = ballArray.begin(); i != ballArray.end(); i++) {
     ball = (Ball *) (*i);
+    if (ball == this->getSelectedBall()) break;
     if (ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch))) {
-      ball->changeBallImage();
+      
+      //if no ball was previously touched
+      if ( this->getSelectedBall() == NULL ) {
+        ball->changeBallImage();
+        this->setSelectedBall(ball);
+        break;
+      }
+      else { //a ball was previously touched
+        //if the colors match
+        if ( ball->compareColor(this->getSelectedBall())) {
+          this->removeChild(ball);
+          this->removeChild(this->getSelectedBall());
+          break;
+        }
+        else{ //the colors don't match
+          this->getSelectedBall()->changeBallImage();
+          break;
+        }
+      }
     }
   }
 }

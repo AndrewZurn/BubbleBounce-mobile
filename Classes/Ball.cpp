@@ -130,8 +130,8 @@ float Ball::distanceTo(Ball *thisBall, Ball *otherBall) {
   return distance;
 }
 
-bool Ball::compareColor(Ball otherBall) {
-  if ( strcmp(_ballColor, otherBall.getBallColor()) == 0) {
+bool Ball::compareColor(Ball* otherBall) {
+  if ( strcmp(_ballColor, otherBall->getBallColor()) == 0) {
     return true;
   }
   return false;

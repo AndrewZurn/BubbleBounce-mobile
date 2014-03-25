@@ -48,7 +48,7 @@ public:
   int changeBallImage();
   
   //comparison methods
-  bool compareColor(Ball otherBall);
+  bool compareColor(Ball* otherBall);
   bool operator==(const Ball &ball) const {
     return _x == ball._x && _y == ball._y && _ballColor == ball._ballColor;
   }
