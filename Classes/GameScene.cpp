@@ -30,7 +30,6 @@ bool GameScene::init() {
   
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-  
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
@@ -51,19 +50,11 @@ bool GameScene::init() {
     ballArray.push_back(secondBall);
     this->addChild(secondBall, ZIndexBalls);
   }
-  this->setBallArray(ballArray);
   
+  this->setBallArray(ballArray);
   this->addChild(background, ZIndexBackground);
   
   return true;
-}
-
-void GameScene::ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
-  //not interested in?
-}
-
-void GameScene::ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
-  //not interested in?
 }
 
 void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
