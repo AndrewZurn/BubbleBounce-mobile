@@ -36,6 +36,7 @@ assets/
 .classpath
 .project
 .cproject
+lint.xml
 
 # Ignore files build by airplay
 build_*_xcode/
