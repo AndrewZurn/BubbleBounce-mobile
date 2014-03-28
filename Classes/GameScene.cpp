@@ -65,12 +65,10 @@ void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event
   //for every touch
   for (i = pTouches->begin(); i != pTouches->end(); i++) {
     touch = (CCTouch *) (*i);
-    
     if (touch) { //if touch was found
       handleBallTouch(touch);
     }
   }
-  
 }
 
 //TODO: Need to remove the balls from ballArray when they are removed from screen.
@@ -85,26 +83,33 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
     
     if (ball == this->getSelectedBall()) break;
     
-    if (ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch))) {
-      std::cout << "Touched Color: " << ball->getOriginalBallImage() << std::endl;
+    std::cout << "ball->boundingBox() " << ball->boundingBox().getMidX() << ":" << ball->boundingBox().getMidY() << std::endl;
+    if ( ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch)) ) {
+
       //if no ball was previously touched
       if ( this->getSelectedBall() == NULL ) {
+        std::cout << "GetSelectedBall() == NULL -- BALL WAS " << ball->getBallColor() << std::endl;
         ball->changeBallImage();
         this->setSelectedBall(ball);
         break;
       }
       else { //a ball was previously touched
-        //if the colors match
-        std::cout << "Selected Color: " << this->getSelectedBall()->getOriginalBallImage() << std::endl;
-        if ( ball->compareColor(this->getSelectedBall())) {
+        Ball* otherBall = this->getSelectedBall();
+        if (!otherBall) {
+          std::cout << "!otherBall" << std::endl;
+          break;
+        }
+        else if ( strcmp(ball->getBallColor(), this->getSelectedBall()->getBallColor()) == 0 ) {
+          std::cout << "strcmp == 0 -- ball1: " << ball->getBallColor() << " -- ball2: " << otherBall->getBallColor() << std::endl;
           this->removeChild(ball);
+          this->removeChild(otherBall);
           ball->release();
-          this->removeChild(this->getSelectedBall());
-          this->getSelectedBall()->release();
+          otherBall->release();
           this->setSelectedBall(NULL);
           break;
         }
         else{ //the colors don't match
+          std::cout << "they don't match " << ball->getBallColor() << " -- ball2: " << otherBall->getBallColor() << std::endl;
           this->getSelectedBall()->changeBallImage();
           this->setSelectedBall(NULL);
           break;
@@ -113,7 +118,10 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
     }
   }
   ball = NULL;
+  this->setBallArray(ballArray);
   this->retain();
+  std::cout << "Ball = null, this->setBallArray(ballArray)" << std::endl;
+  std::cout << "----------------------------------------------------------" << std::endl;
 }
 
 ///////////////////////////////
