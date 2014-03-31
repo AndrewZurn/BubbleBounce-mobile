@@ -21,6 +21,8 @@ private:
   //methods needed for game functionality
   
 public:
+  int _score;
+  
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
   

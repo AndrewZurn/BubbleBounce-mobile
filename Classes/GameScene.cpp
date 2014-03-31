@@ -105,8 +105,9 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
           
           ball->release();
           this->getSelectedBall()->release();
-          
           this->setSelectedBall(NULL);
+          
+          _score++;
           break;
         }
         else{ //the colors don't match
@@ -117,8 +118,5 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       }
     }
   }
+  std::cout << "Score: " << _score << std::endl;
 }
-
-///////////////////////////////
-// ---- PRIVATE METHODS ---- //
-//////////////////////////////
