@@ -33,10 +33,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
   // run
   pDirector->runWithScene(pScene);
   
+  setGameScene(pScene);
+  pScene->retain();
+  
   return true;
 }
 
-// This function will be called when the app is inactive. When comes a phone call,it's be invoked too
+// This function will be called when the app is inactive. When comes a phone call, it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
   CCDirector::sharedDirector()->stopAnimation();
   

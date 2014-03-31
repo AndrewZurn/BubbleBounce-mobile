@@ -7,6 +7,8 @@ class Ball : public cocos2d::CCSprite {
   
   
 private:
+  int _ballId;
+  
   //file names for the ball images
   const char* _ball;
   const char* _ballSelected;
@@ -66,6 +68,7 @@ public:
   int getDisplayHeight() { return _displayHeight; }
   const char* getSelectedBallImage() { return _ballSelected; }
   const char* getOriginalBallImage() { return _ball; }
+  int getBallId() { return _ballId; }
 	
   //default setters
   void setX(int x) { _x = x; }
@@ -79,6 +82,7 @@ public:
   void setBallSelected(const char* ballSelected) { _ballSelected = ballSelected; }
   void setRadius(int radius) { _radius = radius; }
   void setState(int state) { _state = state; }
+  void setBallId(int ballId) { _ballId = ballId; }
 };
 
 #endif 

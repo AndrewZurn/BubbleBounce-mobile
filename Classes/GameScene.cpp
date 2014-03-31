@@ -12,6 +12,7 @@
 USING_NS_CC;
 
 static int STARTING_BALLS = 10;
+std::vector<Ball*> thisBallArray;
 
 CCScene* GameScene::scene()
 {
@@ -30,6 +31,7 @@ bool GameScene::init() {
   
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+  
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
@@ -38,20 +40,20 @@ bool GameScene::init() {
   
   Ball* firstBall = NULL;
   Ball* secondBall = NULL;
-  std::vector<Ball*> ballArray;
+  thisBallArray = *new std::vector<Ball*>();
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
-    firstBall = Ball::createBall(ballArray, "");
+    firstBall = Ball::createBall(thisBallArray, "");
     firstBall->retain();
-    ballArray.push_back(firstBall);
+    thisBallArray.push_back(firstBall);
     this->addChild(firstBall, ZIndexBalls);
     
-    secondBall = Ball::createBall(ballArray, firstBall->getOriginalBallImage());
+    secondBall = Ball::createBall(thisBallArray, firstBall->getOriginalBallImage());
     secondBall->retain();
-    ballArray.push_back(secondBall);
+    thisBallArray.push_back(secondBall);
     this->addChild(secondBall, ZIndexBalls);
   }
   
-  this->setBallArray(ballArray);
+  this->setBallArray(thisBallArray);
   this->addChild(background, ZIndexBackground);
   
   return true;
@@ -74,42 +76,40 @@ void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event
 //TODO: Need to remove the balls from ballArray when they are removed from screen.
 void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
   std::vector<Ball*>::iterator i;
-  std::vector<Ball*> ballArray = this->getBallArray();
   Ball* ball;
   
   //for each ball in game
-  for( i = ballArray.begin(); i != ballArray.end(); i++) {
+  for( i = thisBallArray.begin(); i != thisBallArray.end(); i++) {
     ball = (Ball *) (*i);
     
-    if (ball == this->getSelectedBall()) break;
-    
-    std::cout << "ball->boundingBox() " << ball->boundingBox().getMidX() << ":" << ball->boundingBox().getMidY() << std::endl;
+    //the tapped ball was the already selected ball
+    if (ball->getState() == BallSelected) {
+      continue; //should continue to the end
+    }
+
     if ( ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch)) ) {
 
       //if no ball was previously touched
       if ( this->getSelectedBall() == NULL ) {
-        std::cout << "GetSelectedBall() == NULL -- BALL WAS " << ball->getBallColor() << std::endl;
         ball->changeBallImage();
         this->setSelectedBall(ball);
         break;
       }
       else { //a ball was previously touched
-        Ball* otherBall = this->getSelectedBall();
-        if (!otherBall) {
-          std::cout << "!otherBall" << std::endl;
-          break;
-        }
-        else if ( strcmp(ball->getBallColor(), this->getSelectedBall()->getBallColor()) == 0 ) {
-          std::cout << "strcmp == 0 -- ball1: " << ball->getBallColor() << " -- ball2: " << otherBall->getBallColor() << std::endl;
+        if ( ball->compareColor(this->getSelectedBall()) ) {
           this->removeChild(ball);
-          this->removeChild(otherBall);
+          this->removeChild(this->getSelectedBall());
+          
+          thisBallArray.erase(i);
+          thisBallArray.erase(std::find(thisBallArray.begin(), thisBallArray.end(), _selectedBall));
+          
           ball->release();
-          otherBall->release();
+          this->getSelectedBall()->release();
+          
           this->setSelectedBall(NULL);
           break;
         }
         else{ //the colors don't match
-          std::cout << "they don't match " << ball->getBallColor() << " -- ball2: " << otherBall->getBallColor() << std::endl;
           this->getSelectedBall()->changeBallImage();
           this->setSelectedBall(NULL);
           break;
@@ -117,11 +117,6 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       }
     }
   }
-  ball = NULL;
-  this->setBallArray(ballArray);
-  this->retain();
-  std::cout << "Ball = null, this->setBallArray(ballArray)" << std::endl;
-  std::cout << "----------------------------------------------------------" << std::endl;
 }
 
 ///////////////////////////////
