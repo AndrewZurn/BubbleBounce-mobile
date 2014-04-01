@@ -76,14 +76,16 @@ void Ball::updateBallPositions(std::vector<Ball*> ballList) {
 void Ball::detectCollisions(std::vector<Ball*> ballList) {
   std::vector<Ball*>::iterator iterator;
   for(iterator = ballList.begin(); iterator != ballList.end(); iterator++) {
-    Ball* ball = *iterator;
-    if (this->getX() != ball->getX() && this->getY() != ball->getY()) {
+    Ball* ball = (Ball*) (*iterator);
+    if ( this->getBallId() != ball->getBallId() ) {
       
       // if the bounding rec of ball is over the other bounding rec
       if ( this->getX() + this->getRadius() + ball->getRadius() >= ball->getX()
           && this->getX() <= ball->getX() + this->getRadius() + ball->getRadius()
           && this->getY() + this->getRadius() + ball->getRadius() >= ball->getY()
           && this->getY() <= ball->getY() + this->getRadius() + ball->getRadius() ) {
+          
+// if ( this->boundingBox().intersectsRect(ball->boundingBox()) ) {          
         
         std::vector<Ball*> collisionArray = ball->getCollisionArray();
         
