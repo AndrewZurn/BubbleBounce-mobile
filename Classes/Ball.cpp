@@ -45,7 +45,7 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color
 }
 
 void Ball::updateBallPositions(std::vector<Ball*> ballList) {
-  detectCollisions(ballList);
+//  detectCollisions(ballList);
   
   this->setX(this->getX() + this->getXVelocity());
   this->setY(this->getY() + this->getYVelocity());
@@ -70,6 +70,7 @@ void Ball::updateBallPositions(std::vector<Ball*> ballList) {
     this->setY(this->getY() + 10);
   }
   
+  this->setPosition(ccp(this->getX(), this->getY()));
 }
 
 void Ball::detectCollisions(std::vector<Ball*> ballList) {

@@ -19,7 +19,7 @@ CCScene* GameScene::scene()
   
   CCScene *scene = CCScene::create();
   scene->addChild(backgroundLayer);
-
+  
   return scene;
 }
 
@@ -49,17 +49,25 @@ bool GameScene::init() {
   this->addChild(background, ZIndexBackground);
   
   this->setTouchEnabled(true);
-//  this->schedule(schedule_selector(GameScene::GameUpdate));
+  this->schedule(schedule_selector(GameScene::GameUpdate));
   
   return true;
 }
 
 void GameScene::GameUpdate() {
   if (!_gameOver) {
-    _ballArray.front()->updateBallPositions(_ballArray);
+    
     if (_ballArray.size() > 36 ) {
       _gameOver = true;
     }
+    else {
+      std::vector<Ball*>::iterator iterator;
+      for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
+        Ball* ball = *iterator;
+        ball->updateBallPositions(_ballArray);
+      }
+    }
+    
   }
   else {
     //go into the game over thing...
@@ -92,9 +100,9 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
     if (ball->getState() == BallSelected) {
       continue; //should continue to the end
     }
-
+    
     if ( ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch)) ) {
-
+      
       //if no ball was previously touched
       if ( this->getSelectedBall() == NULL ) {
         ball->changeBallImage();
@@ -105,10 +113,10 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
         if ( ball->compareColor(this->getSelectedBall()) ) {
           this->removeChild(ball);
           this->removeChild(this->getSelectedBall());
-          this->setSelectedBall(NULL);
           
           _ballArray.erase(i);
           _ballArray.erase(std::find(_ballArray.begin(), _ballArray.end(), _selectedBall));
+          this->setSelectedBall(NULL);
           
           _score++;
           break;
