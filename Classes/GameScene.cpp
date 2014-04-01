@@ -12,7 +12,6 @@
 USING_NS_CC;
 
 static int STARTING_BALLS = 10;
-std::vector<Ball*> thisBallArray;
 
 CCScene* GameScene::scene()
 {
@@ -35,28 +34,36 @@ bool GameScene::init() {
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   
-  this->setTouchEnabled(true);
-  this->retain();
-  
-  Ball* firstBall = NULL;
-  Ball* secondBall = NULL;
-  thisBallArray = *new std::vector<Ball*>();
+  _ballArray = *new std::vector<Ball*>();
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
-    firstBall = Ball::createBall(thisBallArray, "");
-    firstBall->retain();
-    thisBallArray.push_back(firstBall);
+    Ball* firstBall = Ball::createBall(_ballArray, "");
+    _ballArray.push_back(firstBall);
     this->addChild(firstBall, ZIndexBalls);
     
-    secondBall = Ball::createBall(thisBallArray, firstBall->getOriginalBallImage());
-    secondBall->retain();
-    thisBallArray.push_back(secondBall);
+    Ball* secondBall = Ball::createBall(_ballArray, firstBall->getOriginalBallImage());
+    _ballArray.push_back(secondBall);
     this->addChild(secondBall, ZIndexBalls);
   }
   
-  this->setBallArray(thisBallArray);
+  this->setBallArray(_ballArray);
   this->addChild(background, ZIndexBackground);
   
+  this->setTouchEnabled(true);
+//  this->schedule(schedule_selector(GameScene::GameUpdate));
+  
   return true;
+}
+
+void GameScene::GameUpdate() {
+  if (!_gameOver) {
+    _ballArray.front()->updateBallPositions(_ballArray);
+    if (_ballArray.size() > 36 ) {
+      _gameOver = true;
+    }
+  }
+  else {
+    //go into the game over thing...
+  }
 }
 
 void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
@@ -73,13 +80,12 @@ void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event
   }
 }
 
-//TODO: Need to remove the balls from ballArray when they are removed from screen.
 void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
   std::vector<Ball*>::iterator i;
   Ball* ball;
   
   //for each ball in game
-  for( i = thisBallArray.begin(); i != thisBallArray.end(); i++) {
+  for( i = _ballArray.begin(); i != _ballArray.end(); i++) {
     ball = (Ball *) (*i);
     
     //the tapped ball was the already selected ball
@@ -99,13 +105,10 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
         if ( ball->compareColor(this->getSelectedBall()) ) {
           this->removeChild(ball);
           this->removeChild(this->getSelectedBall());
-          
-          thisBallArray.erase(i);
-          thisBallArray.erase(std::find(thisBallArray.begin(), thisBallArray.end(), _selectedBall));
-          
-          ball->release();
-          this->getSelectedBall()->release();
           this->setSelectedBall(NULL);
+          
+          _ballArray.erase(i);
+          _ballArray.erase(std::find(_ballArray.begin(), _ballArray.end(), _selectedBall));
           
           _score++;
           break;

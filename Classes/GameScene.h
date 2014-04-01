@@ -16,12 +16,13 @@ class GameScene : public cocos2d::CCLayer
 {
 private:
   Ball* _selectedBall;
-  
   std::vector<Ball*> _ballArray;
-  //methods needed for game functionality
   
-public:
   int _score;
+  bool _gameOver = false;
+  
+  void GameUpdate();
+public:
   
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
@@ -39,8 +40,8 @@ public:
   void handleBallTouch(cocos2d::CCTouch* touch);
   
   Ball* getSelectedBall() { return _selectedBall; }
-  
   std::vector<Ball*> getBallArray() { return _ballArray; }
+  
   void setBallArray(std::vector<Ball*> ballArray) { _ballArray = ballArray; }
   void setSelectedBall(Ball* ball) { _selectedBall = ball; }
 };

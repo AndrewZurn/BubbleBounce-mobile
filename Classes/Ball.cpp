@@ -14,14 +14,15 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color
   else {
     ballColor = original_color;
   }
-
+  
   const char* ballSelectedColor = getSelectedBallColor(ballColor);
   const char* color = getBallColorFromFileName(ballColor);
   
-  if ( ballSprite && ballSprite->initWithFile(ballColor)) {
+  if ( ballSprite && ballSprite->initWithFile(ballColor) ) {
     ballSprite->setBall(ballColor);
     ballSprite->setBallSelected(ballSelectedColor);
     ballSprite->setBallColor(color);
+    ballSprite->setBallId(otherBalls.size());
     
     ballSprite->setDisplayWidth(windowSize.width);
     ballSprite->setDisplayHeight(windowSize.height);
@@ -34,7 +35,7 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color
     ballSprite->setYVelocity(getRandomVelocity());
     ballSprite->setState(BallNotSelected);
     
-    ballSprite->setBallId(otherBalls.size());
+    ballSprite->autorelease();
     
     return ballSprite;
   }
@@ -259,13 +260,13 @@ int Ball::getRandomVelocity() {
 int Ball::changeBallImage() {
   if (getState() == BallNotSelected) {
     this->setTexture(CCTextureCache::sharedTextureCache()
-                           ->addImage(this->getSelectedBallImage()));
+                     ->addImage(this->getSelectedBallImage()));
     setState(BallSelected);
     return BallSelected;
   }
   else {
     this->setTexture(CCTextureCache::sharedTextureCache()
-                           ->addImage(this->getOriginalBallImage()));
+                     ->addImage(this->getOriginalBallImage()));
     setState(BallNotSelected);
     return BallNotSelected;
   }
