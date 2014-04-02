@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "Ball::distanceTo(Ball *thisBall, Ball *otherBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.h"
-            timestampString = "417917268.037875"
+            timestampString = "418160312.125137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "operator==(const Ball &amp;ball)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "Ball::calculateNewVelocities(Ball* thisBall, Ball* otherBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "Ball::setNonOverlapRandomPoint(Ball* thisBall, std::vector&lt;Ball*&gt; otherBalls)"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "Ball::setNonOverlapRandomPoint(Ball* thisBall, std::vector&lt;Ball*&gt; otherBalls)"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,43 +170,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "Ball::setNonOverlapRandomPoint(Ball* thisBall, std::vector&lt;Ball*&gt; otherBalls)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Ball.cpp"
+            timestampString = "418163852.849206"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "Ball::setNonOverlapRandomPoint(Ball* thisBall, std::vector&lt;Ball*&gt; otherBalls)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Ball.cpp"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
             endingLineNumber = "230"
-            landmarkName = "Ball::setNonOverlapRandomPoint(Ball* thisBall, std::vector&lt;Ball*&gt; otherBalls)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "Ball::setNonOverlapRandomPoint(Ball* thisBall, std::vector&lt;Ball*&gt; otherBalls)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
             landmarkName = "Ball::setBallPositionToOnScreen(Ball* thisBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "Ball::setBallPositionToOnScreen(Ball* thisBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "Ball::setBallPositionToOnScreen(Ball* thisBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "Ball::setBallPositionToOnScreen(Ball* thisBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "Ball::setBallPositionToOnScreen(Ball* thisBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "Ball::setBallPositionToOnScreen(Ball* thisBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145911.898969"
+            timestampString = "418163852.849206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "Ball::setBallPositionToOnScreen(Ball* thisBall)"
             landmarkType = "5">
          </BreakpointContent>
@@ -766,11 +766,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418144361.356064"
+            timestampString = "418162873.609554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "Ball::detectCollisions(std::vector&lt;Ball*&gt; ballList)"
             landmarkType = "5">
          </BreakpointContent>
@@ -782,11 +782,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418144679.229919"
+            timestampString = "418162873.609554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "Ball::detectCollisions(std::vector&lt;Ball*&gt; ballList)"
             landmarkType = "5">
          </BreakpointContent>
@@ -798,11 +798,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418144872.763051"
+            timestampString = "418163698.75773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "Ball::detectCollisions(std::vector&lt;Ball*&gt; ballList)"
             landmarkType = "5">
          </BreakpointContent>
@@ -814,11 +814,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418144907.338855"
+            timestampString = "418163698.75773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "Ball::detectCollisions(std::vector&lt;Ball*&gt; ballList)"
             landmarkType = "5">
          </BreakpointContent>
@@ -830,11 +830,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145006.483616"
+            timestampString = "418162873.609554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "Ball::detectCollisions(std::vector&lt;Ball*&gt; ballList)"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,31 +842,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Ball.cpp"
-            timestampString = "418145068.404188"
+            timestampString = "418162803.278495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "Ball::detectCollisions(std::vector&lt;Ball*&gt; ballList)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Ball.cpp"
-            timestampString = "418145074.564074"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "Ball::detectCollisions(std::vector&lt;Ball*&gt; ballList)"
             landmarkType = "5">
          </BreakpointContent>

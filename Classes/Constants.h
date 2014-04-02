@@ -6,7 +6,7 @@
 #define ZIndexBalls 1
 
 //ball constants
-#define BallSpeed 4
+#define BallSpeed 2
 #define BallSelected 3
 #define BallNotSelected 4
 

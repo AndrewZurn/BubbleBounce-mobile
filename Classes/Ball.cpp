@@ -78,27 +78,21 @@ void Ball::detectCollisions(std::vector<Ball*> ballList) {
   for(iterator = ballList.begin(); iterator != ballList.end(); iterator++) {
     Ball* ball = (Ball*) (*iterator);
     
-    if ( this->getBallId() != ball->getBallId() ) {
-      if ( this->boundingBox().intersectsRect(ball->boundingBox()) ) {
-        std::vector<Ball*> collisionArray = ball->getCollisionArray();
-        
-        //they collided
-        if ( distanceTo(this, ball) <= this->getRadius() + ball->getRadius() - 2) {
+    if ( this->getBallId() == ball->getBallId() ) { continue; }
+    
+    if ( this->boundingBox().intersectsRect(ball->boundingBox()) ) {
+      
+      std::vector<Ball*> collisionArray = this->getCollisionArray();
+      if ( distanceTo(this, ball) <= this->getRadius() + ball->getRadius() ) {
+        if ( collisionArray.empty() ) {
           calculateNewVelocities(this, ball);
-          
-          //if colliding ball is not in the collision array
-          /*          if ( collisionArray.empty() ) {
-           calculateNewVelocities(this, ball);
-           this->getCollisionArray().push_back(ball);
-           }
-           }
-           else { //once the balls are not colliding, clear the collision array
-           if ( !collisionArray.empty() ) {
-           this->getCollisionArray().clear();
-           }
-           } */
-          
+          collisionArray.push_back(ball);
+          this->setCollisionArray(collisionArray);
         }
+      }
+      else { //once the balls are not colliding, clear the collision array
+        collisionArray.clear();
+        this->setCollisionArray(collisionArray);
       }
     }
   }
@@ -217,11 +211,12 @@ void Ball::setNonOverlapRandomPoint(Ball* thisBall, std::vector<Ball*> otherBall
   for(iterator = otherBalls.begin(); iterator != otherBalls.end(); iterator++) {
     otherBall = *iterator;
     while ( thisBall->distanceTo(thisBall, otherBall) < thisBall->getRadius()
-           + otherBall->getRadius()) {
+           + otherBall->getRadius() ) {
       randomX = rand() % (int)(windowSize.width + 1);
       randomY = rand() % (int)(windowSize.height + 1);
       thisBall->setX(randomX);
       thisBall->setY(randomY);
+      std::cout << "overlapped moved to: " << randomX << ":" << randomY << std::endl;
     }
   }
 }

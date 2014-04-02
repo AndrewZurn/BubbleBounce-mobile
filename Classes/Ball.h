@@ -34,8 +34,10 @@ private:
   void detectCollisions(std::vector<Ball*> ballList);
   float distanceTo(Ball *thisBall, Ball *otherBall);
   void calculateNewVelocities(Ball* thisBall, Ball* otherBall);
+  
   static void setNonOverlapRandomPoint(Ball* thisBall, std::vector<Ball*> otherBalls);
   static void setBallPositionToOnScreen(Ball* thisBall);
+  
   static int getRandomVelocity();
   static const char* getRandomBallImage();
   static const char* getSelectedBallColor(const char* ball);
@@ -82,6 +84,7 @@ public:
   void setBallSelected(const char* ballSelected) { _ballSelected = ballSelected; }
   void setRadius(int radius) { _radius = radius; }
   void setState(int state) { _state = state; }
+  void setCollisionArray(std::vector<Ball*> collisionArray) { _collisionArray = collisionArray; }
   void setBallId(int ballId) { _ballId = ballId; }
 };
 
