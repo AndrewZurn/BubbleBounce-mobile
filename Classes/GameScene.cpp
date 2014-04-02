@@ -33,20 +33,13 @@ bool GameScene::init() {
   
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
+  this->addChild(background, ZIndexBackground);
   
   _ballArray = *new std::vector<Ball*>();
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
-    Ball* firstBall = Ball::createBall(_ballArray, "");
-    _ballArray.push_back(firstBall);
-    this->addChild(firstBall, ZIndexBalls);
-    
-    Ball* secondBall = Ball::createBall(_ballArray, firstBall->getOriginalBallImage());
-    _ballArray.push_back(secondBall);
-    this->addChild(secondBall, ZIndexBalls);
+    createNewBalls();
   }
-  
   this->setBallArray(_ballArray);
-  this->addChild(background, ZIndexBackground);
   
   this->setTouchEnabled(true);
   this->schedule(schedule_selector(GameScene::GameUpdate));
@@ -56,16 +49,18 @@ bool GameScene::init() {
 
 void GameScene::GameUpdate() {
   if (!_gameOver) {
-    
     if (_ballArray.size() > 36 ) {
       _gameOver = true;
     }
-    else {
-      std::vector<Ball*>::iterator iterator;
-      for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
-        Ball* ball = *iterator;
-        ball->updateBallPositions(_ballArray);
-      }
+    else if ( didTimeElapse() ) {
+      
+    }
+    
+    //update all the balls positions (animate the balls)
+    std::vector<Ball*>::iterator iterator;
+    for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
+      Ball* ball = *iterator;
+      ball->updateBallPositions(_ballArray);
     }
     
   }
@@ -130,4 +125,19 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
     }
   }
   std::cout << "Score: " << _score << std::endl;
+}
+
+void GameScene::createNewBalls() {
+  Ball* firstBall = Ball::createBall(_ballArray, "");
+  _ballArray.push_back(firstBall);
+  this->addChild(firstBall, ZIndexBalls);
+  
+  Ball* secondBall = Ball::createBall(_ballArray, firstBall->getOriginalBallImage());
+  _ballArray.push_back(secondBall);
+  this->addChild(secondBall, ZIndexBalls);
+}
+
+bool GameScene::didTimeElapse() {
+  
+  return false;
 }
