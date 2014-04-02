@@ -45,7 +45,7 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color
 }
 
 void Ball::updateBallPositions(std::vector<Ball*> ballList) {
-//  detectCollisions(ballList);
+  detectCollisions(ballList);
   
   this->setX(this->getX() + this->getXVelocity());
   this->setY(this->getY() + this->getYVelocity());
@@ -77,31 +77,27 @@ void Ball::detectCollisions(std::vector<Ball*> ballList) {
   std::vector<Ball*>::iterator iterator;
   for(iterator = ballList.begin(); iterator != ballList.end(); iterator++) {
     Ball* ball = (Ball*) (*iterator);
+    
     if ( this->getBallId() != ball->getBallId() ) {
-      
-      // if the bounding rec of ball is over the other bounding rec
-      if ( this->getX() + this->getRadius() + ball->getRadius() >= ball->getX()
-          && this->getX() <= ball->getX() + this->getRadius() + ball->getRadius()
-          && this->getY() + this->getRadius() + ball->getRadius() >= ball->getY()
-          && this->getY() <= ball->getY() + this->getRadius() + ball->getRadius() ) {
-          
-// if ( this->boundingBox().intersectsRect(ball->boundingBox()) ) {          
-        
+      if ( this->boundingBox().intersectsRect(ball->boundingBox()) ) {
         std::vector<Ball*> collisionArray = ball->getCollisionArray();
         
         //they collided
-        if ( distanceTo(this, ball) <= this->getRadius() + ball->getRadius() ) {
+        if ( distanceTo(this, ball) <= this->getRadius() + ball->getRadius() - 2) {
+          calculateNewVelocities(this, ball);
           
           //if colliding ball is not in the collision array
-          if ( collisionArray.empty() ) {
-            calculateNewVelocities(this, ball);
-            this->getCollisionArray().push_back(ball);
-          }
-        }
-        else { //once the balls are not colliding, clear the collision array
-          if ( !collisionArray.empty() ) {
-            this->getCollisionArray().clear();
-          }
+          /*          if ( collisionArray.empty() ) {
+           calculateNewVelocities(this, ball);
+           this->getCollisionArray().push_back(ball);
+           }
+           }
+           else { //once the balls are not colliding, clear the collision array
+           if ( !collisionArray.empty() ) {
+           this->getCollisionArray().clear();
+           }
+           } */
+          
         }
       }
     }
@@ -114,13 +110,16 @@ void Ball::calculateNewVelocities(Ball* thisBall, Ball* otherBall) {
   otherBall->setXVelocity(tempVelHolder);
   
   tempVelHolder = thisBall->getYVelocity();
-  thisBall->setXVelocity(otherBall->getYVelocity());
-  thisBall->setYVelocity(tempVelHolder);
+  thisBall->setYVelocity(otherBall->getYVelocity());
+  otherBall->setYVelocity(tempVelHolder);
   
-  thisBall->setX(thisBall->getX() + (thisBall->getXVelocity()));
-  thisBall->setY(thisBall->getY() + (thisBall->getYVelocity()));
-  otherBall->setX(otherBall->getX() + (otherBall->getXVelocity()));
-  otherBall->setX(otherBall->getY() + (otherBall->getYVelocity()));
+  thisBall->setX(thisBall->getX() + (thisBall->getXVelocity()*2));
+  thisBall->setY(thisBall->getY() + (thisBall->getYVelocity()*2));
+  thisBall->setPosition(ccp(thisBall->getX(), thisBall->getY()));
+  
+  otherBall->setX(otherBall->getX() + (otherBall->getXVelocity()*2));
+  otherBall->setY(otherBall->getY() + (otherBall->getYVelocity()*2));
+  otherBall->setPosition(ccp(otherBall->getX(), otherBall->getY()));
 }
 
 float Ball::distanceTo(Ball *thisBall, Ball *otherBall) {

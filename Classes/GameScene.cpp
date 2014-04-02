@@ -11,7 +11,7 @@
 
 USING_NS_CC;
 
-static int STARTING_BALLS = 10;
+static int STARTING_BALLS = 2;
 
 CCScene* GameScene::scene()
 {
