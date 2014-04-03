@@ -3,6 +3,8 @@
 
 USING_NS_CC;
 
+int progess_bar_height = 78;
+
 Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color) {
   Ball* ballSprite = new Ball();
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -65,7 +67,7 @@ void Ball::updateBallPositions(std::vector<Ball*> ballList) {
     this->setY(this->getY() - 10); //10 is used to give a good pad if the ball were to get stuck
   }
   
-  if(this->getY() - this->getRadius() < 0){
+  if(this->getY() - this->getRadius() < progess_bar_height ){ //TODO: Find HEIGHT of ProgressTimer here.
     this->setYVelocity(-(this->getYVelocity()));
     this->setY(this->getY() + 10);
   }
@@ -238,8 +240,8 @@ void Ball::setBallPositionToOnScreen(Ball* thisBall) {
   if (y + radius > windowSize.height) {
     thisBall->setY(windowSize.height - (radius * 2));
   }
-  else if (y - radius < 0) {
-    thisBall->setY(radius * 2);
+  else if (y - radius < progess_bar_height) {
+    thisBall->setY(radius * 4);
   }
 }
 

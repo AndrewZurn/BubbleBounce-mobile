@@ -20,7 +20,8 @@ private:
   
   int _score;
   bool _gameOver = false;
-  
+  cocos2d::CCLabelTTF* _scoreLabel;
+  cocos2d::CCProgressTimer* _progressBar;
   
   void GameUpdate();
   void createNewBalls();

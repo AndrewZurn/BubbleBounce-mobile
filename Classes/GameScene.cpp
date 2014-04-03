@@ -13,6 +13,7 @@
 USING_NS_CC;
 
 static int STARTING_BALLS = 12;
+static int LABEL_FONT_SIZE = 65;
 
 CCScene* GameScene::scene()
 {
@@ -32,16 +33,38 @@ bool GameScene::init() {
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
   
+  //add background
   CCSprite* background = CCSprite::create("background.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   this->addChild(background, ZIndexBackground);
   
+  //add initial balls
   _ballArray = *new std::vector<Ball*>();
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
     createNewBalls();
   }
   this->setBallArray(_ballArray);
   
+  //add score label
+  char scoreText[10];
+  sprintf(scoreText, "Score: %d", _score);
+  _scoreLabel = CCLabelTTF::create(scoreText, "Action Man", LABEL_FONT_SIZE);
+  _scoreLabel->setAnchorPoint(ccp(0,0));
+  _scoreLabel->cocos2d::CCNode::setPosition(ccp(15, windowSize.height - LABEL_FONT_SIZE));
+  this->addChild(_scoreLabel, ZIndexScoreLabel);
+  
+  //add progress bar
+  _progressBar = CCProgressTimer::create( CCSprite::create("progress_bar.png"));
+  if ( _progressBar != NULL ) {
+    _progressBar->setType(kCCProgressTimerTypeBar);
+    _progressBar->setMidpoint(ccp(0,0));
+    _progressBar->setBarChangeRate(ccp(1, 0));
+    _progressBar->setPercentage( ((float) _ballArray.size()/36.0) * 100);
+    _progressBar->setPosition(ccp(325, 50));
+    this->addChild(_progressBar, ZIndexProgressBar);
+  }
+
+  //setup game scheduling/handling
   this->_lastElapsedTime = getCurrentTime();
   this->setTouchEnabled(true);
   this->schedule(schedule_selector(GameScene::GameUpdate));
@@ -51,12 +74,13 @@ bool GameScene::init() {
 
 void GameScene::GameUpdate() {
   if (!_gameOver) {
-    if (_ballArray.size() > 36 ) {
+    if (_ballArray.size() >= 36 ) {
       _gameOver = true;
     }
     else if ( didTimeElapse() ) {
       for (int i = 0; i < 5; i++) {
         createNewBalls();
+        _progressBar->setPercentage( ((float) _ballArray.size()/36.0) * 100);
       }
     }
     //update all the balls positions (animate the balls)
@@ -64,6 +88,7 @@ void GameScene::GameUpdate() {
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
       Ball* ball = *iterator;
       ball->updateBallPositions(_ballArray);
+      _progressBar->setPercentage( ((float) _ballArray.size()/36.0) * 100);
     }
   }
   else { //game over
@@ -132,7 +157,9 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       }
     }
   }
-  std::cout << "Score: " << _score << std::endl;
+  char scoreText[10];
+  sprintf(scoreText, "Score: %d", _score);
+  _scoreLabel->setString(scoreText);
 }
 
 void GameScene::createNewBalls() {
@@ -149,7 +176,7 @@ bool GameScene::didTimeElapse() {
   long currentTime = getCurrentTime();
   long lastElapsedTime = _lastElapsedTime;
   
-  if ( currentTime - lastElapsedTime > 5000 ) {
+  if ( currentTime - lastElapsedTime > 10000 ) {
     _lastElapsedTime = getCurrentTime();
     return true;
   }

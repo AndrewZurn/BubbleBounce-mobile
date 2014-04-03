@@ -4,6 +4,9 @@
 //background values
 #define ZIndexBackground 0
 #define ZIndexBalls 1
+#define ZIndexProgressBar 2
+#define ZIndexScoreLabel 2
+
 
 //ball constants
 #define BallSpeed 2
