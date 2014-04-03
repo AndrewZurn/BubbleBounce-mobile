@@ -13,6 +13,7 @@
 USING_NS_CC;
 
 static int STARTING_BALLS = 12;
+static int TIME_INTERVAL = 5000;
 static int LABEL_FONT_SIZE = 65;
 
 CCScene* GameScene::scene()
@@ -176,7 +177,7 @@ bool GameScene::didTimeElapse() {
   long currentTime = getCurrentTime();
   long lastElapsedTime = _lastElapsedTime;
   
-  if ( currentTime - lastElapsedTime > 10000 ) {
+  if ( currentTime - lastElapsedTime > TIME_INTERVAL ) {
     _lastElapsedTime = getCurrentTime();
     return true;
   }
