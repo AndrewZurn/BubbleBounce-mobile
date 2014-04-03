@@ -8,6 +8,7 @@
 #include "GameScene.h"
 #include "Constants.h"
 #include "Ball.h"
+#include <sys/time.h>
 
 USING_NS_CC;
 
@@ -41,6 +42,7 @@ bool GameScene::init() {
   }
   this->setBallArray(_ballArray);
   
+  this->_lastElapsedTime = getCurrentTime();
   this->setTouchEnabled(true);
   this->schedule(schedule_selector(GameScene::GameUpdate));
   
@@ -53,19 +55,25 @@ void GameScene::GameUpdate() {
       _gameOver = true;
     }
     else if ( didTimeElapse() ) {
-      
+      for (int i = 0; i < 5; i++) {
+        createNewBalls();
+      }
     }
-    
     //update all the balls positions (animate the balls)
     std::vector<Ball*>::iterator iterator;
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
       Ball* ball = *iterator;
       ball->updateBallPositions(_ballArray);
     }
-    
   }
-  else {
-    //go into the game over thing...
+  else { //game over
+    std::vector<Ball*>::iterator iterator;
+    for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
+      Ball* ball = *iterator;
+      this->removeChild(ball);
+    }
+    _ballArray.clear();
+    //go to you lose screen
   }
 }
 
@@ -138,6 +146,18 @@ void GameScene::createNewBalls() {
 }
 
 bool GameScene::didTimeElapse() {
+  long currentTime = getCurrentTime();
+  long lastElapsedTime = _lastElapsedTime;
   
+  if ( currentTime - lastElapsedTime > 5000 ) {
+    _lastElapsedTime = getCurrentTime();
+    return true;
+  }
   return false;
+}
+
+long GameScene::getCurrentTime() {
+  timeval time;
+  gettimeofday(&time, NULL);
+  return (time.tv_sec * 1000) + (time.tv_usec / 1000);
 }
