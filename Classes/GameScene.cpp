@@ -15,6 +15,8 @@ USING_NS_CC;
 static int STARTING_BALLS = 12;
 static int TIME_INTERVAL = 5000;
 static int LABEL_FONT_SIZE = 65;
+static int BALL_COUNT_CEILING = 30;
+static int ADD_MORE_BALLS_COUNT = 3;
 
 CCScene* GameScene::scene()
 {
@@ -60,7 +62,7 @@ bool GameScene::init() {
     _progressBar->setType(kCCProgressTimerTypeBar);
     _progressBar->setMidpoint(ccp(0,0));
     _progressBar->setBarChangeRate(ccp(1, 0));
-    _progressBar->setPercentage( ((float) _ballArray.size()/36.0) * 100);
+    _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
     _progressBar->setPosition(ccp(325, 50));
     this->addChild(_progressBar, ZIndexProgressBar);
   }
@@ -75,13 +77,13 @@ bool GameScene::init() {
 
 void GameScene::GameUpdate() {
   if (!_gameOver) {
-    if (_ballArray.size() >= 36 ) {
+    if (_ballArray.size() >= BALL_COUNT_CEILING ) {
       _gameOver = true;
     }
     else if ( didTimeElapse() ) {
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < ADD_MORE_BALLS_COUNT; i++) {
         createNewBalls();
-        _progressBar->setPercentage( ((float) _ballArray.size()/36.0) * 100);
+        _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
       }
     }
     //update all the balls positions (animate the balls)
@@ -89,7 +91,7 @@ void GameScene::GameUpdate() {
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
       Ball* ball = *iterator;
       ball->updateBallPositions(_ballArray);
-      _progressBar->setPercentage( ((float) _ballArray.size()/36.0) * 100);
+      _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
     }
   }
   else { //game over
