@@ -41,19 +41,25 @@ bool FirstScene::init() {
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
     createNewBalls();
   }
-
+  
+  //add start game button
+  CCMenuItemImage* playButton = CCMenuItemImage::create("play_button.png", "play_button_selected.png",
+                                                        this, menu_selector(FirstScene::startGame));
+  CCMenu* playMenu = CCMenu::create(playButton, NULL);
+  playMenu->setPosition( ccp(windowSize.width/2, windowSize.height/2));
+  
   this->schedule(schedule_selector(FirstScene::GameUpdate));
   
   return true;
 }
 
 void FirstScene::GameUpdate() {
-    //update all the balls positions (animate the balls)
-    std::vector<Ball*>::iterator iterator;
-    for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
-      Ball* ball = *iterator;
-      ball->updateBallPositions(_ballArray);
-    }
+  //update all the balls positions (animate the balls)
+  std::vector<Ball*>::iterator iterator;
+  for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
+    Ball* ball = *iterator;
+    ball->updateBallPositions(_ballArray);
+  }
 }
 
 void FirstScene::createNewBalls() {
@@ -64,4 +70,9 @@ void FirstScene::createNewBalls() {
   Ball* secondBall = Ball::createBall(_ballArray, firstBall->getOriginalBallImage());
   _ballArray.push_back(secondBall);
   this->addChild(secondBall, ZIndexBalls);
+}
+
+void FirstScene::startGame(CCObject* pSender) {
+  this->cleanup();
+  //start the game scene
 }

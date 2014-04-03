@@ -238,6 +238,8 @@
 		46513EB1187BFBA200B5ABE1 /* UITouchGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */; };
 		497B659618EDDABF004168B0 /* progress_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 497B659518EDDABF004168B0 /* progress_bar.png */; };
 		497B659D18EDEE65004168B0 /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 497B659A18EDEE65004168B0 /* Action Man.ttf */; };
+		497B65A118EDFC31004168B0 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 497B65A018EDFC31004168B0 /* play_button.png */; };
+		497B65A318EDFE26004168B0 /* play_button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 497B65A218EDFE26004168B0 /* play_button_selected.png */; };
 		499B8C8018D9371C000F55E5 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7018D9371C000F55E5 /* background.png */; };
 		499B8C8B18D9371C000F55E5 /* bouncinballslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */; };
 		499B8C8C18D9371C000F55E5 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7E18D9371C000F55E5 /* arial.ttf */; };
@@ -772,6 +774,8 @@
 		46513EB0187BFBA200B5ABE1 /* UITouchGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchGroup.h; sourceTree = "<group>"; };
 		497B659518EDDABF004168B0 /* progress_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bar.png; sourceTree = "<group>"; };
 		497B659A18EDEE65004168B0 /* Action Man.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man.ttf"; sourceTree = "<group>"; };
+		497B65A018EDFC31004168B0 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
+		497B65A218EDFE26004168B0 /* play_button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button_selected.png; sourceTree = "<group>"; };
 		499B8C7018D9371C000F55E5 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouncinballslogo.png; sourceTree = "<group>"; };
 		499B8C7E18D9371C000F55E5 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
@@ -1950,6 +1954,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				497B65A218EDFE26004168B0 /* play_button_selected.png */,
+				497B65A018EDFC31004168B0 /* play_button.png */,
 				497B659518EDDABF004168B0 /* progress_bar.png */,
 				49A4BE6A18DB253A007CE796 /* blueball.png */,
 				49A4BE6B18DB253A007CE796 /* blueballselected.png */,
@@ -2047,6 +2053,7 @@
 			files = (
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				49A4BE7D18DB253A007CE796 /* yellowballselected.png in Resources */,
+				497B65A118EDFC31004168B0 /* play_button.png in Resources */,
 				49A4BE7718DB253A007CE796 /* orangeballselected.png in Resources */,
 				499B8C8018D9371C000F55E5 /* background.png in Resources */,
 				49A4BE7518DB253A007CE796 /* blueballselected.png in Resources */,
@@ -2064,6 +2071,7 @@
 				497B659618EDDABF004168B0 /* progress_bar.png in Resources */,
 				49A4BE7818DB253A007CE796 /* pinkball.png in Resources */,
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
+				497B65A318EDFE26004168B0 /* play_button_selected.png in Resources */,
 				49A4BE7618DB253A007CE796 /* orangeball.png in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
 				49A4BE7B18DB253A007CE796 /* redballselected.png in Resources */,
