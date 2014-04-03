@@ -40,9 +40,7 @@ public:
   // implement the "static node()" method manually
   CREATE_FUNC(GameScene);
   
-  //touch handles
-//  virtual void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
-//  virtual void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
+  //touch handlers
   virtual void ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
   void handleBallTouch(cocos2d::CCTouch* touch);
   
