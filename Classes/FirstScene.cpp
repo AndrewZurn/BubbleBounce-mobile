@@ -7,6 +7,8 @@
 //
 
 #include "FirstScene.h"
+#include "GameScene.h"
+#include "AppDelegate.h"
 #include "Constants.h"
 
 USING_NS_CC;
@@ -50,10 +52,14 @@ bool FirstScene::init() {
   }
   
   //add start game button
-  CCMenuItemImage* playButton = CCMenuItemImage::create("play_button.png", "play_button_selected.png",
-                                                        this, menu_selector(FirstScene::startGame));
-  CCMenu* playMenu = CCMenu::create(playButton, NULL);
-  playMenu->setPosition( ccp(windowSize.width/2, windowSize.height/2));
+  CCMenuItemImage* playButton = CCMenuItemImage::create("play_button.png", "play_button_pressed.png",
+                                                        this, menu_selector(FirstScene::playButtonCallback));
+  CCMenuItemImage* statsButton = CCMenuItemImage::create("stats_button.png", "stats_button_pressed.png",
+                                                         this, menu_selector(FirstScene::statsButtonCallback));
+  CCMenu* buttonMenu = CCMenu::create(playButton, statsButton, NULL);
+  buttonMenu->alignItemsVerticallyWithPadding(15);
+  buttonMenu->setPosition(ccp(windowSize.width/2, windowSize.height/2));
+  this->addChild(buttonMenu, ZIndexButtonMenu);
   
   this->schedule(schedule_selector(FirstScene::GameUpdate));
   
@@ -88,10 +94,21 @@ void FirstScene::createNewBalls() {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// Called when the 'PLAY' button is pressed, cleans up this scene,
+// Called when the 'PLAY!' button is pressed, cleans up this scene,
 // and then starts GameScene to start the actual game.
 //////////////////////////////////////////////////////////////////////////////////////////
-void FirstScene::startGame(CCObject* pSender) {
+void FirstScene::playButtonCallback(CCObject* pSender) {
   this->cleanup();
-  //start the game scene
+  
+  CCScene* gameScene = GameScene::scene();
+  CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.75, gameScene));
+  CCDirector::sharedDirector()->retain();
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Called when the 'STATS!' button is pressed, cleans up this scene,
+// and then starts RankingsScene to to view the stats.
+//////////////////////////////////////////////////////////////////////////////////////////
+void FirstScene::statsButtonCallback(CCObject* pSender) {
+  std::cout << "STATS STATS AND MORE STATS!" << std::endl;
 }

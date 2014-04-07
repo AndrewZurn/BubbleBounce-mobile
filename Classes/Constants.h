@@ -6,6 +6,7 @@
 #define ZIndexBalls 1
 #define ZIndexProgressBar 2
 #define ZIndexScoreLabel 2
+#define ZIndexButtonMenu 2
 
 
 //ball constants

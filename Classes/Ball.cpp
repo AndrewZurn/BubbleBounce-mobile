@@ -221,7 +221,6 @@ void Ball::setNonOverlapRandomPoint(Ball* thisBall, std::vector<Ball*> otherBall
       randomY = rand() % (int)(windowSize.height + 1);
       thisBall->setX(randomX);
       thisBall->setY(randomY);
-      std::cout << "overlapped moved to: " << randomX << ":" << randomY << std::endl;
     }
   }
 }
