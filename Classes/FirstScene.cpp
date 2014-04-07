@@ -11,7 +11,6 @@
 
 USING_NS_CC;
 
-int nextBallId = 0;
 static int STARTING_BALLS = 10;
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -78,8 +77,8 @@ void FirstScene::GameUpdate() {
 // create the second ball, and add both of them to the ball array.
 //////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::createNewBalls() {
-  Ball* firstBall = Ball::createBall(_ballArray, nextBallId++, "");
-  Ball* secondBall = Ball::createBall(_ballArray, nextBallId++, firstBall->getOriginalBallImage());
+  Ball* firstBall = Ball::createBall(_ballArray, 0, "");
+  Ball* secondBall = Ball::createBall(_ballArray, 0, firstBall->getOriginalBallImage());
   
   _ballArray.push_back(firstBall);
   _ballArray.push_back(secondBall);
