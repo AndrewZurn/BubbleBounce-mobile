@@ -52,13 +52,14 @@ bool FirstScene::init() {
   }
   
   //add start game button
+  CCMenuItemImage* gameLogo = CCMenuItemImage::create("bouncinballslogo.png", "bouncinballslogo.png", this, NULL);
   CCMenuItemImage* playButton = CCMenuItemImage::create("play_button.png", "play_button_pressed.png",
                                                         this, menu_selector(FirstScene::playButtonCallback));
   CCMenuItemImage* statsButton = CCMenuItemImage::create("stats_button.png", "stats_button_pressed.png",
                                                          this, menu_selector(FirstScene::statsButtonCallback));
-  CCMenu* buttonMenu = CCMenu::create(playButton, statsButton, NULL);
+  CCMenu* buttonMenu = CCMenu::create(gameLogo, playButton, statsButton, NULL);
   buttonMenu->alignItemsVerticallyWithPadding(15);
-  buttonMenu->setPosition(ccp(windowSize.width/2, windowSize.height/2));
+  buttonMenu->setPosition(ccp(windowSize.width/2, windowSize.height/1.75));
   this->addChild(buttonMenu, ZIndexButtonMenu);
   
   this->schedule(schedule_selector(FirstScene::GameUpdate));
