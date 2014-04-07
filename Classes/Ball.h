@@ -45,7 +45,7 @@ private:
   
 public:
   //constructors
-  static Ball* createBall(std::vector<Ball*> otherBalls, const char* original_color);
+  static Ball* createBall(std::vector<Ball*> otherBalls, int ballId, const char* original_color);
   
   //external methods to update ball fields
   void updateBallPositions(std::vector<Ball*> ballList);

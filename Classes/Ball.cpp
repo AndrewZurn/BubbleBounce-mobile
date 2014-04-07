@@ -5,7 +5,7 @@ USING_NS_CC;
 
 int progess_bar_height = 78;
 
-Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color) {
+Ball* Ball::createBall(std::vector<Ball*> otherBalls, int ballId, const char* original_color) {
   Ball* ballSprite = new Ball();
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   
@@ -24,7 +24,7 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, const char* original_color
     ballSprite->setBall(ballColor);
     ballSprite->setBallSelected(ballSelectedColor);
     ballSprite->setBallColor(color);
-    ballSprite->setBallId(otherBalls.size());
+    ballSprite->setBallId(ballId);
     
     ballSprite->setDisplayWidth(windowSize.width);
     ballSprite->setDisplayHeight(windowSize.height);

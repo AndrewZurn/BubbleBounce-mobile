@@ -1,7 +1,7 @@
 APPNAME="BouncingBallsCPP"
 
 # options
-NDK_ROOT="/Users/Andrew/Library/android-sdk-macosx/android-ndk-r9c"
+NDK_ROOT="/Users/Andrew/Library/android-sdk-macosx/android-ndk-r9d"
 ANDROID_SDK_ROOT_LOCAL="/Users/Andrew/Library/android-sdk-macosx"
 
 buildexternalsfromsource=

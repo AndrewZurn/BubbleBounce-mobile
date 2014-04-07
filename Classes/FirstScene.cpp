@@ -37,6 +37,7 @@ bool FirstScene::init() {
   this->addChild(background, ZIndexBackground);
   
   //add initial balls
+  _nextBallId = 0;
   _ballArray = *new std::vector<Ball*>();
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
     createNewBalls();
@@ -63,11 +64,13 @@ void FirstScene::GameUpdate() {
 }
 
 void FirstScene::createNewBalls() {
-  Ball* firstBall = Ball::createBall(_ballArray, "");
+  Ball* firstBall = Ball::createBall(_ballArray, _nextBallId, "");
   _ballArray.push_back(firstBall);
   this->addChild(firstBall, ZIndexBalls);
   
-  Ball* secondBall = Ball::createBall(_ballArray, firstBall->getOriginalBallImage());
+  _nextBallId++;
+  
+  Ball* secondBall = Ball::createBall(_ballArray, _nextBallId, firstBall->getOriginalBallImage());
   _ballArray.push_back(secondBall);
   this->addChild(secondBall, ZIndexBalls);
 }

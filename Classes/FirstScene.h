@@ -15,6 +15,7 @@
 class FirstScene : public cocos2d::CCLayer
 {
 private:
+  int _nextBallId;
   std::vector<Ball*> _ballArray;
   
   void GameUpdate();

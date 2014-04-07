@@ -15,11 +15,12 @@
 class GameScene : public cocos2d::CCLayer
 {
 private:
+  int _nextBallId;
   Ball* _selectedBall;
   std::vector<Ball*> _ballArray;
   
   int _score;
-  bool _gameOver = false;
+  bool _gameOver;
   cocos2d::CCLabelTTF* _scoreLabel;
   cocos2d::CCProgressTimer* _progressBar;
   

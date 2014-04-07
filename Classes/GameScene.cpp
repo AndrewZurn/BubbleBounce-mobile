@@ -16,7 +16,7 @@ static int STARTING_BALLS = 12;
 static int TIME_INTERVAL = 5000;
 static int LABEL_FONT_SIZE = 65;
 static int BALL_COUNT_CEILING = 30;
-static int ADD_MORE_BALLS_COUNT = 3;
+static int ADD_MORE_BALLS_COUNT = 6;
 
 CCScene* GameScene::scene()
 {
@@ -42,11 +42,11 @@ bool GameScene::init() {
   this->addChild(background, ZIndexBackground);
   
   //add initial balls
+  _nextBallId = 0;
   _ballArray = *new std::vector<Ball*>();
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
     createNewBalls();
   }
-  this->setBallArray(_ballArray);
   
   //add score label
   char scoreText[10];
@@ -66,8 +66,9 @@ bool GameScene::init() {
     _progressBar->setPosition(ccp(325, 50));
     this->addChild(_progressBar, ZIndexProgressBar);
   }
-
-  //setup game scheduling/handling
+  
+  //setup game scheduling/handling/other attributes
+  this->_gameOver = false;
   this->_lastElapsedTime = getCurrentTime();
   this->setTouchEnabled(true);
   this->schedule(schedule_selector(GameScene::GameUpdate));
@@ -77,15 +78,17 @@ bool GameScene::init() {
 
 void GameScene::GameUpdate() {
   if (!_gameOver) {
+    
     if (_ballArray.size() >= BALL_COUNT_CEILING ) {
       _gameOver = true;
     }
     else if ( didTimeElapse() ) {
-      for (int i = 0; i < ADD_MORE_BALLS_COUNT; i++) {
+      for (int i = 0; i < ADD_MORE_BALLS_COUNT / 2; i++) {
         createNewBalls();
         _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
       }
     }
+    
     //update all the balls positions (animate the balls)
     std::vector<Ball*>::iterator iterator;
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
@@ -93,15 +96,19 @@ void GameScene::GameUpdate() {
       ball->updateBallPositions(_ballArray);
       _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
     }
+    
   }
   else { //game over
+    
     std::vector<Ball*>::iterator iterator;
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
       Ball* ball = *iterator;
       this->removeChild(ball);
     }
     _ballArray.clear();
+    
     //go to you lose screen
+    
   }
 }
 
@@ -146,7 +153,17 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
           this->removeChild(this->getSelectedBall());
           
           _ballArray.erase(i);
-          _ballArray.erase(std::find(_ballArray.begin(), _ballArray.end(), _selectedBall));
+          
+          //find the other balls iterator, and remove it from the ballArray
+          std::vector<Ball*>::iterator j;
+          for (j = _ballArray.begin(); j != _ballArray.end(); j++) {
+            Ball* otherBall = (Ball*) (*j);
+            if ( otherBall->getBallId() == this->getSelectedBall()->getBallId() ) {
+              _ballArray.erase(j);
+              break;
+            }
+          }
+          
           this->setSelectedBall(NULL);
           
           _score++;
@@ -166,11 +183,11 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
 }
 
 void GameScene::createNewBalls() {
-  Ball* firstBall = Ball::createBall(_ballArray, "");
+  Ball* firstBall = Ball::createBall(_ballArray, _nextBallId++, "");
   _ballArray.push_back(firstBall);
   this->addChild(firstBall, ZIndexBalls);
   
-  Ball* secondBall = Ball::createBall(_ballArray, firstBall->getOriginalBallImage());
+  Ball* secondBall = Ball::createBall(_ballArray, _nextBallId++, firstBall->getOriginalBallImage());
   _ballArray.push_back(secondBall);
   this->addChild(secondBall, ZIndexBalls);
 }
