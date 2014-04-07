@@ -11,8 +11,12 @@
 
 USING_NS_CC;
 
+int nextBallId = 0;
 static int STARTING_BALLS = 10;
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Adds the first scene layer to this scene.
+//////////////////////////////////////////////////////////////////////////////////////////
 CCScene* FirstScene::scene()
 {
   FirstScene *backgroundLayer = FirstScene::create();
@@ -23,6 +27,10 @@ CCScene* FirstScene::scene()
   return scene;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Creates the background layer, adds the initial balls to the game,
+// adds the buttons to the screen, and adds the timing scheduler.
+//////////////////////////////////////////////////////////////////////////////////////////
 bool FirstScene::init() {
   if ( !CCLayer::init() ) {
     return false;
@@ -37,7 +45,6 @@ bool FirstScene::init() {
   this->addChild(background, ZIndexBackground);
   
   //add initial balls
-  _nextBallId = 0;
   _ballArray = *new std::vector<Ball*>();
   for (int i = 0; i < STARTING_BALLS / 2; i++) {
     createNewBalls();
@@ -54,27 +61,37 @@ bool FirstScene::init() {
   return true;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+//  Updates the positions of all the balls in the game.
+//////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::GameUpdate() {
   //update all the balls positions (animate the balls)
   std::vector<Ball*>::iterator iterator;
   for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
-    Ball* ball = *iterator;
+    Ball* ball = (Ball*) *iterator;
     ball->updateBallPositions(_ballArray);
   }
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Create the first ball, giving it the next ballId, then
+// create the second ball, and add both of them to the ball array.
+//////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::createNewBalls() {
-  Ball* firstBall = Ball::createBall(_ballArray, _nextBallId, "");
+  Ball* firstBall = Ball::createBall(_ballArray, nextBallId++, "");
+  Ball* secondBall = Ball::createBall(_ballArray, nextBallId++, firstBall->getOriginalBallImage());
+  
   _ballArray.push_back(firstBall);
-  this->addChild(firstBall, ZIndexBalls);
-  
-  _nextBallId++;
-  
-  Ball* secondBall = Ball::createBall(_ballArray, _nextBallId, firstBall->getOriginalBallImage());
   _ballArray.push_back(secondBall);
+  
+  this->addChild(firstBall, ZIndexBalls);
   this->addChild(secondBall, ZIndexBalls);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Called when the 'PLAY' button is pressed, cleans up this scene,
+// and then starts GameScene to start the actual game.
+//////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::startGame(CCObject* pSender) {
   this->cleanup();
   //start the game scene

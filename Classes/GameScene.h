@@ -15,7 +15,6 @@
 class GameScene : public cocos2d::CCLayer
 {
 private:
-  int _nextBallId;
   Ball* _selectedBall;
   std::vector<Ball*> _ballArray;
   
