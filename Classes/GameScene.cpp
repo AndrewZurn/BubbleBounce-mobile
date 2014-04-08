@@ -8,6 +8,7 @@
 #include "GameScene.h"
 #include "Constants.h"
 #include "Ball.h"
+#include "LossScene.h"
 
 #include <sys/time.h>
 #include "SimpleAudioEngine.h"
@@ -134,10 +135,13 @@ void GameScene::GameUpdate() {
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
       Ball* ball = *iterator;
       this->removeChild(ball);
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
     }
     _ballArray.clear();
     
-    //go to you lose screen
+    CCScene* lossScene = LossScene::scene();
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5, lossScene));
+    CCDirector::sharedDirector()->retain();
   }
 }
 

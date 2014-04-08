@@ -100,7 +100,6 @@ void FirstScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *even
 }
 
 void FirstScene::handleBallTouch(cocos2d::CCTouch *touch) {
-  
   std::vector<Ball*>::iterator i;
   Ball* ball;
   for( i = _ballArray.begin(); i != _ballArray.end(); i++) {
