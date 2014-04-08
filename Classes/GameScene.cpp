@@ -8,7 +8,9 @@
 #include "GameScene.h"
 #include "Constants.h"
 #include "Ball.h"
+
 #include <sys/time.h>
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -80,6 +82,7 @@ bool GameScene::init() {
   this->_lastElapsedTime = getCurrentTime();
   this->setTouchEnabled(true);
   this->schedule(schedule_selector(GameScene::GameUpdate));
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
   
   return true;
 }
@@ -174,6 +177,8 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
         if ( ball->compareColor(this->getSelectedBall()) ) {
           this->removeChild(ball);
           this->removeChild(this->getSelectedBall());
+          
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
           
           _ballArray.erase(i);
           
