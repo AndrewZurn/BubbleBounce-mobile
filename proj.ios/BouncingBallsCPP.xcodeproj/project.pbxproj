@@ -240,9 +240,6 @@
 		492B230918F35A3C003742A0 /* stats_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B230618F35A3C003742A0 /* stats_button_pressed.png */; };
 		492B230A18F35A3C003742A0 /* stats_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B230718F35A3C003742A0 /* stats_button.png */; };
 		492B230C18F36E8D003742A0 /* bubble_pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 492B230B18F36E8D003742A0 /* bubble_pop.mp3 */; };
-		492B231118F431F1003742A0 /* number_one.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B230D18F431F1003742A0 /* number_one.png */; };
-		492B231218F431F1003742A0 /* number_three.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B230E18F431F1003742A0 /* number_three.png */; };
-		492B231318F431F1003742A0 /* number_two.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B230F18F431F1003742A0 /* number_two.png */; };
 		492B231418F431F1003742A0 /* text_go.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B231018F431F1003742A0 /* text_go.png */; };
 		492B231618F46E36003742A0 /* text_you_lose.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B231518F46E36003742A0 /* text_you_lose.png */; };
 		492B231918F495D1003742A0 /* play_again_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B231718F495D1003742A0 /* play_again_button_pressed.png */; };
@@ -786,9 +783,6 @@
 		492B230618F35A3C003742A0 /* stats_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_button_pressed.png; sourceTree = "<group>"; };
 		492B230718F35A3C003742A0 /* stats_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_button.png; sourceTree = "<group>"; };
 		492B230B18F36E8D003742A0 /* bubble_pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble_pop.mp3; sourceTree = "<group>"; };
-		492B230D18F431F1003742A0 /* number_one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number_one.png; sourceTree = "<group>"; };
-		492B230E18F431F1003742A0 /* number_three.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number_three.png; sourceTree = "<group>"; };
-		492B230F18F431F1003742A0 /* number_two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number_two.png; sourceTree = "<group>"; };
 		492B231018F431F1003742A0 /* text_go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_go.png; sourceTree = "<group>"; };
 		492B231518F46E36003742A0 /* text_you_lose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_you_lose.png; sourceTree = "<group>"; };
 		492B231718F495D1003742A0 /* play_again_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_again_button_pressed.png; sourceTree = "<group>"; };
@@ -1977,9 +1971,6 @@
 				492B231718F495D1003742A0 /* play_again_button_pressed.png */,
 				492B231818F495D1003742A0 /* play_again_button.png */,
 				492B231518F46E36003742A0 /* text_you_lose.png */,
-				492B230D18F431F1003742A0 /* number_one.png */,
-				492B230E18F431F1003742A0 /* number_three.png */,
-				492B230F18F431F1003742A0 /* number_two.png */,
 				492B231018F431F1003742A0 /* text_go.png */,
 				492B230B18F36E8D003742A0 /* bubble_pop.mp3 */,
 				492B230518F35A3C003742A0 /* play_button_pressed.png */,
@@ -2084,7 +2075,6 @@
 				492B230818F35A3C003742A0 /* play_button_pressed.png in Resources */,
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				49A4BE7D18DB253A007CE796 /* yellowballselected.png in Resources */,
-				492B231318F431F1003742A0 /* number_two.png in Resources */,
 				492B231A18F495D1003742A0 /* play_again_button.png in Resources */,
 				497B65A118EDFC31004168B0 /* play_button.png in Resources */,
 				49A4BE7718DB253A007CE796 /* orangeballselected.png in Resources */,
@@ -2096,13 +2086,11 @@
 				49A4BE7518DB253A007CE796 /* blueballselected.png in Resources */,
 				49A4BE7A18DB253A007CE796 /* redball.png in Resources */,
 				49A4BE7418DB253A007CE796 /* blueball.png in Resources */,
-				492B231118F431F1003742A0 /* number_one.png in Resources */,
 				497B659D18EDEE65004168B0 /* Action Man.ttf in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
 				492B231618F46E36003742A0 /* text_you_lose.png in Resources */,
 				49A4BE7C18DB253A007CE796 /* yellowball.png in Resources */,
-				492B231218F431F1003742A0 /* number_three.png in Resources */,
 				D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */,
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
 				499B8C8D18D9371C000F55E5 /* Marker Felt.ttf in Resources */,
