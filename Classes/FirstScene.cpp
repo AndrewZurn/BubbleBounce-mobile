@@ -145,7 +145,7 @@ void FirstScene::playButtonCallback(CCObject* pSender) {
   this->cleanup();
   
   CCScene* gameScene = GameScene::scene();
-  CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.75, gameScene));
+  CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5, gameScene));
   CCDirector::sharedDirector()->retain();
 }
 

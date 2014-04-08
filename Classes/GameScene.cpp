@@ -114,7 +114,8 @@ void GameScene::GameUpdate() {
       
       //remove the GO! image from the screen
       if ( _goTextImage != NULL ) {
-        this->removeChild(_goTextImage);
+        CCAction* fadeOut = CCFadeOut::create(0.75);
+        _goTextImage->runAction(fadeOut);
         _goTextImage = NULL;
       }
     }
