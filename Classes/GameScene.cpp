@@ -77,12 +77,18 @@ bool GameScene::init() {
     this->addChild(_progressBar, ZIndexProgressBar);
   }
   
+  //add go image
+  _goTextImage = CCMenuItemImage::create("text_go.png", "text_go.png", this, NULL);
+  _goTextImage->setPosition(ccp(windowSize.width/2, windowSize.height/2));
+  this->addChild(_goTextImage, ZIndexGoImage);
+  
   //setup game scheduling/handling/other attributes
   this->_gameOver = false;
   this->_lastElapsedTime = getCurrentTime();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
+  
   this->setTouchEnabled(true);
   this->schedule(schedule_selector(GameScene::GameUpdate));
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
   
   return true;
 }
@@ -93,15 +99,23 @@ bool GameScene::init() {
 // the game will be over.
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::GameUpdate() {
-  if (!_gameOver) {
+  if (_gameOver == false) {
     
+    //if too many balls on the screen, game over
     if (_ballArray.size() >= BALL_COUNT_CEILING ) {
       _gameOver = true;
     }
     else if ( didTimeElapse() ) {
+      //add new balls to the screen
       for (int i = 0; i < ADD_MORE_BALLS_COUNT / 2; i++) {
         createNewBalls();
         _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
+      }
+      
+      //remove the GO! image from the screen
+      if ( _goTextImage != NULL ) {
+        this->removeChild(_goTextImage);
+        _goTextImage = NULL;
       }
     }
     
@@ -115,7 +129,6 @@ void GameScene::GameUpdate() {
     
   }
   else { //game over
-    
     std::vector<Ball*>::iterator iterator;
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
       Ball* ball = *iterator;
@@ -124,7 +137,6 @@ void GameScene::GameUpdate() {
     _ballArray.clear();
     
     //go to you lose screen
-    
   }
 }
 
@@ -154,7 +166,7 @@ void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event
 //  Then update the score of the screen.
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
-
+  
   std::vector<Ball*>::iterator i;
   Ball* ball;
   for( i = _ballArray.begin(); i != _ballArray.end(); i++) {
