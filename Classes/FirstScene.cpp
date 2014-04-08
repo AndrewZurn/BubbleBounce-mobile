@@ -10,6 +10,7 @@
 #include "GameScene.h"
 #include "AppDelegate.h"
 #include "Constants.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -62,7 +63,9 @@ bool FirstScene::init() {
   buttonMenu->setPosition(ccp(windowSize.width/2, windowSize.height/1.75));
   this->addChild(buttonMenu, ZIndexButtonMenu);
   
+  this->setTouchEnabled(true);
   this->schedule(schedule_selector(FirstScene::GameUpdate));
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
   
   return true;
 }
@@ -76,6 +79,46 @@ void FirstScene::GameUpdate() {
   for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
     Ball* ball = (Ball*) *iterator;
     ball->updateBallPositions(_ballArray);
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//  Looks for when the user's fingers leaves the screen.  Will make a
+//  call to the handleBallTouch in the event of the user pressing the screen.
+//////////////////////////////////////////////////////////////////////////////////////////
+void FirstScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
+  CCSetIterator i;
+  CCTouch* touch;
+  
+  //for every touch
+  for (i = pTouches->begin(); i != pTouches->end(); i++) {
+    touch = (CCTouch *) (*i);
+    if (touch) { //if touch was found
+      handleBallTouch(touch);
+    }
+  }
+}
+
+void FirstScene::handleBallTouch(cocos2d::CCTouch *touch) {
+  
+  std::vector<Ball*>::iterator i;
+  Ball* ball;
+  for( i = _ballArray.begin(); i != _ballArray.end(); i++) {
+    ball = (Ball *) (*i);
+    
+    //the tapped ball was the already selected ball
+    if (ball->getState() == BallSelected) {
+      continue; //should continue to the end
+    }
+    
+    if ( ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch)) ) {
+      this->removeChild(ball);
+      
+      _ballArray.erase(i);
+      
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
+      break;
+    }
   }
 }
 

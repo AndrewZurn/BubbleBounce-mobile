@@ -135,7 +135,6 @@ void GameScene::GameUpdate() {
 void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event) {
   CCSetIterator i;
   CCTouch* touch;
-  CCPoint tap;
   
   //for every touch
   for (i = pTouches->begin(); i != pTouches->end(); i++) {

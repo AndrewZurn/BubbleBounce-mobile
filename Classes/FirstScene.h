@@ -29,6 +29,10 @@ public:
   // there's no 'id' in cpp, so we recommend returning the class instance pointer
   static cocos2d::CCScene* scene();
   
+  //touch handlers
+  virtual void ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event);
+  void handleBallTouch(cocos2d::CCTouch* touch);
+  
   // implement the "static node()" method manually
   CREATE_FUNC(FirstScene);
   
