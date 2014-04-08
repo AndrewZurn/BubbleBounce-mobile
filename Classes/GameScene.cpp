@@ -17,10 +17,10 @@ USING_NS_CC;
 
 int nextBallId = 0;
 static int STARTING_BALLS = 12;
-static int TIME_INTERVAL = 5000;
+static int TIME_INTERVAL = 3500;
 static int LABEL_FONT_SIZE = 65;
 static int BALL_COUNT_CEILING = 30;
-static int ADD_MORE_BALLS_COUNT = 6;
+int addMoreBallsCount = 4;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Creates the game layer, and adds it to this scene.
@@ -107,15 +107,17 @@ void GameScene::GameUpdate() {
       _gameOver = true;
     }
     else if ( didTimeElapse() ) {
+      
       //add new balls to the screen
-      for (int i = 0; i < ADD_MORE_BALLS_COUNT / 2; i++) {
+      for (int i = 0; i < addMoreBallsCount / 2; i++) {
         createNewBalls();
-        _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
+        _progressBar->setPercentage(((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
       }
+      increaseAddBallCount();
       
       //remove the GO! image from the screen
       if ( _goTextImage != NULL ) {
-        CCAction* fadeOut = CCFadeOut::create(0.75);
+        CCAction* fadeOut = CCFadeOut::create(0.25);
         _goTextImage->runAction(fadeOut);
         _goTextImage = NULL;
       }
@@ -140,7 +142,7 @@ void GameScene::GameUpdate() {
     _ballArray.clear();
     
     CCScene* lossScene = LossScene::scene();
-    CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5, lossScene));
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(2, lossScene));
     CCDirector::sharedDirector()->retain();
   }
 }
@@ -184,22 +186,21 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
     
     if ( ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch)) ) {
       
-      if ( this->getSelectedBall() == NULL ) { //if no ball was previously touched
+      //if no ball was previously touched
+      if ( this->getSelectedBall() == NULL ) {
         ball->changeBallImage();
         this->setSelectedBall(ball);
         break;
       }
       else { //a ball was previously touched
         if ( ball->compareColor(this->getSelectedBall()) ) {
-          this->removeChild(ball);
-          this->removeChild(this->getSelectedBall());
-          
+          _score++;
           CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
           
+          this->removeChild(ball);
+          this->removeChild(this->getSelectedBall());
           _ballArray.erase(i);
-          
-          //find the other balls iterator, and remove it from the ballArray
-          std::vector<Ball*>::iterator j;
+          std::vector<Ball*>::iterator j;  //find and erase the other ball
           for (j = _ballArray.begin(); j != _ballArray.end(); j++) {
             Ball* otherBall = (Ball*) (*j);
             if ( otherBall->getBallId() == this->getSelectedBall()->getBallId() ) {
@@ -207,10 +208,7 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
               break;
             }
           }
-          
           this->setSelectedBall(NULL);
-          
-          _score++;
           break;
         }
         else{ //the colors don't match
@@ -239,6 +237,23 @@ void GameScene::createNewBalls() {
   
   this->addChild(firstBall, ZIndexBalls);
   this->addChild(secondBall, ZIndexBalls);
+}
+
+void GameScene::increaseAddBallCount() {
+  double random = ((double) rand() / (RAND_MAX)); //number between 0 and 1
+  
+  if ( random <= 0.33 ) {
+    addMoreBallsCount = 6;
+  }
+  else if ( random <= 0.66 ) {
+    addMoreBallsCount++;
+  }
+  else if ( random <= 1 ) {
+    addMoreBallsCount = addMoreBallsCount + 2;
+  }
+  else {
+    addMoreBallsCount++;
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

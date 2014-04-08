@@ -40,7 +40,7 @@ bool LossScene::init() {
   
   //add start game button
   CCMenuItemImage* gameLogo = CCMenuItemImage::create("text_you_lose.png", "text_you_lose.png", this, NULL);
-  CCMenuItemImage* playButton = CCMenuItemImage::create("play_button.png", "play_button_pressed.png",
+  CCMenuItemImage* playButton = CCMenuItemImage::create("play_again_button.png", "play_again_button_pressed.png",
                                                         this, menu_selector(LossScene::playButtonCallback));
   CCMenuItemImage* statsButton = CCMenuItemImage::create("stats_button.png", "stats_button_pressed.png",
                                                          this, menu_selector(LossScene::statsButtonCallback));

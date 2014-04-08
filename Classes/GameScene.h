@@ -27,6 +27,7 @@ private:
   void CountdownToStart();
   void GameUpdate();
   void createNewBalls();
+  void increaseAddBallCount();
   
   long _lastElapsedTime;
   bool didTimeElapse();
