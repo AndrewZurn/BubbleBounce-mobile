@@ -63,7 +63,7 @@ bool GameScene::init() {
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel = CCLabelTTF::create(scoreText, "Action Man", LABEL_FONT_SIZE);
   _scoreLabel->setAnchorPoint(ccp(0,0));
-  _scoreLabel->cocos2d::CCNode::setPosition(ccp(15, windowSize.height - LABEL_FONT_SIZE));
+  _scoreLabel->cocos2d::CCNode::setPosition(ccp(15, windowSize.height - LABEL_FONT_SIZE*1.2));
   this->addChild(_scoreLabel, ZIndexScoreLabel);
   
   //add progress bar
