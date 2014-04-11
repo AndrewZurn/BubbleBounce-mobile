@@ -23,26 +23,29 @@ THE SOFTWARE.
 ****************************************************************************/
 package com.zurn.cc2dx.bouncingball;
 
-import org.cocos2dx.lib.Cocos2dxActivity;
-import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
-
 import android.os.Bundle;
 
-public class BouncingBallsCPP extends Cocos2dxActivity{
+import com.zurn.cc2dx.utils.UtilActivity;
+
+public class BouncingBallsCPP extends UtilActivity{
+//	
+//    protected void onCreate(Bundle savedInstanceState){
+//		super.onCreate(savedInstanceState);	
+//	}
+//
+//    public Cocos2dxGLSurfaceView onCreateView() {
+//    	Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
+//    	// BouncingBallsCPP should create stencil buffer
+//    	glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
+//    	
+//    	return glSurfaceView;
+//    }
+//
+//    static {
+//        System.loadLibrary("cocos2dcpp");
+//    }     
 	
-    protected void onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);	
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 	}
-
-    public Cocos2dxGLSurfaceView onCreateView() {
-    	Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
-    	// BouncingBallsCPP should create stencil buffer
-    	glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
-    	
-    	return glSurfaceView;
-    }
-
-    static {
-        System.loadLibrary("cocos2dcpp");
-    }     
 }

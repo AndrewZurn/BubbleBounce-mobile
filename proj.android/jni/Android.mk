@@ -1,4 +1,5 @@
 LOCAL_PATH := $(call my-dir)
+CLASSES_PATH := $(LOCAL_PATH)/../../Classes
 
 include $(CLEAR_VARS)
 

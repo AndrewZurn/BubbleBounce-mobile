@@ -244,6 +244,8 @@
 		492B231618F46E36003742A0 /* text_you_lose.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B231518F46E36003742A0 /* text_you_lose.png */; };
 		492B231918F495D1003742A0 /* play_again_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B231718F495D1003742A0 /* play_again_button_pressed.png */; };
 		492B231A18F495D1003742A0 /* play_again_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B231818F495D1003742A0 /* play_again_button.png */; };
+		492B231D18F8A7E8003742A0 /* JNIHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 492B231C18F8A7E8003742A0 /* JNIHelpers.cpp */; };
+		492B232018F8A890003742A0 /* NativeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 492B231F18F8A890003742A0 /* NativeUtils.cpp */; };
 		497B659618EDDABF004168B0 /* progress_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 497B659518EDDABF004168B0 /* progress_bar.png */; };
 		497B659D18EDEE65004168B0 /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 497B659A18EDEE65004168B0 /* Action Man.ttf */; };
 		497B65A118EDFC31004168B0 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 497B65A018EDFC31004168B0 /* play_button.png */; };
@@ -787,6 +789,10 @@
 		492B231518F46E36003742A0 /* text_you_lose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_you_lose.png; sourceTree = "<group>"; };
 		492B231718F495D1003742A0 /* play_again_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_again_button_pressed.png; sourceTree = "<group>"; };
 		492B231818F495D1003742A0 /* play_again_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_again_button.png; sourceTree = "<group>"; };
+		492B231B18F8A7B0003742A0 /* JNIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JNIHelpers.h; path = ../Classes/JNIHelpers.h; sourceTree = "<group>"; };
+		492B231C18F8A7E8003742A0 /* JNIHelpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JNIHelpers.cpp; sourceTree = "<group>"; };
+		492B231E18F8A869003742A0 /* NativeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeUtils.h; sourceTree = "<group>"; };
+		492B231F18F8A890003742A0 /* NativeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeUtils.cpp; sourceTree = "<group>"; };
 		497B659518EDDABF004168B0 /* progress_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bar.png; sourceTree = "<group>"; };
 		497B659A18EDEE65004168B0 /* Action Man.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man.ttf"; sourceTree = "<group>"; };
 		497B65A018EDFC31004168B0 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
@@ -1363,6 +1369,10 @@
 				49A4BE6618DA99A8007CE796 /* RankingsScene.h */,
 				49A4BE6718DA99B3007CE796 /* RankingScene.cpp */,
 				49A4BE6818DA99B3007CE796 /* RankingScene.h */,
+				492B231B18F8A7B0003742A0 /* JNIHelpers.h */,
+				492B231C18F8A7E8003742A0 /* JNIHelpers.cpp */,
+				492B231E18F8A869003742A0 /* NativeUtils.h */,
+				492B231F18F8A890003742A0 /* NativeUtils.cpp */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -2298,8 +2308,10 @@
 				379BB99A17F03F3700829B88 /* CCArmatureAnimation.cpp in Sources */,
 				379BB99B17F03F3700829B88 /* CCProcessBase.cpp in Sources */,
 				379BB99C17F03F3700829B88 /* CCTween.cpp in Sources */,
+				492B231D18F8A7E8003742A0 /* JNIHelpers.cpp in Sources */,
 				379BB99D17F03F3700829B88 /* CCArmature.cpp in Sources */,
 				379BB99E17F03F3700829B88 /* CCBone.cpp in Sources */,
+				492B232018F8A890003742A0 /* NativeUtils.cpp in Sources */,
 				379BB99F17F03F3700829B88 /* CCDatas.cpp in Sources */,
 				379BB9A017F03F3700829B88 /* CCBatchNode.cpp in Sources */,
 				379BB9A117F03F3700829B88 /* CCDecorativeDisplay.cpp in Sources */,
