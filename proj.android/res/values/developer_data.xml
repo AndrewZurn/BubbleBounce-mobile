@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="rsa_base64_public_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArSKBlaaqjgu/S+UCPKrxqK55gdqsSvx8wYZ4b0FN4BMjOI90M0WzArAsj3vZjTnRZfA9+RfHwNffrMnZiODTFlykZSW0hlDaHxqtK6zkWoV6UHQGfpVkSIOg1Ptti6bW6+7pOrFPxWB+5weyvw1K25ietayX3dVIci5+RZ/Qz9rOQaQSkD9rWL0ynGWtZAW36Qarr9OIrXnkfdodj846U2ovhjidwwdnZduKReZ4pKMzP1VG3Oa0p4QYh7eXofRwVM0Wrw5CeDbUoxJbzs29pYcwIa7KnBC4Sx+5jyjlBef7M/dg9rnHBotgBkpgT3xon8eNehqv7FL+Ax9pFNQ77QIDAQAB</string>
+
+</resources>
