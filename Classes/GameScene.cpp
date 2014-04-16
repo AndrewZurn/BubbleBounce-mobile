@@ -17,7 +17,7 @@ USING_NS_CC;
 
 int nextBallId = 0;
 static int STARTING_BALLS = 12;
-static int TIME_INTERVAL = 3500;
+static int TIME_INTERVAL = 4000;
 static int LABEL_FONT_SIZE = 65;
 static int BALL_COUNT_CEILING = 30;
 int addMoreBallsCount = 4;
@@ -141,7 +141,7 @@ void GameScene::GameUpdate() {
     }
     _ballArray.clear();
     
-    CCScene* lossScene = LossScene::scene();
+    CCScene* lossScene = LossScene::scene(_score);
     CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(2, lossScene));
     CCDirector::sharedDirector()->retain();
   }

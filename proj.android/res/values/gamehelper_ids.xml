@@ -2,5 +2,11 @@
 <resources>
 
     <string name="google_play_game_app_id">944820157749</string>
+    <string name="achievement_popping_da_bubble">CgkItfqt3b8bEAIQAw</string>
+  	<string name="achievement_nifty_fifty">CgkItfqt3b8bEAIQBA</string>
+  	<string name="achievement_bubble_buster">CgkItfqt3b8bEAIQBQ</string>
+  	<string name="achievement_you_da_bomb">CgkItfqt3b8bEAIQBg</string>
+  	<string name="achievement_bubble_star">CgkItfqt3b8bEAIQBw</string>
+  	<string name="leaderboard_main_leaderboard">CgkItfqt3b8bEAIQAA</string>
 
 </resources>

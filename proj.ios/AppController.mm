@@ -40,6 +40,7 @@ static AppDelegate s_sharedApplication;
     PlayGameSingleton::sharedInstance().trySilentAuthentication();
     [NSThread detachNewThreadSelector:@selector(playServicesAuthenticate) toTarget:self withObject:nil];
   }
+
   
   // Add the view controller's view to the window and display.
   window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];

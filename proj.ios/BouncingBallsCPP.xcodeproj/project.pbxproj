@@ -279,7 +279,6 @@
 		49A4BE5F18DA987D007CE796 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5E18DA987D007CE796 /* GameScene.cpp */; };
 		49A4BE6218DA9977007CE796 /* FirstScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE6118DA9977007CE796 /* FirstScene.cpp */; };
 		49A4BE6518DA9998007CE796 /* LossScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE6418DA9998007CE796 /* LossScene.cpp */; };
-		49A4BE6918DA99B3007CE796 /* RankingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE6718DA99B3007CE796 /* RankingScene.cpp */; };
 		49A4BE7418DB253A007CE796 /* blueball.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE6A18DB253A007CE796 /* blueball.png */; };
 		49A4BE7518DB253A007CE796 /* blueballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE6B18DB253A007CE796 /* blueballselected.png */; };
 		49A4BE7618DB253A007CE796 /* orangeball.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE6C18DB253A007CE796 /* orangeball.png */; };
@@ -858,8 +857,6 @@
 		49A4BE6118DA9977007CE796 /* FirstScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirstScene.cpp; sourceTree = "<group>"; };
 		49A4BE6318DA998A007CE796 /* LossScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LossScene.h; sourceTree = "<group>"; };
 		49A4BE6418DA9998007CE796 /* LossScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LossScene.cpp; sourceTree = "<group>"; };
-		49A4BE6718DA99B3007CE796 /* RankingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RankingScene.cpp; sourceTree = "<group>"; };
-		49A4BE6818DA99B3007CE796 /* RankingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingScene.h; sourceTree = "<group>"; };
 		49A4BE6A18DB253A007CE796 /* blueball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueball.png; sourceTree = "<group>"; };
 		49A4BE6B18DB253A007CE796 /* blueballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueballselected.png; sourceTree = "<group>"; };
 		49A4BE6C18DB253A007CE796 /* orangeball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeball.png; sourceTree = "<group>"; };
@@ -930,21 +927,12 @@
 				49CF9CC218F8D9CD00EFDE7E /* Achievements */,
 				49CF9CC318F8D9D900EFDE7E /* Leaderboards */,
 				49CF9CC118F8D9BF00EFDE7E /* PlayGameSingleton */,
-				492B233118F8ABFC003742A0 /* GoogleOpenSource.framework */,
-				492B233218F8ABFC003742A0 /* GooglePlayGames.bundle */,
-				492B233318F8ABFC003742A0 /* GooglePlayGames.framework */,
-				492B233418F8ABFC003742A0 /* GooglePlus.bundle */,
-				492B233518F8ABFC003742A0 /* GooglePlus.framework */,
-				1AC3624216D4A1E8000847F2 /* AppController.h */,
-				1AC3624316D4A1E8000847F2 /* AppController.mm */,
-				1AC3624516D4A1E8000847F2 /* main.m */,
-				1AFCDA8016D4A25900906EA6 /* RootViewController.h */,
-				1AFCDA8116D4A25900906EA6 /* RootViewController.mm */,
-				492B232118F8A9B2003742A0 /* GooglePlayGameServicesIOS.h */,
-				492B232318F8A9FF003742A0 /* GooglePlayGameServicesIOS.mm */,
-				D4F9F37B12E54555005CA6D2 /* Info.plist */,
-				1AC3624616D4A1E8000847F2 /* Prefix.pch */,
+				4926D13818FE20E800DF9134 /* GoogleFramework */,
+				4926D13918FE210100DF9134 /* Controllers */,
 				49CF9CC018F8D48100EFDE7E /* images */,
+				D4F9F37B12E54555005CA6D2 /* Info.plist */,
+				1AC3624516D4A1E8000847F2 /* main.m */,
+				1AC3624616D4A1E8000847F2 /* Prefix.pch */,
 			);
 			name = ios;
 			path = Classes;
@@ -961,6 +949,7 @@
 		15A3D8871682F7D5002FB0C5 /* Box2D */ = {
 			isa = PBXGroup;
 			children = (
+				1AB87036175E0A92005D39BF /* libwebsockets */,
 				15A3D8891682F7D5002FB0C5 /* Box2D.h */,
 				15A3D88A1682F7D5002FB0C5 /* Collision */,
 				15A3D8A21682F7D5002FB0C5 /* Common */,
@@ -968,7 +957,7 @@
 				15A3D8FB1682F7D5002FB0C5 /* Rope */,
 			);
 			name = Box2D;
-			path = ../../../external/Box2D;
+			path = ../../external/Box2D;
 			sourceTree = "<group>";
 		};
 		15A3D88A1682F7D5002FB0C5 /* Collision */ = {
@@ -1120,7 +1109,7 @@
 				15A3D9671682F7F9002FB0C5 /* src */,
 			);
 			name = chipmunk;
-			path = ../../../external/chipmunk;
+			path = ../../external/chipmunk;
 			sourceTree = "<group>";
 		};
 		15A3D93E1682F7F9002FB0C5 /* include */ = {
@@ -1231,7 +1220,7 @@
 				1A8F3B42175E05DA00049216 /* spine */,
 			);
 			name = extensions;
-			path = ../../../extensions;
+			path = ../../extensions;
 			sourceTree = "<group>";
 		};
 		15A3D9B51682F826002FB0C5 /* CCBReader */ = {
@@ -1395,7 +1384,7 @@
 				15A3DA841682F8A6002FB0C5 /* ios */,
 			);
 			name = CocosDenshion;
-			path = ../../../CocosDenshion;
+			path = ../../CocosDenshion;
 			sourceTree = "<group>";
 		};
 		15A3DA811682F8A6002FB0C5 /* include */ = {
@@ -1427,12 +1416,12 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				49F3BFEB18F9087500728CF6 /* Utils */,
-				49F3BFEA18F9086900728CF6 /* Constants */,
-				49F3BFE918F9085D00728CF6 /* Ball */,
-				49F3BFE818F9084D00728CF6 /* Scenes */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
+				49F3BFE918F9085D00728CF6 /* Ball */,
+				49F3BFEA18F9086900728CF6 /* Constants */,
+				49F3BFE818F9084D00728CF6 /* Scenes */,
+				49F3BFEB18F9087500728CF6 /* Utils */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1444,6 +1433,7 @@
 				1D6058910D05DD3D006BFB54 /* BouncingBallsCPP.app */,
 			);
 			name = Products;
+			path = ../../projects/BouncingBallsCPP/proj.ios;
 			sourceTree = "<group>";
 		};
 		1A8F3B42175E05DA00049216 /* spine */ = {
@@ -1511,7 +1501,7 @@
 				1AB87037175E0A92005D39BF /* ios */,
 			);
 			name = libwebsockets;
-			path = ../../../external/libwebsockets;
+			path = ../libwebsockets;
 			sourceTree = "<group>";
 		};
 		1AB87037175E0A92005D39BF /* ios */ = {
@@ -1683,15 +1673,9 @@
 			isa = PBXGroup;
 			children = (
 				15A3D87E1682F7B3002FB0C5 /* cocos2dx.xcodeproj */,
-				15A3D8871682F7D5002FB0C5 /* Box2D */,
-				15A3D93A1682F7F9002FB0C5 /* chipmunk */,
 				15AA9C4015B7EC450033D6C2 /* Classes */,
 				080E96DDFE201D6D7F000001 /* ios */,
-				15A3DA6B1682F8A6002FB0C5 /* CocosDenshion */,
-				15A3D9B31682F826002FB0C5 /* extensions */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				1AB87036175E0A92005D39BF /* libwebsockets */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
+				4926D13718FE204300DF9134 /* Modules */,
 				78C7DDAA14EBA5050085D0C2 /* Resources */,
 			);
 			name = CustomTemplate;
@@ -1723,6 +1707,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 			);
 			name = Frameworks;
+			path = ../../projects/BouncingBallsCPP/proj.ios;
 			sourceTree = "<group>";
 		};
 		375BD4BA1868411B0024609E /* Trigger */ = {
@@ -2035,6 +2020,45 @@
 			path = CocoStudio;
 			sourceTree = "<group>";
 		};
+		4926D13718FE204300DF9134 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				15A3D8871682F7D5002FB0C5 /* Box2D */,
+				15A3D93A1682F7F9002FB0C5 /* chipmunk */,
+				15A3DA6B1682F8A6002FB0C5 /* CocosDenshion */,
+				15A3D9B31682F826002FB0C5 /* extensions */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = Modules;
+			path = ../../../cocos2dx/proj.ios;
+			sourceTree = "<group>";
+		};
+		4926D13818FE20E800DF9134 /* GoogleFramework */ = {
+			isa = PBXGroup;
+			children = (
+				492B233118F8ABFC003742A0 /* GoogleOpenSource.framework */,
+				492B233218F8ABFC003742A0 /* GooglePlayGames.bundle */,
+				492B233418F8ABFC003742A0 /* GooglePlus.bundle */,
+				492B233518F8ABFC003742A0 /* GooglePlus.framework */,
+				492B233318F8ABFC003742A0 /* GooglePlayGames.framework */,
+				492B232118F8A9B2003742A0 /* GooglePlayGameServicesIOS.h */,
+				492B232318F8A9FF003742A0 /* GooglePlayGameServicesIOS.mm */,
+			);
+			name = GoogleFramework;
+			sourceTree = "<group>";
+		};
+		4926D13918FE210100DF9134 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1AC3624216D4A1E8000847F2 /* AppController.h */,
+				1AC3624316D4A1E8000847F2 /* AppController.mm */,
+				1AFCDA8016D4A25900906EA6 /* RootViewController.h */,
+				1AFCDA8116D4A25900906EA6 /* RootViewController.mm */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		499B8C7D18D9371C000F55E5 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2093,8 +2117,6 @@
 				49A4BE6118DA9977007CE796 /* FirstScene.cpp */,
 				49A4BE6318DA998A007CE796 /* LossScene.h */,
 				49A4BE6418DA9998007CE796 /* LossScene.cpp */,
-				49A4BE6718DA99B3007CE796 /* RankingScene.cpp */,
-				49A4BE6818DA99B3007CE796 /* RankingScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -2474,7 +2496,6 @@
 				298B29C618D0668400C1920F /* TextFieldReader.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
 				1A8F3B74175E05DA00049216 /* AttachmentLoader.cpp in Sources */,
-				49A4BE6918DA99B3007CE796 /* RankingScene.cpp in Sources */,
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
 				1A8F3B76175E05DA00049216 /* BoneData.cpp in Sources */,
 				1A8F3B77175E05DA00049216 /* CCSkeleton.cpp in Sources */,

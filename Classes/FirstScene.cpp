@@ -12,6 +12,8 @@
 #include "Constants.h"
 #include "SimpleAudioEngine.h"
 
+#include "NativeUtils.h"
+
 USING_NS_CC;
 
 static int STARTING_BALLS = 10;
@@ -153,5 +155,5 @@ void FirstScene::playButtonCallback(CCObject* pSender) {
 // and then starts RankingsScene to to view the stats.
 //////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::statsButtonCallback(CCObject* pSender) {
-  std::cout << "STATS STATS AND MORE STATS!" << std::endl;
+  NativeUtils::showLeaderboards();
 }

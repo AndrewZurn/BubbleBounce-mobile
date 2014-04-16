@@ -12,11 +12,16 @@
 
 USING_NS_CC;
 
+int _score;
+static int LABEL_FONT_SIZE = 65;
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // Adds the first scene layer to this scene.
 //////////////////////////////////////////////////////////////////////////////////////////
-CCScene* LossScene::scene()
+CCScene* LossScene::scene(int score)
 {
+  _score = score;
+  
   LossScene *backgroundLayer = LossScene::create();
   
   CCScene *scene = CCScene::create();
@@ -38,15 +43,21 @@ bool LossScene::init() {
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   this->addChild(background, ZIndexBackground);
   
-  //add start game button
+  //setup score label
+  char scoreText[10];
+  sprintf(scoreText, "Score: %d", _score);
+  CCLabelTTF* scoreLabel = CCLabelTTF::create(scoreText, "Action Man", LABEL_FONT_SIZE);
+  
+  //add game buttons
   CCMenuItemImage* gameLogo = CCMenuItemImage::create("text_you_lose.png", "text_you_lose.png", this, NULL);
+  CCMenuItemLabel* scoreImage = CCMenuItemLabel::create(scoreLabel, this, NULL);
   CCMenuItemImage* playButton = CCMenuItemImage::create("play_again_button.png", "play_again_button_pressed.png",
                                                         this, menu_selector(LossScene::playButtonCallback));
   CCMenuItemImage* statsButton = CCMenuItemImage::create("stats_button.png", "stats_button_pressed.png",
                                                          this, menu_selector(LossScene::statsButtonCallback));
-  CCMenu* buttonMenu = CCMenu::create(gameLogo, playButton, statsButton, NULL);
+  CCMenu* buttonMenu = CCMenu::create(gameLogo, scoreImage, playButton, statsButton, NULL);
   buttonMenu->alignItemsVerticallyWithPadding(15);
-  buttonMenu->setPosition(ccp(windowSize.width/2, windowSize.height/1.75));
+  buttonMenu->setPosition(ccp(windowSize.width/2, windowSize.height/1.85));
   this->addChild(buttonMenu, ZIndexButtonMenu);
   
   this->setTouchEnabled(true);
