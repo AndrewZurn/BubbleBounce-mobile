@@ -44,12 +44,8 @@ PlayGameSingleton& PlayGameSingleton::sharedInstance()
 #pragma mark - Single Leaderboard
 void PlayGameSingleton::showSingleLeaderboard(const char* leaderBoardID)
 {
-  
   if(!isSignedIn())
-  {
     authenticate();
-    return;
-  }
   
   if(!viewSingleLeaderboard)
     viewSingleLeaderboard = [[ViewSingleLeaderboard alloc] init];
@@ -60,39 +56,23 @@ void PlayGameSingleton::showSingleLeaderboard(const char* leaderBoardID)
   if(!rootController)
     rootController = window.rootViewController;
   
-  [((UIViewController *) rootController).view addSubview: viewSingleLeaderboard.view];
+  [window addSubview:viewSingleLeaderboard.view];
   
-  /*
-   // Set RootViewController to window
-   if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0)
-   {
-   // warning: addSubView doesn't work on iOS6
-   [window addSubview: viewSingleLeaderboard.view];
-   } else {
-   // use this method on ios6
-   // [window setRootViewController:viewSingleLeaderboard];
-   [window addSubview: viewSingleLeaderboard.view];
-   }
-   */
   [viewSingleLeaderboard showLeaderboard:[NSString stringWithUTF8String:leaderBoardID]];
   
 }
 
 void PlayGameSingleton::finishSingleLeaderboard()
 {
-  // UIWindow *window =  [[UIApplication sharedApplication] keyWindow];
-  // if (!rootController)
-  //rootController = window.rootViewController;
+  UIWindow *window =  [[UIApplication sharedApplication] keyWindow];
+  if (!rootController)
+    rootController = window.rootViewController;
   
-  // if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0) {
   [viewSingleLeaderboard.view removeFromSuperview];
-  // }
-  
   [viewSingleLeaderboard release];
   viewSingleLeaderboard = 0;
   
-  // [window setRootViewController:(UIViewController *)rootController];
-  
+  [window setRootViewController:(UIViewController *)rootController];
 }
 
 #pragma mark - Leaderboards Picker
@@ -114,22 +94,26 @@ void PlayGameSingleton::showLeaderboards()
   if(!rootController)
     rootController = window.rootViewController;
   
-  [((UIViewController *) rootController).view addSubview: viewLeaderboardPicker.view];
-  
+  [window addSubview:viewLeaderboardPicker.view];
   [viewLeaderboardPicker showLeaderboards];
 }
 
 void PlayGameSingleton::finishLeaderboards()
 {
+  UIWindow *window =  [[UIApplication sharedApplication] keyWindow];
+  
+  if(!rootController)
+    rootController = window.rootViewController;
+  
   [viewLeaderboardPicker.view removeFromSuperview];
   [viewLeaderboardPicker release];
   viewLeaderboardPicker = 0;
+  [window setRootViewController:(UIViewController *)rootController];
 }
 
 #pragma mark - Submit score
 void PlayGameSingleton::submitScore(long score, const char *leaderBoardID)
 {
-  
   if(!isSignedIn())
     return;
   
@@ -156,6 +140,7 @@ void PlayGameSingleton::submitScore(long score, const char *leaderBoardID)
   
 }
 
+
 #pragma mark - Achievements
 void PlayGameSingleton::showAchievements()
 {
@@ -175,16 +160,24 @@ void PlayGameSingleton::showAchievements()
   if(!rootController)
     rootController = window.rootViewController;
   
-  [((UIViewController *) rootController).view addSubview: viewAchiemevents.view];
+  // [((UIViewController *) rootController).view addSubview: viewAchiemevents.view];
+  [window addSubview:viewAchiemevents.view];
   
   [viewAchiemevents showAchievements];
 }
 
 void PlayGameSingleton::finishAchievements()
 {
+  UIWindow *window =  [[UIApplication sharedApplication] keyWindow];
+  
+  if(!rootController)
+    rootController = window.rootViewController;
+  
   [viewAchiemevents.view removeFromSuperview];
   [viewAchiemevents release];
   viewAchiemevents = 0;
+  
+  [window setRootViewController:(UIViewController *)rootController];
 }
 
 #pragma mark - Manage achievements

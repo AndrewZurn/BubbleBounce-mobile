@@ -16,7 +16,8 @@
 
 USING_NS_CC;
 
-static int STARTING_BALLS = 10;
+static int STARTING_BALLS = 12;
+int ballId = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Adds the first scene layer to this scene.
@@ -128,9 +129,9 @@ void FirstScene::handleBallTouch(cocos2d::CCTouch *touch) {
 // create the second ball, and add both of them to the ball array.
 //////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::createNewBalls() {
-  Ball* firstBall = Ball::createBall(_ballArray, 0, "");
+  Ball* firstBall = Ball::createBall(_ballArray, ballId++, "");
   firstBall->setProgressBarHeight(0);
-  Ball* secondBall = Ball::createBall(_ballArray, 0, firstBall->getOriginalBallImage());
+  Ball* secondBall = Ball::createBall(_ballArray, ballId++, firstBall->getOriginalBallImage());
   secondBall->setProgressBarHeight(0);
   
   _ballArray.push_back(firstBall);
