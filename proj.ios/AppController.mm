@@ -27,16 +27,17 @@ static AppDelegate s_sharedApplication;
   GPPSignIn* signIn = [GPPSignIn sharedInstance];
   signIn.clientID = [NSString stringWithUTF8String:kClientID];
   signIn.scopes = [NSArray arrayWithObjects:
-                          @"https://www.googleapis.com/auth/games",
-                          @"https://www.googleapis.com/auth/appstate",
-                          nil];
+                   @"https://www.googleapis.com/auth/games",
+                   @"https://www.googleapis.com/auth/appstate",
+                   nil];
   signIn.language = [[NSLocale preferredLanguages] objectAtIndex:0];
   signIn.delegate = self;
   signIn.shouldFetchGoogleUserID = YES;
   
   [GPGManager sharedInstance].achievementUnlockedToastPlacement = kGPGToastPlacementTop;
   
-  if( !PlayGameSingleton::sharedInstance().isSignedIn() ) {
+  if(!PlayGameSingleton::sharedInstance().isSignedIn())
+  {
     PlayGameSingleton::sharedInstance().trySilentAuthentication();
     [NSThread detachNewThreadSelector:@selector(playServicesAuthenticate) toTarget:self withObject:nil];
   }
@@ -150,15 +151,18 @@ static AppDelegate s_sharedApplication;
 
 - (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error
 {
-  NSLog(@"Finished with auth...");
+  NSLog(@"Finished with auth.");
+  //if (error == nil && auth) {
+  //NSLog(@"Success signing in to Google! Auth object is %@", auth);
   
   if (error.code == 0 && auth) {
     NSLog(@"Success signing in to Google! Auth object is %@", auth);
     
+    // Tell your GPGManager that you're ready to go.
     [self startGoogleGamesSignIn];
-  }
-  else {
-    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@", error, auth);
+    
+  } else {
+    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@",error,auth);
   }
 }
 
@@ -175,6 +179,5 @@ static AppDelegate s_sharedApplication;
                      [[GPPSignIn sharedInstance] authenticate];
                    }];
 }
-
 
 @end

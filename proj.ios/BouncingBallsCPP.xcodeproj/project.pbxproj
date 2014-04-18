@@ -236,6 +236,7 @@
 		379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* GUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* SceneReader.cpp */; };
 		46513EB1187BFBA200B5ABE1 /* UITouchGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */; };
+		4918A35B1901607800CEC6D9 /* JNIHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4918A3591901607800CEC6D9 /* JNIHelpers.cpp */; };
 		492B230818F35A3C003742A0 /* play_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B230518F35A3C003742A0 /* play_button_pressed.png */; };
 		492B230918F35A3C003742A0 /* stats_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B230618F35A3C003742A0 /* stats_button_pressed.png */; };
 		492B230A18F35A3C003742A0 /* stats_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B230718F35A3C003742A0 /* stats_button.png */; };
@@ -245,7 +246,6 @@
 		492B231918F495D1003742A0 /* play_again_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B231718F495D1003742A0 /* play_again_button_pressed.png */; };
 		492B231A18F495D1003742A0 /* play_again_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B231818F495D1003742A0 /* play_again_button.png */; };
 		492B232018F8A890003742A0 /* NativeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 492B231F18F8A890003742A0 /* NativeUtils.cpp */; };
-		492B232418F8A9FF003742A0 /* GooglePlayGameServicesIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 492B232318F8A9FF003742A0 /* GooglePlayGameServicesIOS.mm */; };
 		492B232718F8AA4A003742A0 /* PlayGameSingleton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 492B232618F8AA4A003742A0 /* PlayGameSingleton.mm */; };
 		492B232A18F8AAC7003742A0 /* ViewAchievements.mm in Sources */ = {isa = PBXBuildFile; fileRef = 492B232918F8AAC7003742A0 /* ViewAchievements.mm */; };
 		492B232D18F8AB0D003742A0 /* ViewLeaderboardPicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 492B232C18F8AB0D003742A0 /* ViewLeaderboardPicker.mm */; };
@@ -802,6 +802,8 @@
 		379BB99417F03F3700829B88 /* SceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneReader.h; sourceTree = "<group>"; };
 		46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITouchGroup.cpp; sourceTree = "<group>"; };
 		46513EB0187BFBA200B5ABE1 /* UITouchGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchGroup.h; sourceTree = "<group>"; };
+		4918A3591901607800CEC6D9 /* JNIHelpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JNIHelpers.cpp; path = ../Classes/JNIHelpers.cpp; sourceTree = "<group>"; };
+		4918A35A1901607800CEC6D9 /* JNIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JNIHelpers.h; path = ../Classes/JNIHelpers.h; sourceTree = "<group>"; };
 		492B230518F35A3C003742A0 /* play_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button_pressed.png; sourceTree = "<group>"; };
 		492B230618F35A3C003742A0 /* stats_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_button_pressed.png; sourceTree = "<group>"; };
 		492B230718F35A3C003742A0 /* stats_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_button.png; sourceTree = "<group>"; };
@@ -812,8 +814,6 @@
 		492B231818F495D1003742A0 /* play_again_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_again_button.png; sourceTree = "<group>"; };
 		492B231E18F8A869003742A0 /* NativeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeUtils.h; sourceTree = "<group>"; };
 		492B231F18F8A890003742A0 /* NativeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeUtils.cpp; sourceTree = "<group>"; };
-		492B232118F8A9B2003742A0 /* GooglePlayGameServicesIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlayGameServicesIOS.h; sourceTree = SOURCE_ROOT; };
-		492B232318F8A9FF003742A0 /* GooglePlayGameServicesIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GooglePlayGameServicesIOS.mm; sourceTree = SOURCE_ROOT; };
 		492B232518F8AA28003742A0 /* PlayGameSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayGameSingleton.h; sourceTree = SOURCE_ROOT; };
 		492B232618F8AA4A003742A0 /* PlayGameSingleton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayGameSingleton.mm; sourceTree = SOURCE_ROOT; };
 		492B232818F8AA9A003742A0 /* ViewAchievements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewAchievements.h; sourceTree = SOURCE_ROOT; };
@@ -2042,8 +2042,6 @@
 				492B233418F8ABFC003742A0 /* GooglePlus.bundle */,
 				492B233518F8ABFC003742A0 /* GooglePlus.framework */,
 				492B233318F8ABFC003742A0 /* GooglePlayGames.framework */,
-				492B232118F8A9B2003742A0 /* GooglePlayGameServicesIOS.h */,
-				492B232318F8A9FF003742A0 /* GooglePlayGameServicesIOS.mm */,
 			);
 			name = GoogleFramework;
 			sourceTree = "<group>";
@@ -2142,6 +2140,8 @@
 		49F3BFEB18F9087500728CF6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4918A3591901607800CEC6D9 /* JNIHelpers.cpp */,
+				4918A35A1901607800CEC6D9 /* JNIHelpers.h */,
 				492B231E18F8A869003742A0 /* NativeUtils.h */,
 				492B231F18F8A890003742A0 /* NativeUtils.cpp */,
 			);
@@ -2396,7 +2396,6 @@
 				15A3D99A1682F7F9002FB0C5 /* cpGearJoint.c in Sources */,
 				15A3D99B1682F7F9002FB0C5 /* cpGrooveJoint.c in Sources */,
 				15A3D99C1682F7F9002FB0C5 /* cpPinJoint.c in Sources */,
-				492B232418F8A9FF003742A0 /* GooglePlayGameServicesIOS.mm in Sources */,
 				15A3D99D1682F7F9002FB0C5 /* cpPivotJoint.c in Sources */,
 				15A3D99E1682F7F9002FB0C5 /* cpRatchetJoint.c in Sources */,
 				15A3D99F1682F7F9002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
@@ -2544,6 +2543,7 @@
 				379BB9AE17F03F3700829B88 /* CCComAudio.cpp in Sources */,
 				379BB9AF17F03F3700829B88 /* CCComController.cpp in Sources */,
 				379BB9B017F03F3700829B88 /* CCComRender.cpp in Sources */,
+				4918A35B1901607800CEC6D9 /* JNIHelpers.cpp in Sources */,
 				379BB9B117F03F3700829B88 /* CCInputDelegate.cpp in Sources */,
 				379BB9B317F03F3700829B88 /* UIWidget.cpp in Sources */,
 				379BB9B417F03F3700829B88 /* UILayout.cpp in Sources */,

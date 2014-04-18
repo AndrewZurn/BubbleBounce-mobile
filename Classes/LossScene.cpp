@@ -9,6 +9,8 @@
 #include "LossScene.h"
 #include "Constants.h"
 #include "GameScene.h"
+#include "NativeUtils.h"
+#include "PlayGameConstants.h"
 
 USING_NS_CC;
 
@@ -82,5 +84,6 @@ void LossScene::playButtonCallback(CCObject* pSender) {
 // and then starts RankingsScene to to view the stats.
 //////////////////////////////////////////////////////////////////////////////////////////
 void LossScene::statsButtonCallback(CCObject* pSender) {
-  std::cout << "STATS STATS AND MORE STATS!" << std::endl;
+  NativeUtils::submitScore(LEADERBOARD, _score);
+  NativeUtils::showLeaderboards();
 }
