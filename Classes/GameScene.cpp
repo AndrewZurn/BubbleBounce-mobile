@@ -17,7 +17,7 @@ USING_NS_CC;
 
 int nextBallId = 0;
 static int STARTING_BALLS = 12;
-static int TIME_INTERVAL = 3750;
+int time_interval = 3750;
 static int LABEL_FONT_SIZE = 65;
 static int BALL_COUNT_CEILING = 30;
 static int PROGRESS_OFFSET_Y = 50;
@@ -116,6 +116,7 @@ void GameScene::GameUpdate() {
         _progressBar->setPercentage(((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
       }
       increaseAddBallCount();
+      time_interval = time_interval - 50;
       
       //remove the GO! image from the screen
       if ( _goTextImage != NULL ) {
@@ -268,7 +269,7 @@ bool GameScene::didTimeElapse() {
   long currentTime = getCurrentTime();
   long lastElapsedTime = _lastElapsedTime;
   
-  if ( currentTime - lastElapsedTime > TIME_INTERVAL ) {
+  if ( currentTime - lastElapsedTime > time_interval ) {
     _lastElapsedTime = getCurrentTime();
     return true;
   }
