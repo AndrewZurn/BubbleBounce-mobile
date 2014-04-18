@@ -129,7 +129,9 @@ void FirstScene::handleBallTouch(cocos2d::CCTouch *touch) {
 //////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::createNewBalls() {
   Ball* firstBall = Ball::createBall(_ballArray, 0, "");
+  firstBall->setProgressBarHeight(0);
   Ball* secondBall = Ball::createBall(_ballArray, 0, firstBall->getOriginalBallImage());
+  secondBall->setProgressBarHeight(0);
   
   _ballArray.push_back(firstBall);
   _ballArray.push_back(secondBall);

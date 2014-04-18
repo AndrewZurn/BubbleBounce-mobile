@@ -10,7 +10,7 @@ import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.util.Log;
 
-import com.zurn.cc2dx.bouncingball.R;
+import com.zurn.cc2dx.bouncingballs.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.games.GamesActivityResultCodes;
 

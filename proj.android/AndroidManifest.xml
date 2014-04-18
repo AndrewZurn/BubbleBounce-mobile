@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zurn.cc2dx.bouncingball"
+    package="com.zurn.cc2dx.bouncingballs"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -46,7 +46,7 @@
         <!-- End here requirement for Google Play Services -->
 
         <activity
-            android:name="com.zurn.cc2dx.bouncingball.BouncingBallsCPP"
+            android:name="com.zurn.cc2dx.bouncingballs.BouncingBallsCPP"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait"

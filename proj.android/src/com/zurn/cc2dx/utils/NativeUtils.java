@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
 
-import com.zurn.cc2dx.bouncingball.R;
+import com.zurn.cc2dx.bouncingballs.R;
 import com.google.android.gms.games.Games;
 
 public class NativeUtils {

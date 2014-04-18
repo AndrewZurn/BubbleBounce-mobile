@@ -17,9 +17,11 @@ USING_NS_CC;
 
 int nextBallId = 0;
 static int STARTING_BALLS = 12;
-static int TIME_INTERVAL = 4000;
+static int TIME_INTERVAL = 3750;
 static int LABEL_FONT_SIZE = 65;
 static int BALL_COUNT_CEILING = 30;
+static int PROGRESS_OFFSET_Y = 50;
+static int PROGRESS_OFFSET_X = 325;
 int addMoreBallsCount = 4;
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -53,12 +55,6 @@ bool GameScene::init() {
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   this->addChild(background, ZIndexBackground);
   
-  //add initial balls
-  _ballArray = *new std::vector<Ball*>();
-  for (int i = 0; i < STARTING_BALLS / 2; i++) {
-    createNewBalls();
-  }
-  
   //add score label
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
@@ -74,7 +70,7 @@ bool GameScene::init() {
     _progressBar->setMidpoint(ccp(0,0));
     _progressBar->setBarChangeRate(ccp(1, 0));
     _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
-    _progressBar->setPosition(ccp(325, 50));
+    _progressBar->setPosition(ccp(PROGRESS_OFFSET_X, PROGRESS_OFFSET_Y));
     this->addChild(_progressBar, ZIndexProgressBar);
   }
   
@@ -82,6 +78,12 @@ bool GameScene::init() {
   _goTextImage = CCMenuItemImage::create("text_go.png", "text_go.png", this, NULL);
   _goTextImage->setPosition(ccp(windowSize.width/2, windowSize.height/2));
   this->addChild(_goTextImage, ZIndexGoImage);
+  
+  //add initial balls
+  _ballArray = *new std::vector<Ball*>();
+  for (int i = 0; i < STARTING_BALLS / 2; i++) {
+    createNewBalls();
+  }
   
   //setup game scheduling/handling/other attributes
   this->_gameOver = false;
@@ -230,7 +232,9 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::createNewBalls() {
   Ball* firstBall = Ball::createBall(_ballArray, nextBallId++, "");
+  firstBall->setProgressBarHeight(_progressBar->getSprite()->getTexture()->getPixelsHigh() + PROGRESS_OFFSET_Y/2);
   Ball* secondBall = Ball::createBall(_ballArray, nextBallId++, firstBall->getOriginalBallImage());
+  secondBall->setProgressBarHeight(_progressBar->getSprite()->getTexture()->getPixelsHigh() + PROGRESS_OFFSET_Y/2);
   
   _ballArray.push_back(firstBall);
   _ballArray.push_back(secondBall);

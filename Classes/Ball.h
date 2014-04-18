@@ -28,6 +28,7 @@ private:
   //game attributes
   int _displayWidth;
   int _displayHeight;
+  int _progressBarHeight;
   int _speed;
   
   //methods used within Ball to update various fields
@@ -68,6 +69,7 @@ public:
   std::vector<Ball*> getCollisionArray() { return _collisionArray; }
   int getDisplayWidth() { return _displayWidth; }
   int getDisplayHeight() { return _displayHeight; }
+  int getProgressBarHeight() { return _progressBarHeight; }
   const char* getSelectedBallImage() { return _ballSelected; }
   const char* getOriginalBallImage() { return _ball; }
   int getBallId() { return _ballId; }
@@ -79,6 +81,7 @@ public:
   void setYVelocity(int yVelocity) { _yVelocity = yVelocity; }
   void setDisplayHeight(int displayHeight) { _displayHeight = displayHeight; }
   void setDisplayWidth(int displayWidth) { _displayWidth = displayWidth; }
+  void setProgressBarHeight(int progressBarHeight) { _progressBarHeight = progressBarHeight; }
   void setBallColor(const char* ballColor) { _ballColor = ballColor; }
   void setBall(const char* ball) { _ball = ball; };
   void setBallSelected(const char* ballSelected) { _ballSelected = ballSelected; }
