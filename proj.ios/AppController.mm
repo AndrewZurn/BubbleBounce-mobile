@@ -25,7 +25,7 @@ static AppDelegate s_sharedApplication;
   // Override point for customization after application launch.
   
   GPPSignIn* signIn = [GPPSignIn sharedInstance];
-  signIn.clientID = [NSString stringWithUTF8String:kClientID];
+  signIn.clientID = [NSString stringWithUTF8String:applicationID];
   signIn.scopes = [NSArray arrayWithObjects:
                    @"https://www.googleapis.com/auth/games",
                    @"https://www.googleapis.com/auth/appstate",
@@ -39,7 +39,7 @@ static AppDelegate s_sharedApplication;
   if(!PlayGameSingleton::sharedInstance().isSignedIn())
   {
     PlayGameSingleton::sharedInstance().trySilentAuthentication();
-    [NSThread detachNewThreadSelector:@selector(playServicesAuthenticate) toTarget:self withObject:nil];
+    //[NSThread detachNewThreadSelector:@selector(playServicesAuthenticate) toTarget:self withObject:nil];
   }
 
   

@@ -122,6 +122,7 @@ void NativeUtils::showLeaderboards()
 #endif
   
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  std::cout << "in iOS" << std::endl;
   PlayGameSingleton::sharedInstance().showLeaderboards();
 #endif
   

@@ -78,7 +78,7 @@ void Ball::detectCollisions(std::vector<Ball*> ballList) {
   for(iterator = ballList.begin(); iterator != ballList.end(); iterator++) {
     Ball* ball = (Ball*) (*iterator);
     
-    if ( this->getBallId() == ball->getBallId() ) { continue; }
+    if ( this->getBallId() == ball->getBallId() ) { continue; } //must continue, do not change
     
     if ( this->boundingBox().intersectsRect(ball->boundingBox()) ) {
       
@@ -88,7 +88,9 @@ void Ball::detectCollisions(std::vector<Ball*> ballList) {
         if ( collisionArray.empty() && otherCollisionArray.empty() ) {
           calculateNewVelocities(this, ball);
           collisionArray.push_back(ball);
+          otherCollisionArray.push_back(this);
           this->setCollisionArray(collisionArray);
+          ball->setCollisionArray(otherCollisionArray);
         }
       }
       else { //once the balls are not colliding, clear the collision array

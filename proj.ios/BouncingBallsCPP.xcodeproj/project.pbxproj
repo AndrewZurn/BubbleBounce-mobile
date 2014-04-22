@@ -1416,8 +1416,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
-				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
+				49D728E01905BB7100D62EAC /* Delegates */,
 				49F3BFE918F9085D00728CF6 /* Ball */,
 				49F3BFEA18F9086900728CF6 /* Constants */,
 				49F3BFE818F9084D00728CF6 /* Scenes */,
@@ -2104,6 +2103,15 @@
 				492B232F18F8AB53003742A0 /* ViewSingleLeaderboard.mm */,
 			);
 			name = Leaderboards;
+			sourceTree = "<group>";
+		};
+		49D728E01905BB7100D62EAC /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
+				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 		49F3BFE818F9084D00728CF6 /* Scenes */ = {
