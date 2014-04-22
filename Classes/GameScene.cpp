@@ -248,7 +248,7 @@ void GameScene::increaseAddBallCount() {
   double random = ((double) rand() / (RAND_MAX)); //number between 0 and 1
   
   if ( random <= 0.33 ) {
-    addMoreBallsCount = 6;
+    addMoreBallsCount--;
   }
   else if ( random <= 0.66 ) {
     addMoreBallsCount++;
