@@ -25,11 +25,14 @@ private:
   cocos2d::CCMenuItemImage* _goTextImage;
   
   void CountdownToStart();
+  void removeGoLabel();
   void GameUpdate();
+  void updateBallPositions();
+  void updateGameScore();
   void createNewBalls();
   void popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
-  void increaseAddBallCount();
-  void reset();
+  void increaseGameDifficulty();
+  void resetGame();
   
   long _lastElapsedTime;
   bool didTimeElapse();

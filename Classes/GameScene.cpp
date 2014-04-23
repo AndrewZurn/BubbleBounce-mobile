@@ -102,7 +102,7 @@ bool GameScene::init() {
 // the game will be over.
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::GameUpdate() {
-  if (_gameOver == false) {
+  if ( !_gameOver ) {
     
     //if too many balls on the screen, game over
     if (_ballArray.size() >= BALL_COUNT_CEILING ) {
@@ -110,44 +110,21 @@ void GameScene::GameUpdate() {
     }
     else if ( didTimeElapse() ) {
       
-      //add new balls to the screen
-      for (int i = 0; i < addMoreBallsCount / 2; i++) {
-        createNewBalls();
-        _progressBar->setPercentage(((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
-      }
-      increaseAddBallCount();
-      time_interval = time_interval - 50;
+      increaseGameDifficulty();
       
-      //Remove the GO! image from the screen
-      if ( _goTextImage != NULL ) {
-        CCAction* fadeOut = CCFadeOut::create(0.25);
-        _goTextImage->runAction(fadeOut);
-        _goTextImage = NULL;
-      }
+      //Remove the GO! image from the screen (if it hasn't already).
+      removeGoLabel();
     }
     
     //Update all the balls positions (animate the balls)
-    std::vector<Ball*>::iterator iterator;
-    for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
-      Ball* ball = *iterator;
-      ball->updateBallPositions(_ballArray);
-      _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
-    }
+    updateBallPositions();
     
   }
   else { //GAME OVER
-    std::vector<Ball*>::iterator iterator;
-    for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
-      Ball* ball = *iterator;
-      this->removeChild(ball);
-      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
-    }
-    _ballArray.clear();
-    
-    reset();
     CCScene* lossScene = LossScene::scene(_score);
     CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(2, lossScene));
     CCDirector::sharedDirector()->retain();
+    resetGame();
   }
 }
 
@@ -171,13 +148,13 @@ void GameScene::ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *event
 //////////////////////////////////////////////////////////////////////////////////////////
 //  Handles the touching of a ball.
 //  If the ball was already the previously selected ball then do nothing.
-//  Else if it wasn't touched, and the ball colors are equal then remove them.
+//  Else if its a valid other ball, and the ball colors are equal then remove them.
 //    Else if they don't compare then deselect them and remove any holding of
 //    the selected ball information.
 //  Then update the score of the screen.
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
-  
+
   std::vector<Ball*>::iterator i;
   Ball* ball;
   for( i = _ballArray.begin(); i != _ballArray.end(); i++) {
@@ -189,17 +166,15 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
     }
     
     if ( ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch)) ) {
-      
-      //if no ball was previously touched
-      if ( this->getSelectedBall() == NULL ) {
+      if ( this->getSelectedBall() == NULL ) { //if no ball was previously touched
         ball->changeBallImage();
         this->setSelectedBall(ball);
         break;
       }
       else { //a ball was previously touched
         if ( ball->compareColor(this->getSelectedBall()) ) {
-          _score++;
-          popBall(ball, i);
+          updateGameScore();
+          popBalls(ball, i);
           break;
         }
         else{ //the colors don't match
@@ -210,9 +185,6 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       }
     }
   }
-  char scoreText[10];
-  sprintf(scoreText, "Score: %d", _score);
-  _scoreLabel->setString(scoreText);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -232,9 +204,27 @@ void GameScene::createNewBalls() {
   this->addChild(secondBall, ZIndexBalls);
 }
 
-void GameScene::increaseAddBallCount() {
-  double random = ((double) rand() / (RAND_MAX)); //number between 0 and 1
+void GameScene::updateBallPositions() {
+  std::vector<Ball*>::iterator iterator;
+  for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
+    Ball* ball = *iterator;
+    ball->updateBallPositions(_ballArray);
+    _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Randomly add to the addMoreBallsCount variable.
+// Can subtract 1, add 1, or add 2 to the current count.
+// Also subtract 50ms from the interval time.
+//////////////////////////////////////////////////////////////////////////////////////////
+void GameScene::increaseGameDifficulty() {
+  for (int i = 0; i < addMoreBallsCount / 2; i++) {
+    createNewBalls();
+    _progressBar->setPercentage(((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
+  }
   
+  double random = ((double) rand() / (RAND_MAX)); //number between 0 and 1
   if ( random <= 0.33 ) {
     addMoreBallsCount--;
   }
@@ -247,8 +237,14 @@ void GameScene::increaseAddBallCount() {
   else {
     addMoreBallsCount++;
   }
+  
+  time_interval = time_interval - 50;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Given a ball and it's position in the ballArray, pop that ball,
+// and it's corresponding selectedBall, and remove it from the ballArray.
+//////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
   
@@ -291,7 +287,32 @@ long GameScene::getCurrentTime() {
   return (time.tv_sec * 1000) + (time.tv_usec / 1000);
 }
 
-void GameScene::reset() {
+void GameScene::resetGame() {
+  std::vector<Ball*>::iterator iterator;
+  for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
+    Ball* ball = *iterator;
+    this->removeChild(ball);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
+  }
+  _ballArray.clear();
+
+  nextBallId = 0;
+  _score = 0;
   addMoreBallsCount = 4;
   time_interval = 3750;
+}
+
+void GameScene::removeGoLabel() {
+  if ( _goTextImage != NULL ) {
+    CCAction* fadeOut = CCFadeOut::create(0.25);
+    _goTextImage->runAction(fadeOut);
+    _goTextImage = NULL;
+  }
+}
+
+void GameScene::updateGameScore() {
+  _score++;
+  char scoreText[10];
+  sprintf(scoreText, "Score: %d", _score);
+  _scoreLabel->setString(scoreText);
 }

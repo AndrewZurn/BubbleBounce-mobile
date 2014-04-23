@@ -137,6 +137,9 @@ void FirstScene::createNewBalls() {
   this->addChild(secondBall, ZIndexBalls);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Given a ball and it's position in the ballArray, pop that ball.
+//////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
   
