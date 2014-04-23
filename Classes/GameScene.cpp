@@ -118,7 +118,7 @@ void GameScene::GameUpdate() {
       increaseAddBallCount();
       time_interval = time_interval - 50;
       
-      //remove the GO! image from the screen
+      //Remove the GO! image from the screen
       if ( _goTextImage != NULL ) {
         CCAction* fadeOut = CCFadeOut::create(0.25);
         _goTextImage->runAction(fadeOut);
@@ -126,7 +126,7 @@ void GameScene::GameUpdate() {
       }
     }
     
-    //update all the balls positions (animate the balls)
+    //Update all the balls positions (animate the balls)
     std::vector<Ball*>::iterator iterator;
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
       Ball* ball = *iterator;
@@ -135,7 +135,7 @@ void GameScene::GameUpdate() {
     }
     
   }
-  else { //game over
+  else { //GAME OVER
     std::vector<Ball*>::iterator iterator;
     for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
       Ball* ball = *iterator;
@@ -184,7 +184,7 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
     ball = (Ball *) (*i);
     
     //the tapped ball was the already selected ball
-    if (ball->getState() == BallSelected) {
+    if (ball->getState() == BallSelected) { //do not change
       continue; //should continue to the end
     }
     
@@ -199,20 +199,7 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       else { //a ball was previously touched
         if ( ball->compareColor(this->getSelectedBall()) ) {
           _score++;
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
-          
-          this->removeChild(ball);
-          this->removeChild(this->getSelectedBall());
-          _ballArray.erase(i);
-          std::vector<Ball*>::iterator j;  //find and erase the other ball
-          for (j = _ballArray.begin(); j != _ballArray.end(); j++) {
-            Ball* otherBall = (Ball*) (*j);
-            if ( otherBall->getBallId() == this->getSelectedBall()->getBallId() ) {
-              _ballArray.erase(j);
-              break;
-            }
-          }
-          this->setSelectedBall(NULL);
+          popBall(ball, i);
           break;
         }
         else{ //the colors don't match
@@ -260,6 +247,24 @@ void GameScene::increaseAddBallCount() {
   else {
     addMoreBallsCount++;
   }
+}
+
+void GameScene::popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
+  
+  this->removeChild(ball);
+  this->removeChild(this->getSelectedBall());
+  
+  _ballArray.erase(indexOfBall);
+  std::vector<Ball*>::iterator j;  //find and erase the other ball
+  for (j = _ballArray.begin(); j != _ballArray.end(); j++) {
+    Ball* otherBall = (Ball*) (*j);
+    if ( otherBall->getBallId() == this->getSelectedBall()->getBallId() ) {
+      _ballArray.erase(j);
+      break;
+    }
+  }
+  this->setSelectedBall(NULL);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
