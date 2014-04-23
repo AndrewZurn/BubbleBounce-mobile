@@ -249,7 +249,7 @@ void GameScene::increaseAddBallCount() {
   }
 }
 
-void GameScene::popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
+void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
   
   this->removeChild(ball);

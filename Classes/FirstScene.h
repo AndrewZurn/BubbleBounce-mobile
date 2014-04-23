@@ -19,6 +19,7 @@ private:
   
   void GameUpdate();
   void createNewBalls();
+  void popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
   void playButtonCallback(CCObject* pSender);
   void statsButtonCallback(CCObject* pSender);
 public:

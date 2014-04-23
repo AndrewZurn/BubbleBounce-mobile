@@ -114,11 +114,7 @@ void FirstScene::handleBallTouch(cocos2d::CCTouch *touch) {
     }
     
     if ( ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch)) ) {
-      this->removeChild(ball);
-      
-      _ballArray.erase(i);
-      
-      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
+      popBall(ball, i);
       break;
     }
   }
@@ -139,6 +135,13 @@ void FirstScene::createNewBalls() {
   
   this->addChild(firstBall, ZIndexBalls);
   this->addChild(secondBall, ZIndexBalls);
+}
+
+void FirstScene::popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
+  
+  this->removeChild(ball);
+  _ballArray.erase(indexOfBall);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

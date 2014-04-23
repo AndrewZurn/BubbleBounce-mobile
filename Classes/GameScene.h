@@ -27,7 +27,7 @@ private:
   void CountdownToStart();
   void GameUpdate();
   void createNewBalls();
-  void popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
+  void popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
   void increaseAddBallCount();
   void reset();
   
