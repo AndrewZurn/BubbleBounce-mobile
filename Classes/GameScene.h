@@ -28,6 +28,7 @@ private:
   void GameUpdate();
   void createNewBalls();
   void increaseAddBallCount();
+  void reset();
   
   long _lastElapsedTime;
   bool didTimeElapse();

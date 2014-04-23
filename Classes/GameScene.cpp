@@ -144,6 +144,7 @@ void GameScene::GameUpdate() {
     }
     _ballArray.clear();
     
+    reset();
     CCScene* lossScene = LossScene::scene(_score);
     CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(2, lossScene));
     CCDirector::sharedDirector()->retain();
@@ -283,4 +284,9 @@ long GameScene::getCurrentTime() {
   timeval time;
   gettimeofday(&time, NULL);
   return (time.tv_sec * 1000) + (time.tv_usec / 1000);
+}
+
+void GameScene::reset() {
+  addMoreBallsCount = 4;
+  time_interval = 3750;
 }
