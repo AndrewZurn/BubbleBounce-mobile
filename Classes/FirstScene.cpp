@@ -109,9 +109,7 @@ void FirstScene::handleBallTouch(cocos2d::CCTouch *touch) {
     ball = (Ball *) (*i);
     
     //the tapped ball was the already selected ball
-    if (ball->getState() == BallSelected) {
-      continue; //should continue to the end
-    }
+    if (ball->getState() == BallSelected) continue; //do not change
     
     if ( ball->boundingBox().containsPoint(this->convertTouchToNodeSpace(touch)) ) {
       popBall(ball, i);

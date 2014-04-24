@@ -286,6 +286,7 @@ long GameScene::getCurrentTime() {
 void GameScene::resetGame() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
   this->removeAllChildren();
+  //this->cleanup(); //using this would stop the multiple ball pops, and would actually make nice trans to next scene
   _ballArray.clear();
 
   nextBallId = 0;

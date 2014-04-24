@@ -11,7 +11,7 @@
 
 
 //ball constants
-#define BallSpeed 1
+#define BallSpeed 2
 #define BallSelected 3
 #define BallNotSelected 4
 
