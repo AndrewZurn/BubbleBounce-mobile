@@ -48,7 +48,7 @@ bool LossScene::init() {
   //setup score label
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
-  CCLabelTTF* scoreLabel = CCLabelTTF::create(scoreText, "Action Man", LABEL_FONT_SIZE);
+  CCLabelTTF* scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt", LABEL_FONT_SIZE);
   
   //add game buttons
   CCMenuItemImage* gameLogo = CCMenuItemImage::create("text_you_lose.png", "text_you_lose.png", this, NULL);
