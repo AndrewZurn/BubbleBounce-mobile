@@ -31,17 +31,9 @@ public class NativeUtils {
 		return instance;
 	}
 
-	/**
-	 * Configura los datos iniciales para comunicar los eventos de aquí a
-	 * cocos2d-x.
-	 */
 	public static void configure(Context context) {
 		NativeUtils.context = context;
 		NativeUtils.app = (UtilActivity) NativeUtils.context;
-
-		if (ConfigUtils.IS_OUYA_APP) {
-			OuyaController.init(NativeUtils.context);
-		}
 	}
 
 	/**

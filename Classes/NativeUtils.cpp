@@ -3,7 +3,7 @@
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include <jni.h>
 #include <android/log.h>
-#define CLASS_NAME "com/carlospinan/utils/NativeUtils"
+#define CLASS_NAME "com/zurn/cc2dx/utils/NativeUtils"
 #endif
 
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)

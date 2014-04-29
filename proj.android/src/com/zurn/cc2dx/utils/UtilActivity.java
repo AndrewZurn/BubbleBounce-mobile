@@ -232,7 +232,7 @@ public class UtilActivity extends BaseGameActivity {
 	 * Cocos2d-x Library
 	 */
 	static {
-		System.loadLibrary(“cocos2dcpp”);
+		System.loadLibrary("game");
 	}
 
 }
