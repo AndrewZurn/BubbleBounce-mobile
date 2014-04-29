@@ -264,6 +264,7 @@
 		4944493D190FDDAA00346D31 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49444939190FDDA900346D31 /* CoreTelephony.framework */; };
 		4944493E190FDDAA00346D31 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4944493A190FDDA900346D31 /* MessageUI.framework */; };
 		4944493F190FDDAA00346D31 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4944493B190FDDA900346D31 /* StoreKit.framework */; };
+		49444943190FE19500346D31 /* AdMobBannerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49444942190FE19500346D31 /* AdMobBannerView.mm */; };
 		496AB94D18F904A8008A42E1 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94318F904A8008A42E1 /* AddressBook.framework */; };
 		496AB94E18F904A8008A42E1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94418F904A8008A42E1 /* AssetsLibrary.framework */; };
 		496AB94F18F904A8008A42E1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94518F904A8008A42E1 /* CoreData.framework */; };
@@ -852,6 +853,8 @@
 		49444939190FDDA900346D31 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4944493A190FDDA900346D31 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4944493B190FDDA900346D31 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		49444941190FE15E00346D31 /* AdMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMobBannerView.h; sourceTree = SOURCE_ROOT; };
+		49444942190FE19500346D31 /* AdMobBannerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdMobBannerView.mm; sourceTree = SOURCE_ROOT; };
 		496AB94318F904A8008A42E1 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		496AB94418F904A8008A42E1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		496AB94518F904A8008A42E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -950,6 +953,7 @@
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				49444940190FE12400346D31 /* AdMob */,
 				49CF9CC218F8D9CD00EFDE7E /* Achievements */,
 				49CF9CC318F8D9D900EFDE7E /* Leaderboards */,
 				49CF9CC118F8D9BF00EFDE7E /* PlayGameSingleton */,
@@ -2105,6 +2109,15 @@
 			name = AdMob;
 			sourceTree = "<group>";
 		};
+		49444940190FE12400346D31 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				49444941190FE15E00346D31 /* AdMobBannerView.h */,
+				49444942190FE19500346D31 /* AdMobBannerView.mm */,
+			);
+			name = AdMob;
+			sourceTree = "<group>";
+		};
 		499B8C7D18D9371C000F55E5 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2423,6 +2436,7 @@
 				15A3D9111682F7D5002FB0C5 /* b2Body.cpp in Sources */,
 				15A3D9121682F7D5002FB0C5 /* b2ContactManager.cpp in Sources */,
 				15A3D9131682F7D5002FB0C5 /* b2Fixture.cpp in Sources */,
+				49444943190FE19500346D31 /* AdMobBannerView.mm in Sources */,
 				15A3D9141682F7D5002FB0C5 /* b2Island.cpp in Sources */,
 				15A3D9151682F7D5002FB0C5 /* b2World.cpp in Sources */,
 				15A3D9161682F7D5002FB0C5 /* b2WorldCallbacks.cpp in Sources */,

@@ -23,4 +23,7 @@
 #define ACH_YOU_DA_BOMB "CgkItfqt3b8bEAIQBg"
 #define ACH_BUBBLE_STAR "CgkItfqt3b8bEAIQBw"
 
+//AdMob
+#define MY_BANNER_UNIT_ID "ca-app-pub-7670697324095342/6854420116"
+
 #endif

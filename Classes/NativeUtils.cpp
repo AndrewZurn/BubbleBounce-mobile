@@ -3,7 +3,7 @@
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include <jni.h>
 #include <android/log.h>
-#define CLASS_NAME "com/zurn/cc2dx/utils/NativeUtils"
+#define CLASS_NAME "com/carlospinan/utils/NativeUtils"
 #endif
 
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -117,12 +117,11 @@ void NativeUtils::showLeaderboards()
 {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 	JniHelpers::jniCommonVoidCall(
-                                "showLeaderboards", 
+                                "showLeaderboards",
                                 CLASS_NAME);
 #endif
   
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  std::cout << "in iOS" << std::endl;
   PlayGameSingleton::sharedInstance().showLeaderboards();
 #endif
   
@@ -132,12 +131,45 @@ void NativeUtils::showLeaderboard(const char* leaderboardID)
 {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 	JniHelpers::jniCommonVoidCall(
-                                "showLeaderboard", 
+                                "showLeaderboard",
                                 CLASS_NAME,
                                 leaderboardID);
 #endif
   
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
   PlayGameSingleton::sharedInstance().showSingleLeaderboard(leaderboardID);
+#endif
+}
+
+void NativeUtils::initAd()
+{
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  PlayGameSingleton::sharedInstance().initAd();
+#endif
+}
+
+void NativeUtils::showAd()
+{
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	JniHelpers::jniCommonVoidCall(
+                                "showAd",
+                                CLASS_NAME);
+#endif
+  
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  PlayGameSingleton::sharedInstance().showAd();
+#endif
+}
+
+void NativeUtils::hideAd()
+{
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	JniHelpers::jniCommonVoidCall(
+                                "hideAd",
+                                CLASS_NAME);
+#endif
+  
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  PlayGameSingleton::sharedInstance().hideAd();
 #endif
 }

@@ -44,6 +44,14 @@ public:
 	static void showLeaderboards();
 	static void showLeaderboard(const char* leaderboardID);
   
+  /*
+   * AdMob Integration
+   */
+  
+  static void initAd();
+  static void showAd();
+  static void hideAd();
+  
 	/*
    * Ouya connection
    */
