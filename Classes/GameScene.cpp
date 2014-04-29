@@ -59,8 +59,7 @@ bool GameScene::init() {
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt", LABEL_FONT_SIZE);
-  _scoreLabel->setAnchorPoint(ccp(0,0));
-  _scoreLabel->cocos2d::CCNode::setPosition(ccp(15, windowSize.height - LABEL_FONT_SIZE*1.2));
+  _scoreLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width / 2 , windowSize.height - LABEL_FONT_SIZE));
   this->addChild(_scoreLabel, ZIndexScoreLabel);
   
   //add progress bar
