@@ -38,6 +38,10 @@ public class NativeUtils {
 	public static void configure(Context context) {
 		NativeUtils.context = context;
 		NativeUtils.app = (UtilActivity) NativeUtils.context;
+
+		if (ConfigUtils.IS_OUYA_APP) {
+			OuyaController.init(NativeUtils.context);
+		}
 	}
 
 	/**
@@ -288,6 +292,32 @@ public class NativeUtils {
 							R.string.gamehelper_alert);
 					displayAlert(message);
 				}
+			}
+		});
+	}
+
+	// AdMob
+
+	/*
+	 * Show and Hide AdView
+	 */
+
+	public static void showAd() {
+		app.runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				app.showAd();
+			}
+		});
+	}
+
+	public static void hideAd() {
+		app.runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				app.hideAd();
 			}
 		});
 	}

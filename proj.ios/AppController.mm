@@ -76,6 +76,7 @@ static AppDelegate s_sharedApplication;
   
   [[UIApplication sharedApplication] setStatusBarHidden:true];
   
+  PlayGameSingleton::sharedInstance().initAd();
   cocos2d::CCApplication::sharedApplication()->run();
   
   return YES;

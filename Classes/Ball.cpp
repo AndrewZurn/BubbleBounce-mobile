@@ -50,21 +50,25 @@ void Ball::updateBallPositions(std::vector<Ball*> ballList) {
   this->setX(this->getX() + this->getXVelocity());
   this->setY(this->getY() + this->getYVelocity());
   
+  ////RIGHT SIDE OF SCREEN////
   if (this->getX() + this->getRadius() >= this->getDisplayWidth() ) {
     this->setXVelocity( -(this->getXVelocity() ));
     this->setX(this->getX() - 10); //10 is used to give a good pad if the ball were to get stuck
   }
   
+  ////LEFT SIDE OF SCREEN////
   if(this->getX() - this->getRadius() < 0){
     this->setXVelocity( -(this->getXVelocity() ));
     this->setX(this->getX() + 10);
   }
   
+  ////TOP SIDE OF SCREEN////
   if (this->getY() + this->getRadius() >= this->getDisplayHeight() ) {
     this->setYVelocity(-(this->getYVelocity()));
     this->setY(this->getY() - 10); //10 is used to give a good pad if the ball were to get stuck
   }
   
+  ////BOTTOM SIDE OF SCREEN////
   if(this->getY() - this->getRadius() < _progressBarHeight ){ //TODO: Find HEIGHT of ProgressTimer here.
     this->setYVelocity(-(this->getYVelocity()));
     this->setY(this->getY() + 10);
