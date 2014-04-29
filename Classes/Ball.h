@@ -29,6 +29,7 @@ private:
   int _displayWidth;
   int _displayHeight;
   int _progressBarHeight;
+  int _topScreenAdjust;
   int _speed;
   
   //methods used within Ball to update various fields
@@ -43,6 +44,8 @@ private:
   static const char* getRandomBallImage();
   static const char* getSelectedBallColor(const char* ball);
   static const char* getBallColorFromFileName(const char* ball);
+  
+  static int topScreenAdjust();
   
 public:
   //constructors
@@ -73,6 +76,7 @@ public:
   const char* getSelectedBallImage() { return _ballSelected; }
   const char* getOriginalBallImage() { return _ball; }
   int getBallId() { return _ballId; }
+  int getTopScreenAdjust() { return _topScreenAdjust; }
 	
   //default setters
   void setX(int x) { _x = x; }
@@ -89,6 +93,7 @@ public:
   void setState(int state) { _state = state; }
   void setCollisionArray(std::vector<Ball*> collisionArray) { _collisionArray = collisionArray; }
   void setBallId(int ballId) { _ballId = ballId; }
+  void setTopScreenAdjust(int topScreenAdjust) { _topScreenAdjust = topScreenAdjust; }
 };
 
 #endif 

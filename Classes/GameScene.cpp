@@ -59,7 +59,7 @@ bool GameScene::init() {
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt", LABEL_FONT_SIZE);
-  _scoreLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width / 2 , windowSize.height - LABEL_FONT_SIZE * 1.5));
+  _scoreLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width / 2 , windowSize.height - topScreenAdjust() ));
   this->addChild(_scoreLabel, ZIndexScoreLabel);
   
   //add progress bar
@@ -91,7 +91,7 @@ bool GameScene::init() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
   
   this->setTouchEnabled(true);
-  this->schedule(schedule_selector(GameScene::GameUpdate));
+  this->schedule(schedule_selector(GameScene::GameUpdate), 0.005);
   
   return true;
 }
@@ -220,8 +220,8 @@ void GameScene::increaseGameDifficulty() {
   }
   
   double random = ((double) rand() / (RAND_MAX)); //number between 0 and 1
-  if ( random <= 0.33 && addMoreBallsCount > 2 ) {
-    addMoreBallsCount--;
+  if ( random <= 0.30 && addMoreBallsCount > 2 ) {
+    addMoreBallsCount = addMoreBallsCount - 2;
   }
   else if ( random <= 0.66 && addMoreBallsCount > 10 ) {
     addMoreBallsCount = addMoreBallsCount + 2;
@@ -233,7 +233,7 @@ void GameScene::increaseGameDifficulty() {
     addMoreBallsCount++;
   }
   
-  time_interval = time_interval - 50;
+  time_interval = time_interval - 25;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -306,4 +306,14 @@ void GameScene::updateGameScore() {
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel->setString(scoreText);
+}
+
+int GameScene::topScreenAdjust() {
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	return LABEL_FONT_SIZE * 2.15;
+#endif
+  
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  return LABEL_FONT_SIZE * 1.5;
+#endif
 }

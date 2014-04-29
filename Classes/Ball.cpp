@@ -3,8 +3,6 @@
 
 USING_NS_CC;
 
-static int AD_BANNER_SIZE = 55;
-
 Ball* Ball::createBall(std::vector<Ball*> otherBalls, int ballId, const char* original_color) {
   Ball* ballSprite = new Ball();
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -37,6 +35,8 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, int ballId, const char* or
     ballSprite->setYVelocity(getRandomVelocity());
     ballSprite->setState(BallNotSelected);
     
+    ballSprite->setTopScreenAdjust(topScreenAdjust());
+    
     ballSprite->autorelease();
     
     return ballSprite;
@@ -65,7 +65,7 @@ void Ball::updateBallPositions(std::vector<Ball*> ballList) {
   }
   
   ////TOP SIDE OF SCREEN////
-  if (this->getY() + this->getRadius() >= this->getDisplayHeight() - AD_BANNER_SIZE ) { //TODO: Find HIEHGT of AdBanner
+  if (this->getY() + this->getRadius() >= this->getDisplayHeight() - _topScreenAdjust ) { //TODO: Find HEIGHT of AdBanner
     this->setYVelocity(-(this->getYVelocity()));
     this->setY(this->getY() - 10); //10 is used to give a good pad if the ball were to get stuck
   }
@@ -245,7 +245,7 @@ void Ball::setBallPositionToOnScreen(Ball* thisBall) {
     thisBall->setX(radius * 2);
   }
   
-  if (y + radius > windowSize.height - AD_BANNER_SIZE) {
+  if (y + radius > windowSize.height - topScreenAdjust() ) {
     thisBall->setY(windowSize.height - (radius * 2));
   }
   else if (y - radius < thisBall->getProgressBarHeight() + 25 ) {
@@ -277,4 +277,14 @@ int Ball::changeBallImage() {
     setState(BallNotSelected);
     return BallNotSelected;
   }
+}
+
+int Ball::topScreenAdjust() {
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	return 72;
+#endif
+  
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  return 55;
+#endif
 }

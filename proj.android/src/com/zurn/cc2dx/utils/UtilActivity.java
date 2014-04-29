@@ -54,7 +54,7 @@ public class UtilActivity extends BaseGameActivity {
 
 		// Create an ad.
 		adView = new AdView(this);
-		adView.setAdSize(AdSize.SMART_BANNER);
+		adView.setAdSize(AdSize.BANNER);
 		adView.setAdUnitId(getResources().getString(R.string.AD_UNIT_ID));
 		adView.setLayoutParams(params);
 
