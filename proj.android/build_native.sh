@@ -1,8 +1,8 @@
 APPNAME="BouncingBallsCPP"
-
-# options
 NDK_ROOT="/Users/Andrew/Library/android-sdk-macosx/android-ndk-r9d"
 ANDROID_SDK_ROOT_LOCAL="/Users/Andrew/Library/android-sdk-macosx"
+
+# options
 
 buildexternalsfromsource=
 
@@ -48,26 +48,6 @@ echo "COCOS2DX_ROOT = $COCOS2DX_ROOT"
 echo "APP_ROOT = $APP_ROOT"
 echo "APP_ANDROID_ROOT = $APP_ANDROID_ROOT"
 
-# make sure assets is exist
-if [ -d "$APP_ANDROID_ROOT"/assets ]; then
-    rm -rf "$APP_ANDROID_ROOT"/assets
-fi
-
-mkdir "$APP_ANDROID_ROOT"/assets
-
-# copy resources
-for file in "$APP_ROOT"/Resources/*
-do
-if [ -d "$file" ]; then
-    cp -rf "$file" "$APP_ANDROID_ROOT"/assets
-fi
-
-if [ -f "$file" ]; then
-    cp "$file" "$APP_ANDROID_ROOT"/assets
-fi
-done
-
-# run ndk-build
 if [[ "$buildexternalsfromsource" ]]; then
     echo "Building external dependencies from source"
     "$NDK_ROOT"/ndk-build -C "$APP_ANDROID_ROOT" $* \
