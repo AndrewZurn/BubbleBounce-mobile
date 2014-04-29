@@ -3,6 +3,8 @@
 
 USING_NS_CC;
 
+static int AD_BANNER_SIZE = 55;
+
 Ball* Ball::createBall(std::vector<Ball*> otherBalls, int ballId, const char* original_color) {
   Ball* ballSprite = new Ball();
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -63,7 +65,7 @@ void Ball::updateBallPositions(std::vector<Ball*> ballList) {
   }
   
   ////TOP SIDE OF SCREEN////
-  if (this->getY() + this->getRadius() >= this->getDisplayHeight() ) {
+  if (this->getY() + this->getRadius() >= this->getDisplayHeight() - AD_BANNER_SIZE ) { //TODO: Find HIEHGT of AdBanner
     this->setYVelocity(-(this->getYVelocity()));
     this->setY(this->getY() - 10); //10 is used to give a good pad if the ball were to get stuck
   }
@@ -243,7 +245,7 @@ void Ball::setBallPositionToOnScreen(Ball* thisBall) {
     thisBall->setX(radius * 2);
   }
   
-  if (y + radius > windowSize.height) {
+  if (y + radius > windowSize.height - AD_BANNER_SIZE) {
     thisBall->setY(windowSize.height - (radius * 2));
   }
   else if (y - radius < thisBall->getProgressBarHeight() + 25 ) {
