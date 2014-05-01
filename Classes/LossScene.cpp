@@ -41,7 +41,7 @@ bool LossScene::init() {
   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
   
   //add background
-  CCSprite* background = CCSprite::create("background.png");
+  CCSprite* background = CCSprite::create("background_2.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
   this->addChild(background, ZIndexBackground);
   
