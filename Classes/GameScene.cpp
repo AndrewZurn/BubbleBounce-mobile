@@ -91,7 +91,7 @@ bool GameScene::init() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
   
   this->setTouchEnabled(true);
-  this->schedule(schedule_selector(GameScene::GameUpdate), 0.005);
+  this->schedule(schedule_selector(GameScene::GameUpdate), 0.01);
   
   return true;
 }
