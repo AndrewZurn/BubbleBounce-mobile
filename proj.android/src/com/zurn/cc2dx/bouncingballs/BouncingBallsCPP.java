@@ -42,7 +42,7 @@ public class BouncingBallsCPP extends UtilActivity{
 //    }
 //
 //    static {
-//        System.loadLibrary("cocos2dcpp");
+//        System.loadLibrary("game");
 //    }     
 	
 	protected void onCreate(Bundle savedInstanceState) {

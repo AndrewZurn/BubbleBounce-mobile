@@ -29,7 +29,7 @@
 
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
-            android:value="@string/google_play_game_app_id" />
+            android:value="@string/app_id" />
 
         <!-- Required for inCloud save -->
         <!--

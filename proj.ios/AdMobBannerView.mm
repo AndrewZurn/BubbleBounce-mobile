@@ -27,7 +27,7 @@
   NSLog(@"View Did Load AdMobBanner");
   // Do any additional setup after loading the view.
   
-  bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+  bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerLandscape];
   bannerView_.adUnitID = [NSString stringWithUTF8String:MY_BANNER_UNIT_ID];
   bannerView_.rootViewController = self;
   bannerView_.adSize = kGADAdSizeSmartBannerLandscape;
