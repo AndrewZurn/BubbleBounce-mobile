@@ -281,7 +281,6 @@
 		499B8C8018D9371C000F55E5 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7018D9371C000F55E5 /* background.png */; };
 		499B8C8B18D9371C000F55E5 /* bouncinballslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */; };
 		499B8C8C18D9371C000F55E5 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7E18D9371C000F55E5 /* arial.ttf */; };
-		499B8C8D18D9371C000F55E5 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */; };
 		49A4BE5C18DA871F007CE796 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5918DA871F007CE796 /* Ball.cpp */; };
 		49A4BE5F18DA987D007CE796 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5E18DA987D007CE796 /* GameScene.cpp */; };
 		49A4BE6218DA9977007CE796 /* FirstScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE6118DA9977007CE796 /* FirstScene.cpp */; };
@@ -296,6 +295,7 @@
 		49A4BE7B18DB253A007CE796 /* redballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE7118DB253A007CE796 /* redballselected.png */; };
 		49A4BE7C18DB253A007CE796 /* yellowball.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE7218DB253A007CE796 /* yellowball.png */; };
 		49A4BE7D18DB253A007CE796 /* yellowballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE7318DB253A007CE796 /* yellowballselected.png */; };
+		49C723AE1912E8F800C6708E /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49C723AD1912E8F800C6708E /* Marker Felt.ttf */; };
 		49E3974E1912D8290000594E /* background_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E3974D1912D8290000594E /* background_2.png */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -872,7 +872,6 @@
 		499B8C7018D9371C000F55E5 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouncinballslogo.png; sourceTree = "<group>"; };
 		499B8C7E18D9371C000F55E5 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
-		499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
 		49A4BE5918DA871F007CE796 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = ../Classes/Ball.cpp; sourceTree = "<group>"; };
 		49A4BE5A18DA871F007CE796 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = ../Classes/Ball.h; sourceTree = "<group>"; };
 		49A4BE5B18DA871F007CE796 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
@@ -892,6 +891,7 @@
 		49A4BE7118DB253A007CE796 /* redballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redballselected.png; sourceTree = "<group>"; };
 		49A4BE7218DB253A007CE796 /* yellowball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowball.png; sourceTree = "<group>"; };
 		49A4BE7318DB253A007CE796 /* yellowballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowballselected.png; sourceTree = "<group>"; };
+		49C723AD1912E8F800C6708E /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Marker Felt.ttf"; path = "../Marker Felt.ttf"; sourceTree = "<group>"; };
 		49E3974D1912D8290000594E /* background_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_2.png; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -2123,9 +2123,9 @@
 		499B8C7D18D9371C000F55E5 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				49C723AD1912E8F800C6708E /* Marker Felt.ttf */,
 				497B659A18EDEE65004168B0 /* Action Man.ttf */,
 				499B8C7E18D9371C000F55E5 /* arial.ttf */,
-				499B8C7F18D9371C000F55E5 /* Marker Felt.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -2389,9 +2389,9 @@
 				492B233F18F8ABFC003742A0 /* Icon-120.png in Resources */,
 				492B231618F46E36003742A0 /* text_you_lose.png in Resources */,
 				49A4BE7C18DB253A007CE796 /* yellowball.png in Resources */,
+				49C723AE1912E8F800C6708E /* Marker Felt.ttf in Resources */,
 				D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */,
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
-				499B8C8D18D9371C000F55E5 /* Marker Felt.ttf in Resources */,
 				D41A0AD1160F154A004552AE /* Default-568h@2x.png in Resources */,
 				49E3974E1912D8290000594E /* background_2.png in Resources */,
 				499B8C8B18D9371C000F55E5 /* bouncinballslogo.png in Resources */,

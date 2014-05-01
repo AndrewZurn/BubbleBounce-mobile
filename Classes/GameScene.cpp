@@ -58,7 +58,7 @@ bool GameScene::init() {
   //add score label
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
-  _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt", LABEL_FONT_SIZE);
+  _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
   _scoreLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width / 2 , windowSize.height - topScreenAdjust() ));
   this->addChild(_scoreLabel, ZIndexScoreLabel);
   
