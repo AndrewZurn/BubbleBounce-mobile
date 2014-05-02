@@ -109,11 +109,16 @@ void GameScene::GameUpdate() {
     if (_ballArray.size() >= BALL_COUNT_CEILING ) {
       _gameOver = true;
     }
+    else if ( _ballArray.size() == 0 ) {
+      _lastElapsedTime = getCurrentTime();
+      increaseGameDifficulty();
+      
+      removeGoLabel(); //if it hasn't already
+    }
     else if ( didTimeElapse() ) {
       increaseGameDifficulty();
       
-      //Remove the GO! image from the screen (if it hasn't already).
-      removeGoLabel();
+      removeGoLabel(); //if it hasn't already
     }
     //Update all the balls positions (animate the balls)
     updateBallPositions();
@@ -221,20 +226,20 @@ void GameScene::increaseGameDifficulty() {
   }
   
   double random = ((double) rand() / (RAND_MAX)); //number between 0 and 1
-  if ( random <= 0.30 && addMoreBallsCount > 2 ) {
+  if ( random <= 0.30 && addMoreBallsCount > 4 ) {
     addMoreBallsCount = addMoreBallsCount - 2;
   }
-  else if ( random <= 0.66 && addMoreBallsCount > 10 ) {
+  else if ( random <= 0.66 && addMoreBallsCount > 8 ) {
     addMoreBallsCount = addMoreBallsCount + 2;
   }
-  else if ( random <= 1  && addMoreBallsCount > 10 ) {
+  else if ( random <= 1  && addMoreBallsCount > 8 ) {
     addMoreBallsCount = addMoreBallsCount + 4;
   }
   else {
-    addMoreBallsCount++;
+    addMoreBallsCount = addMoreBallsCount + 2;
   }
   
-  time_interval = time_interval - 25;
+  time_interval = time_interval - 15;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
