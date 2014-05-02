@@ -31,6 +31,8 @@ private:
   void updateGameScore();
   void createNewBalls();
   void popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
+  void ballPopExplosion(Ball* ball);
+  const char * getRandomPopSound();
   void increaseGameDifficulty();
   void resetGame();
   

@@ -258,6 +258,7 @@
 		492B233E18F8ABFC003742A0 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B233618F8ABFC003742A0 /* Icon-76.png */; };
 		492B233F18F8ABFC003742A0 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B233718F8ABFC003742A0 /* Icon-120.png */; };
 		492B234018F8ABFC003742A0 /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B233818F8ABFC003742A0 /* Icon-152.png */; };
+		492B6E0919141FCB00B507CB /* bubble_pop_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 492B6E0819141FCB00B507CB /* bubble_pop_2.mp3 */; };
 		49444936190FDD4C00346D31 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49444934190FDD4C00346D31 /* libGoogleAdMobAds.a */; };
 		49444937190FDD4D00346D31 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 49444935190FDD4C00346D31 /* README.txt */; };
 		4944493C190FDDAA00346D31 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49444938190FDDA900346D31 /* AdSupport.framework */; };
@@ -839,6 +840,7 @@
 		492B233718F8ABFC003742A0 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = SOURCE_ROOT; };
 		492B233818F8ABFC003742A0 /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = SOURCE_ROOT; };
 		492B234118F8AC5F003742A0 /* PlayGameConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayGameConstants.h; sourceTree = "<group>"; };
+		492B6E0819141FCB00B507CB /* bubble_pop_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble_pop_2.mp3; sourceTree = "<group>"; };
 		4944492B190FDD4C00346D31 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = SOURCE_ROOT; };
 		4944492C190FDD4C00346D31 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = SOURCE_ROOT; };
 		4944492D190FDD4C00346D31 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = SOURCE_ROOT; };
@@ -2267,6 +2269,7 @@
 		49F3BFEF18F908F200728CF6 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				492B6E0819141FCB00B507CB /* bubble_pop_2.mp3 */,
 				49E3974D1912D8290000594E /* background_2.png */,
 				492B231518F46E36003742A0 /* text_you_lose.png */,
 				492B231018F431F1003742A0 /* text_go.png */,
@@ -2385,6 +2388,7 @@
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
 				492B233A18F8ABFC003742A0 /* GooglePlayGames.bundle in Resources */,
 				492B233E18F8ABFC003742A0 /* Icon-76.png in Resources */,
+				492B6E0919141FCB00B507CB /* bubble_pop_2.mp3 in Resources */,
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
 				492B233F18F8ABFC003742A0 /* Icon-120.png in Resources */,
 				492B231618F46E36003742A0 /* text_you_lose.png in Resources */,

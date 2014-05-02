@@ -89,6 +89,7 @@ bool GameScene::init() {
   this->_gameOver = false;
   this->_lastElapsedTime = getCurrentTime();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop_2.mp3");
   
   this->setTouchEnabled(true);
   this->schedule(schedule_selector(GameScene::GameUpdate), 0.01);
@@ -241,7 +242,10 @@ void GameScene::increaseGameDifficulty() {
 // and it's corresponding selectedBall, and remove it from the ballArray.
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
+  
+  ballPopExplosion(ball);
+  ballPopExplosion(this->getSelectedBall());
   
   this->removeChild(ball);
   this->removeChild(this->getSelectedBall());
@@ -282,8 +286,19 @@ long GameScene::getCurrentTime() {
   return (time.tv_sec * 1000) + (time.tv_usec / 1000);
 }
 
+const char * GameScene::getRandomPopSound() {
+  double random = ((double) rand() / (RAND_MAX));
+
+  if (random <= 0.5) {
+    return "bubble_pop.mp3";
+  }
+  else {
+    return "bubble_pop_2.mp3";
+  }
+}
+
 void GameScene::resetGame() {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
   this->removeAllChildren();
   //this->cleanup(); //using this would stop the multiple ball pops, and would actually make nice trans to next scene
   _ballArray.clear();
@@ -291,6 +306,14 @@ void GameScene::resetGame() {
   nextBallId = 0;
   addMoreBallsCount = 4;
   time_interval = 3750;
+}
+
+void GameScene::ballPopExplosion(Ball* ball) {
+  CCParticleExplosion* popEffect = CCParticleExplosion::create();
+  popEffect->setTotalParticles(25);
+  popEffect->setLife(0.25);
+  popEffect->setPosition(ccp(ball->getX(), ball->getY()));
+  this->addChild(popEffect);
 }
 
 void GameScene::removeGoLabel() {

@@ -69,6 +69,7 @@ bool FirstScene::init() {
   this->setTouchEnabled(true);
   this->schedule(schedule_selector(FirstScene::GameUpdate));
   CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop_2.mp3");
   
   return true;
 }
@@ -139,10 +140,31 @@ void FirstScene::createNewBalls() {
 // Given a ball and it's position in the ballArray, pop that ball.
 //////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("bubble_pop.mp3");
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
+  
+  ballPopExplosion(ball);
   
   this->removeChild(ball);
   _ballArray.erase(indexOfBall);
+}
+
+const char * FirstScene::getRandomPopSound() {
+  double random = ((double) rand() / (RAND_MAX));
+  
+  if (random <= 0.5) {
+    return "bubble_pop.mp3";
+  }
+  else {
+    return "bubble_pop_2.mp3";
+  }
+}
+
+void FirstScene::ballPopExplosion(Ball* ball) {
+  CCParticleExplosion* popEffect = CCParticleExplosion::create();
+  popEffect->setTotalParticles(25);
+  popEffect->setLife(0.25);
+  popEffect->setPosition(ccp(ball->getX(), ball->getY()));
+  this->addChild(popEffect);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
