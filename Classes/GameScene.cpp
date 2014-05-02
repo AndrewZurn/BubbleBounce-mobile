@@ -248,6 +248,7 @@ void GameScene::increaseGameDifficulty() {
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
   
   ballPopExplosion(ball);
   ballPopExplosion(this->getSelectedBall());
@@ -330,7 +331,7 @@ void GameScene::removeGoLabel() {
 }
 
 void GameScene::updateGameScore() {
-  _score++;
+  _score = _score + 10;
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel->setString(scoreText);
