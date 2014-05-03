@@ -316,9 +316,19 @@ void GameScene::resetGame() {
 
 void GameScene::ballPopExplosion(Ball* ball) {
   CCParticleExplosion* popEffect = CCParticleExplosion::create();
-  popEffect->setTotalParticles(25);
+  
+  ccColor4F startColor;
+  ccColor3B ballColor;
+  startColor.r = ballColor.r;
+  startColor.g = ballColor.g;
+  startColor.b = ballColor.b;
+  startColor.a = 0.0f;
+  
+  popEffect->setStartColor(startColor);
+  popEffect->setTotalParticles(50);
   popEffect->setLife(0.25);
   popEffect->setPosition(ccp(ball->getX(), ball->getY()));
+  
   this->addChild(popEffect);
 }
 

@@ -161,10 +161,34 @@ const char * FirstScene::getRandomPopSound() {
 
 void FirstScene::ballPopExplosion(Ball* ball) {
   CCParticleExplosion* popEffect = CCParticleExplosion::create();
-  popEffect->setTotalParticles(25);
+  
+  popEffect->setTotalParticles(50);
   popEffect->setLife(0.25);
   popEffect->setPosition(ccp(ball->getX(), ball->getY()));
+  
   this->addChild(popEffect);
+}
+
+ccColor4F FirstScene::setExplosionColor(Ball* ball) {
+  ccColor4F startColor;
+  
+  const char* ballColor = ball->getBallColor();
+  if ( strcmp(ballColor, "blue") == 0) {
+    startColor.r = 13; startColor.g = 5; startColor.b = 250; startColor.a = 1.0f;
+  }
+  else if ( strcmp(ballColor, "red") == 0) {
+    startColor.r = 250; startColor.g = 5; startColor.b = 58; startColor.a = 1.0f;
+  }
+  else if ( strcmp(ballColor, "orange") == 0) {
+    startColor.r = 250; startColor.g = 144; startColor.b = 5; startColor.a = 1.0f;
+  }
+  else if ( strcmp(ballColor, "pink") == 0) {
+    startColor.r = 250; startColor.g = 5; startColor.b = 193; startColor.a = 1.0f;
+  }
+  else { //yellow
+    startColor.r = 247; startColor.g = 247; startColor.b = 22; startColor.a = 1.0f;
+  }
+  return startColor;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

@@ -21,6 +21,7 @@ private:
   void createNewBalls();
   void popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
   void ballPopExplosion(Ball* ball);
+  cocos2d::ccColor4F setExplosionColor(Ball* ball);
   void playButtonCallback(CCObject* pSender);
   void statsButtonCallback(CCObject* pSender);
   const char * getRandomPopSound();
