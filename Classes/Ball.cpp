@@ -162,7 +162,7 @@ const char* Ball::getRandomBallImage() {
     return "redball.png";
   }
   else {
-    return "blueball.png";
+    return "yellowball.png";
   }
 }
 
@@ -179,7 +179,7 @@ const char* Ball::getSelectedBallColor(const char *ball) {
   else if( strcmp(ball, "redball.png") == 0) {
     return "redballselected.png";
   }
-  else if( strcmp(ball, "yelloball.png") == 0) {
+  else if( strcmp(ball, "yellowball.png") == 0) {
     return "yellowballselected.png";
   }
   else {

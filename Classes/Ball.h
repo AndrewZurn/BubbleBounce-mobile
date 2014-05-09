@@ -19,7 +19,7 @@ private:
   int _xVelocity;
   int _yVelocity;
   int _radius; //can I get this by finding the size of CCSprite* ball?
-  const char* _ballColor;
+  const char* _ballColor; //the color of the ball ("orange", "red", etc.)
   int _state;
   
   //need list of balls for collisionArray

@@ -316,15 +316,27 @@ void GameScene::resetGame() {
 
 void GameScene::ballPopExplosion(Ball* ball) {
   CCParticleExplosion* popEffect = CCParticleExplosion::create();
+  ccColor4F effectColor;
   
-  ccColor4F startColor;
-  ccColor3B ballColor;
-  startColor.r = ballColor.r;
-  startColor.g = ballColor.g;
-  startColor.b = ballColor.b;
-  startColor.a = 0.0f;
+  const char* color = ball->getBallColor();
+  if ( strcmp(color, "blue") == 0) {
+    effectColor.r = 18.0f/255.0f; effectColor.g = 40.0f/255.0f; effectColor.b = 243.0f/255.0f; effectColor.a = 1.0f;
+  }
+  else if( strcmp(color, "orange") == 0) {
+    effectColor.r = 243.0f/255.0f; effectColor.g = 108.0f/255.0f; effectColor.b = 18.0f/255.0f; effectColor.a = 1.0f;
+  }
+  else if( strcmp(color, "pink") == 0) {
+    effectColor.r = 198.0f/255.0f; effectColor.g = 17.0f/255.0f; effectColor.b = 235.0f/255.0f; effectColor.a = 1.0f;
+  }
+  else if( strcmp(color, "red") == 0) {
+    effectColor.r = 235.0f/255.0f; effectColor.g = 17.0f/255.0f; effectColor.b = 17.0f/255.0f; effectColor.a = 1.0f;
+  }
+  else if( strcmp(color, "yellow") == 0) {
+    effectColor.r = 236.0f/255.0f; effectColor.g = 243.0f/255.0f; effectColor.b = 18.0f/255.0f; effectColor.a = 1.0f;
+  }
   
-  popEffect->setStartColor(startColor);
+  popEffect->setStartColor(effectColor);
+  popEffect->setEndColor(effectColor);
   popEffect->setTotalParticles(50);
   popEffect->setLife(0.25);
   popEffect->setPosition(ccp(ball->getX(), ball->getY()));
