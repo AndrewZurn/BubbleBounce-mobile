@@ -337,8 +337,8 @@ void GameScene::ballPopExplosion(Ball* ball) {
   
   popEffect->setStartColor(effectColor);
   popEffect->setEndColor(effectColor);
-  popEffect->setTotalParticles(50);
-  popEffect->setLife(0.25);
+  popEffect->setTotalParticles(75);
+  popEffect->setLife(0.15);
   popEffect->setPosition(ccp(ball->getX(), ball->getY()));
   
   this->addChild(popEffect);
