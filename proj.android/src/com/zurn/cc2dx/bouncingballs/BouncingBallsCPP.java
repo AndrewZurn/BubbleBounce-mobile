@@ -28,22 +28,6 @@ import android.os.Bundle;
 import com.zurn.cc2dx.utils.UtilActivity;
 
 public class BouncingBallsCPP extends UtilActivity{
-//	
-//    protected void onCreate(Bundle savedInstanceState){
-//		super.onCreate(savedInstanceState);	
-//	}
-//
-//    public Cocos2dxGLSurfaceView onCreateView() {
-//    	Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
-//    	// BouncingBallsCPP should create stencil buffer
-//    	glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
-//    	
-//    	return glSurfaceView;
-//    }
-//
-//    static {
-//        System.loadLibrary("game");
-//    }     
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
