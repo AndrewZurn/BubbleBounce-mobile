@@ -46,7 +46,7 @@
         <!-- End here requirement for Google Play Services -->
 
         <activity
-            android:name="com.zurn.cc2dx.bouncingballs.BouncingBallsCPP"
+            android:name="com.zurn.cc2dx.utils.SplashScreen"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -57,6 +57,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.zurn.cc2dx.bouncingballs.BouncingBallsCPP" 
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
