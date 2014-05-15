@@ -21,7 +21,7 @@ int time_interval = 3750;
 static int LABEL_FONT_SIZE = 65;
 static int BALL_COUNT_CEILING = 24;
 static int PROGRESS_OFFSET_Y = 50;
-static int PROGRESS_OFFSET_X = 325;
+static int PROGRESS_OFFSET_X = 320;
 int addMoreBallsCount = 4;
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -72,6 +72,9 @@ bool GameScene::init() {
     _progressBar->setPosition(ccp(PROGRESS_OFFSET_X, PROGRESS_OFFSET_Y));
     this->addChild(_progressBar, ZIndexProgressBar);
   }
+  _progressBarBackground = CCSprite::create("progress_bar_background.png");
+  _progressBarBackground->setPosition(ccp(PROGRESS_OFFSET_X, PROGRESS_OFFSET_Y));
+  this->addChild(_progressBarBackground, ZIndexProgressBackground);
   
   //add go image
   _goTextImage = CCMenuItemImage::create("text_go.png", "text_go.png", this, NULL);

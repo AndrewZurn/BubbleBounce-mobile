@@ -5,6 +5,7 @@
 #define ZIndexBackground 0
 #define ZIndexBalls 1
 #define ZIndexProgressBar 2
+#define ZIndexProgressBackground 1
 #define ZIndexScoreLabel 2
 #define ZIndexButtonMenu 2
 #define ZIndexGoImage 2

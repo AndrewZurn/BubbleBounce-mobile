@@ -22,6 +22,7 @@ private:
   bool _gameOver;
   cocos2d::CCLabelTTF* _scoreLabel;
   cocos2d::CCProgressTimer* _progressBar;
+  cocos2d::CCSprite* _progressBarBackground;
   cocos2d::CCMenuItemImage* _goTextImage;
   
   void CountdownToStart();
