@@ -21,6 +21,7 @@ private:
   int _radius; //can I get this by finding the size of CCSprite* ball?
   const char* _ballColor; //the color of the ball ("orange", "red", etc.)
   int _state;
+  bool _canCollide;
   
   //need list of balls for collisionArray
   std::vector<Ball*> _collisionArray;
@@ -77,6 +78,7 @@ public:
   const char* getOriginalBallImage() { return _ball; }
   int getBallId() { return _ballId; }
   int getTopScreenAdjust() { return _topScreenAdjust; }
+  bool getCanCollide() { return _canCollide; }
 	
   //default setters
   void setX(int x) { _x = x; }
@@ -94,6 +96,7 @@ public:
   void setCollisionArray(std::vector<Ball*> collisionArray) { _collisionArray = collisionArray; }
   void setBallId(int ballId) { _ballId = ballId; }
   void setTopScreenAdjust(int topScreenAdjust) { _topScreenAdjust = topScreenAdjust; }
+  void setCanCollide(bool canCollide) { _canCollide = canCollide; }
 };
 
 #endif 

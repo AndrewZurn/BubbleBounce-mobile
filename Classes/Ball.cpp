@@ -23,6 +23,7 @@ Ball* Ball::createBall(std::vector<Ball*> otherBalls, int ballId, const char* or
     ballSprite->setBallSelected(ballSelectedColor);
     ballSprite->setBallColor(color);
     ballSprite->setBallId(ballId);
+    ballSprite->setCanCollide(true);
     
     ballSprite->setDisplayWidth(windowSize.width);
     ballSprite->setDisplayHeight(windowSize.height);
@@ -79,19 +80,66 @@ void Ball::updateBallPositions(std::vector<Ball*> ballList) {
   this->setPosition(ccp(this->getX(), this->getY()));
 }
 
+//void Ball::detectCollisions(std::vector<Ball *> ballList) {
+//  std::vector<Ball*>::iterator i;
+//  for (i = ballList.begin(); i != ballList.end(); i++) {
+//    Ball* ball = (Ball*) (*i);
+//    
+//    if ( ball->getBallId() == this->getBallId()) continue;
+//    
+//    if ( this->getCanCollide() == false || ball->getCanCollide() == false ) {
+//      std::cout << "balls cant collide" << std::endl;
+//      continue;
+//    }
+//    
+//    if ( this->boundingBox().intersectsRect(ball->boundingBox())) {
+//      float distanceFromCenters = distanceTo(this, ball);
+//      
+//      if ( distanceFromCenters < 25) {
+//        std::cout << "balls to close" <<std::endl;
+//        this->setCanCollide(false);
+//        ball->setCanCollide(false);
+//        continue;
+//      }
+//      
+//      if ( distanceFromCenters < this->getRadius() + ball->getRadius() + 1 &&
+//          distanceFromCenters > this->getRadius() + ball->getRadius() - 1 ) {
+//          calculateNewVelocities(this, ball);
+//          break;
+//      }
+//    }
+//    else {
+//      std::cout << "balls no longer intersecting" <<std::endl;
+//      this->setCanCollide(true);
+//      ball->setCanCollide(true);
+//    }
+//  }
+//}
 void Ball::detectCollisions(std::vector<Ball *> ballList) {
-  std::vector<Ball*>::iterator i;
-  for (i = ballList.begin(); i != ballList.end(); i++) {
-    Ball* ball = (Ball*) (*i);
+  std::vector<Ball*>::iterator iterator;
+  for(iterator = ballList.begin(); iterator != ballList.end(); iterator++) {
+    Ball* ball = (Ball*) (*iterator);
     
-    if ( ball->getBallId() == this->getBallId()) continue;
+    if ( this->getBallId() == ball->getBallId() ) { continue; } //must continue, do not change
     
-    if ( this->boundingBox().intersectsRect(ball->boundingBox())) {
-      float distanceFromCenters = distanceTo(this, ball);
-      if ( distanceFromCenters < this->getRadius() + ball->getRadius() + 1 &&
-          distanceFromCenters > this->getRadius() + ball->getRadius() - 1 ) {
+    if ( this->boundingBox().intersectsRect(ball->boundingBox()) ) {
+      
+      std::vector<Ball*> collisionArray = this->getCollisionArray();
+      std::vector<Ball*> otherCollisionArray = ball->getCollisionArray();
+      if ( distanceTo(this, ball) <= this->getRadius() + ball->getRadius() ) {
+        if ( collisionArray.empty() && otherCollisionArray.empty() ) {
           calculateNewVelocities(this, ball);
-          break;
+          collisionArray.push_back(ball);
+          otherCollisionArray.push_back(this);
+          this->setCollisionArray(collisionArray);
+          ball->setCollisionArray(otherCollisionArray);
+        }
+      }
+      else { //once the balls are not colliding, clear the collision array
+        collisionArray.clear();
+        otherCollisionArray.clear();
+        this->setCollisionArray(collisionArray);
+        ball->setCollisionArray(otherCollisionArray);
       }
     }
   }
