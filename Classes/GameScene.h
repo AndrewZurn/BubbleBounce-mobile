@@ -19,13 +19,13 @@ private:
   std::vector<Ball*> _ballArray;
   
   int _score;
+  int _modifier;
   bool _gameOver;
   cocos2d::CCLabelTTF* _scoreLabel;
   cocos2d::CCProgressTimer* _progressBar;
   cocos2d::CCSprite* _progressBarBackground;
   cocos2d::CCMenuItemImage* _goTextImage;
   
-  void CountdownToStart();
   void removeGoLabel();
   void GameUpdate();
   void updateBallPositions();
@@ -36,6 +36,7 @@ private:
   const char * getRandomPopSound();
   void increaseGameDifficulty();
   void resetGame();
+  void updateModifier(bool ballsMatched);
   
   long _lastElapsedTime;
   bool didTimeElapse();

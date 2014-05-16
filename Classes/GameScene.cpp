@@ -76,6 +76,8 @@ bool GameScene::init() {
 //  _progressBarBackground->setPosition(ccp(PROGRESS_OFFSET_X, PROGRESS_OFFSET_Y));
 //  this->addChild(_progressBarBackground, ZIndexProgressBackground);
   
+  //TODO: add the initial score modifier
+  
   //add go image
   _goTextImage = CCMenuItemImage::create("text_go.png", "text_go.png", this, NULL);
   _goTextImage->setPosition(ccp(windowSize.width/2, windowSize.height/2));
@@ -89,6 +91,7 @@ bool GameScene::init() {
   
   //setup game scheduling/handling/other attributes
   _score = 0;
+  _modifier = 1;
   this->_gameOver = false;
   this->_lastElapsedTime = getCurrentTime();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
@@ -177,11 +180,13 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       }
       else { //a ball was previously touched
         if ( ball->compareColor(this->getSelectedBall()) ) {
+          updateModifier(true);
           updateGameScore();
           popBalls(ball, i);
           break;
         }
         else{ //the colors don't match
+          updateModifier(false);
           this->getSelectedBall()->changeBallImage();
           this->setSelectedBall(NULL);
           break;
@@ -356,7 +361,7 @@ void GameScene::removeGoLabel() {
 }
 
 void GameScene::updateGameScore() {
-  _score = _score + 10;
+  _score = _score + (10 * _modifier);
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel->setString(scoreText);
@@ -370,4 +375,15 @@ int GameScene::topScreenAdjust() {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
   return LABEL_FONT_SIZE * 1.5;
 #endif
+}
+
+void GameScene::updateModifier(bool ballsMatched) {
+  if (ballsMatched) {
+    _modifier++;
+    //TODO: update modifier label/image
+  }
+  else {
+    _modifier = 1;
+    //TODO: set modifier label/image to 1
+  }
 }
