@@ -80,7 +80,7 @@ bool GameScene::init() {
   sprintf(modifierText, "Modifier: %dx", _modifier);
   _modifierLabel = CCLabelTTF::create(modifierText, "Marker Felt.ttf", LABEL_FONT_SIZE);
   _modifierLabel->setAnchorPoint(ccp(0,0));
-  _modifierLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width - _modifierLabel->getContentSize().width - LABEL_MARGIN, windowSize.height - topScreenAdjust() ));
+  _modifierLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN*1.75), windowSize.height - topScreenAdjust() ));
   this->addChild(_modifierLabel, ZIndexGameTextLabels);
   
   //add progress bar
