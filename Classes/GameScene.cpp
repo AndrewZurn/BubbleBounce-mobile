@@ -18,7 +18,8 @@ USING_NS_CC;
 int nextBallId = 0;
 static int STARTING_BALLS = 12;
 int time_interval = 3750;
-static int LABEL_FONT_SIZE = 65;
+static int LABEL_FONT_SIZE = 60;
+static int LABEL_MARGIN = 15;
 static int BALL_COUNT_CEILING = 24;
 static int PROGRESS_OFFSET_Y = 50;
 static int PROGRESS_OFFSET_X = 320;
@@ -50,6 +51,16 @@ bool GameScene::init() {
   CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
   
+  
+  //setup game scheduling/handling/other attributes
+  _score = 0;
+  _modifier = 1;
+  this->_gameOver = false;
+  this->_lastElapsedTime = getCurrentTime();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop_2.mp3");
+  this->setTouchEnabled(true);
+  
   //add background
   CCSprite* background = CCSprite::create("background_2.png");
   background->setPosition(ccp(windowSize.width/2 + origin.x, windowSize.height/2 + origin.y));
@@ -59,8 +70,17 @@ bool GameScene::init() {
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
-  _scoreLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width / 2 , windowSize.height - topScreenAdjust() ));
-  this->addChild(_scoreLabel, ZIndexScoreLabel);
+  _scoreLabel->setAnchorPoint(ccp(0,0));
+  _scoreLabel->cocos2d::CCNode::setPosition( ccp(LABEL_MARGIN, windowSize.height - topScreenAdjust() ));
+  this->addChild(_scoreLabel, ZIndexGameTextLabels);
+  
+  //add modifier label
+  char modifierText[15];
+  sprintf(modifierText, "Modifier: %dx", _modifier);
+  _modifierLabel = CCLabelTTF::create(modifierText, "Marker Felt.ttf", LABEL_FONT_SIZE);
+  _modifierLabel->setAnchorPoint(ccp(0,0));
+  _modifierLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width - _modifierLabel->getContentSize().width - LABEL_MARGIN, windowSize.height - topScreenAdjust() ));
+  this->addChild(_modifierLabel, ZIndexGameTextLabels);
   
   //add progress bar
   _progressBar = CCProgressTimer::create( CCSprite::create("progress_bar.png"));
@@ -76,8 +96,6 @@ bool GameScene::init() {
 //  _progressBarBackground->setPosition(ccp(PROGRESS_OFFSET_X, PROGRESS_OFFSET_Y));
 //  this->addChild(_progressBarBackground, ZIndexProgressBackground);
   
-  //TODO: add the initial score modifier
-  
   //add go image
   _goTextImage = CCMenuItemImage::create("text_go.png", "text_go.png", this, NULL);
   _goTextImage->setPosition(ccp(windowSize.width/2, windowSize.height/2));
@@ -89,15 +107,6 @@ bool GameScene::init() {
     createNewBalls();
   }
   
-  //setup game scheduling/handling/other attributes
-  _score = 0;
-  _modifier = 1;
-  this->_gameOver = false;
-  this->_lastElapsedTime = getCurrentTime();
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop_2.mp3");
-  
-  this->setTouchEnabled(true);
   this->schedule(schedule_selector(GameScene::GameUpdate), 0.01);
   
   return true;
@@ -181,7 +190,7 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       else { //a ball was previously touched
         if ( ball->compareColor(this->getSelectedBall()) ) {
           updateModifier(true);
-          updateGameScore();
+          updateGameScoreText();
           popBalls(ball, i);
           break;
         }
@@ -360,30 +369,36 @@ void GameScene::removeGoLabel() {
   }
 }
 
-void GameScene::updateGameScore() {
+void GameScene::updateGameScoreText() {
   _score = _score + (10 * _modifier);
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel->setString(scoreText);
 }
 
+void GameScene::updateGameModifierText() {
+  char modifierText[15];
+  sprintf(modifierText, "Modifier: %dx", _modifier);
+  _modifierLabel->setString(modifierText);
+}
+
 int GameScene::topScreenAdjust() {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-	return LABEL_FONT_SIZE * 2.15;
+	return LABEL_FONT_SIZE * 2.75;
 #endif
   
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  return LABEL_FONT_SIZE * 1.5;
+  return LABEL_FONT_SIZE * 2.15;
 #endif
 }
 
 void GameScene::updateModifier(bool ballsMatched) {
   if (ballsMatched) {
     _modifier++;
-    //TODO: update modifier label/image
+    updateGameModifierText();
   }
   else {
     _modifier = 1;
-    //TODO: set modifier label/image to 1
+    updateGameModifierText();
   }
 }

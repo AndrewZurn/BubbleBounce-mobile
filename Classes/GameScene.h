@@ -22,6 +22,7 @@ private:
   int _modifier;
   bool _gameOver;
   cocos2d::CCLabelTTF* _scoreLabel;
+  cocos2d::CCLabelTTF* _modifierLabel;
   cocos2d::CCProgressTimer* _progressBar;
   cocos2d::CCSprite* _progressBarBackground;
   cocos2d::CCMenuItemImage* _goTextImage;
@@ -29,7 +30,8 @@ private:
   void removeGoLabel();
   void GameUpdate();
   void updateBallPositions();
-  void updateGameScore();
+  void updateGameScoreText();
+  void updateGameModifierText();
   void createNewBalls();
   void popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
   void ballPopExplosion(Ball* ball);
