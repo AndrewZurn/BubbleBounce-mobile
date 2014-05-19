@@ -20,6 +20,7 @@ private:
   
   int _score;
   int _modifier;
+  bool _lastPairMatched;
   bool _gameOver;
   cocos2d::CCLabelTTF* _scoreLabel;
   cocos2d::CCLabelTTF* _modifierLabel;

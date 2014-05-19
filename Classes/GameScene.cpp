@@ -55,6 +55,7 @@ bool GameScene::init() {
   //setup game scheduling/handling/other attributes
   _score = 0;
   _modifier = 1;
+  _lastPairMatched = false;
   this->_gameOver = false;
   this->_lastElapsedTime = getCurrentTime();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("bubble_pop.mp3");
@@ -394,7 +395,13 @@ int GameScene::topScreenAdjust() {
 
 void GameScene::updateModifier(bool ballsMatched) {
   if (ballsMatched) {
-    _modifier++;
+    if (_lastPairMatched) {
+      _lastPairMatched = false;
+      _modifier++;
+    }
+    else {
+      _lastPairMatched = true;
+    }
     updateGameModifierText();
   }
   else {
