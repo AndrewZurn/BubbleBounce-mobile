@@ -391,7 +391,7 @@ void GameScene::removeGoLabel() {
 }
 
 int GameScene::updateGameScoreAndText() {
-  int points = (10 * _modifier) /*+ (getCurrentTime() - _lastElapsedTime)*/;
+  int points = (10 * _modifier) + ((getCurrentTime() - _lastElapsedTime) * 0.1);
   _score = _score + points;
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
