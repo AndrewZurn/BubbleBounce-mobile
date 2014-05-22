@@ -18,13 +18,18 @@ USING_NS_CC;
 int nextBallId = 0;
 static int STARTING_BALLS = 12;
 int time_interval = 3750;
+int addMoreBallsCount = 4;
+static int BALL_COUNT_CEILING = 24;
+
 static int LABEL_FONT_SIZE = 60;
 static int POINTS_LABEL_FONT_SIZE = 45;
 static int LABEL_MARGIN = 15;
-static int BALL_COUNT_CEILING = 24;
+static int LABEL_COLOR_R = 91;
+static int LABEL_COLOR_B = 236;
+static int LABEL_COLOR_G = 255;
+
 static int PROGRESS_OFFSET_Y = 50;
 static int PROGRESS_OFFSET_X = 320;
-int addMoreBallsCount = 4;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Creates the game layer, and adds it to this scene.
@@ -72,6 +77,7 @@ bool GameScene::init() {
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
+  _scoreLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
   _scoreLabel->setAnchorPoint(ccp(0,0));
   _scoreLabel->cocos2d::CCNode::setPosition( ccp(LABEL_MARGIN, windowSize.height - topScreenAdjust() ));
   this->addChild(_scoreLabel, ZIndexGameTextLabels);
@@ -80,6 +86,7 @@ bool GameScene::init() {
   char modifierText[15];
   sprintf(modifierText, "Bonus %dx", _modifier);
   _modifierLabel = CCLabelTTF::create(modifierText, "Marker Felt.ttf", LABEL_FONT_SIZE);
+  _modifierLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
   _modifierLabel->setAnchorPoint(ccp(0,0));
   _modifierLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN*1.75), windowSize.height - topScreenAdjust() ));
   this->addChild(_modifierLabel, ZIndexGameTextLabels);
@@ -361,10 +368,11 @@ void GameScene::ballPopExplosion(Ball* ball, int pointsGained) {
   popEffect->setPosition(ccp(ball->getX(), ball->getY()));
   this->addChild(popEffect);
   
-  char pointsEarnedArray[3];
-  sprintf(pointsEarnedArray, "%d", pointsGained);
+  char pointsEarnedArray[6];
+  sprintf(pointsEarnedArray, "+%d", pointsGained);
   
   CCLabelTTF* pointsEarnedLabel = CCLabelTTF::create(pointsEarnedArray, "Marker Felt.ttf", POINTS_LABEL_FONT_SIZE);
+  pointsEarnedLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
   pointsEarnedLabel->setAnchorPoint(ccp(0,0));
   pointsEarnedLabel->setPosition(ccp(ball->getX(), ball->getY()));
   this->addChild(pointsEarnedLabel, ZIndexGameTextLabels);
@@ -383,7 +391,7 @@ void GameScene::removeGoLabel() {
 }
 
 int GameScene::updateGameScoreAndText() {
-  int points = (10 * _modifier) + (getCurrentTime() - _lastElapsedTime);
+  int points = (10 * _modifier) /*+ (getCurrentTime() - _lastElapsedTime)*/;
   _score = _score + points;
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
