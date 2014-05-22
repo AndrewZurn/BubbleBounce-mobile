@@ -199,8 +199,8 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       else { //a ball was previously touched
         if ( ball->compareColor(this->getSelectedBall()) ) {
           updateModifierAndText(true);
-          int points = updateGameScoreAndText();
-          popBalls(ball, i, points);
+          updateGameScoreAndText();
+          popBalls(ball, i);
           break;
         }
         else{ //the colors don't match
@@ -272,12 +272,12 @@ void GameScene::increaseGameDifficulty() {
 // Given a ball and it's position in the ballArray, pop that ball,
 // and it's corresponding selectedBall, and remove it from the ballArray.
 //////////////////////////////////////////////////////////////////////////////////////////
-void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall, int pointsGained) {
+void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
   
-  ballPopExplosion(ball, pointsGained);
-  ballPopExplosion(this->getSelectedBall(), pointsGained);
+  ballPopExplosion(ball);
+  ballPopExplosion(this->getSelectedBall());
   
   this->removeChild(ball);
   this->removeChild(this->getSelectedBall());
@@ -340,27 +340,32 @@ void GameScene::resetGame() {
   time_interval = 3750;
 }
 
-void GameScene::ballPopExplosion(Ball* ball, int pointsGained) {
-  CCParticleExplosion* popEffect = CCParticleExplosion::create();
+void GameScene::ballPopExplosion(Ball* ball) {
   ccColor4F effectColor;
-  
+  ccColor3B textColor;
   const char* color = ball->getBallColor();
   if ( strcmp(color, "blue") == 0) {
     effectColor.r = 18.0f/255.0f; effectColor.g = 40.0f/255.0f; effectColor.b = 243.0f/255.0f; effectColor.a = 1.0f;
+    textColor = ccc3(18, 40, 243);
   }
   else if( strcmp(color, "orange") == 0) {
     effectColor.r = 243.0f/255.0f; effectColor.g = 108.0f/255.0f; effectColor.b = 18.0f/255.0f; effectColor.a = 1.0f;
+    textColor = ccc3(243, 108, 18);
   }
   else if( strcmp(color, "pink") == 0) {
     effectColor.r = 198.0f/255.0f; effectColor.g = 17.0f/255.0f; effectColor.b = 235.0f/255.0f; effectColor.a = 1.0f;
+    textColor = ccc3(198, 17, 235);
   }
   else if( strcmp(color, "red") == 0) {
     effectColor.r = 235.0f/255.0f; effectColor.g = 17.0f/255.0f; effectColor.b = 17.0f/255.0f; effectColor.a = 1.0f;
+    textColor = ccc3(235, 17, 17);
   }
   else if( strcmp(color, "yellow") == 0) {
     effectColor.r = 236.0f/255.0f; effectColor.g = 243.0f/255.0f; effectColor.b = 18.0f/255.0f; effectColor.a = 1.0f;
+    textColor = ccc3(236, 243, 18);
   }
   
+  CCParticleExplosion* popEffect = CCParticleExplosion::create();
   popEffect->setStartColor(effectColor);
   popEffect->setEndColor(effectColor);
   popEffect->setTotalParticles(75);
@@ -369,11 +374,9 @@ void GameScene::ballPopExplosion(Ball* ball, int pointsGained) {
   this->addChild(popEffect);
   
   char pointsEarnedArray[6];
-  sprintf(pointsEarnedArray, "+%d", pointsGained);
-  
+  sprintf(pointsEarnedArray, "+%d", getPointsEarned());
   CCLabelTTF* pointsEarnedLabel = CCLabelTTF::create(pointsEarnedArray, "Marker Felt.ttf", POINTS_LABEL_FONT_SIZE);
-  pointsEarnedLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
-  pointsEarnedLabel->setAnchorPoint(ccp(0,0));
+  pointsEarnedLabel->setColor(textColor);
   pointsEarnedLabel->setPosition(ccp(ball->getX(), ball->getY()));
   this->addChild(pointsEarnedLabel, ZIndexGameTextLabels);
   
@@ -390,14 +393,15 @@ void GameScene::removeGoLabel() {
   }
 }
 
-int GameScene::updateGameScoreAndText() {
-  int points = (10 * _modifier) + ((getCurrentTime() - _lastElapsedTime) * 0.1);
-  _score = _score + points;
+int GameScene::getPointsEarned() {
+  return (10 * _modifier) + ((getCurrentTime() - _lastElapsedTime) * 0.1);
+}
+
+void GameScene::updateGameScoreAndText() {
+  _score = _score + getPointsEarned();
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel->setString(scoreText);
-  
-  return points;
 }
 
 int GameScene::topScreenAdjust() {

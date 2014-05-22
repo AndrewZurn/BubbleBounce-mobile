@@ -924,12 +924,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../classes/GameScene.cpp"
-            timestampString = "422483234.732092"
+            timestampString = "422491327.576211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
-            landmarkName = "GameScene::updateGameScoreAndText()"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "GameScene::getPointsEarned()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -976,6 +976,22 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "LossScene::init()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../classes/GameScene.cpp"
+            timestampString = "422491155.427008"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
+            landmarkName = "GameScene::ballPopExplosion(Ball* ball)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

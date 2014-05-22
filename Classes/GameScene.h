@@ -31,10 +31,11 @@ private:
   void removeGoLabel();
   void GameUpdate();
   void updateBallPositions();
-  int updateGameScoreAndText();
+  void updateGameScoreAndText();
+  int getPointsEarned();
   void createNewBalls();
-  void popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall, int pointsGained);
-  void ballPopExplosion(Ball* ball, int pointsGained);
+  void popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
+  void ballPopExplosion(Ball* ball);
   const char * getRandomPopSound();
   void increaseGameDifficulty();
   void resetGame();
