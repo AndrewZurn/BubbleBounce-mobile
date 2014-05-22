@@ -31,15 +31,14 @@ private:
   void removeGoLabel();
   void GameUpdate();
   void updateBallPositions();
-  void updateGameScoreText();
-  void updateGameModifierText();
+  void updateGameScoreAndText();
   void createNewBalls();
   void popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
   void ballPopExplosion(Ball* ball);
   const char * getRandomPopSound();
   void increaseGameDifficulty();
   void resetGame();
-  void updateModifier(bool ballsMatched);
+  void updateModifierAndText(bool ballsMatched);
   
   long _lastElapsedTime;
   bool didTimeElapse();

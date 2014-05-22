@@ -39,7 +39,7 @@ static AppDelegate s_sharedApplication;
   if(!PlayGameSingleton::sharedInstance().isSignedIn())
   {
     PlayGameSingleton::sharedInstance().trySilentAuthentication();
-    [NSThread detachNewThreadSelector:@selector(playServicesAuthenticate) toTarget:self withObject:nil];
+    //[NSThread detachNewThreadSelector:@selector(playServicesAuthenticate) toTarget:self withObject:nil];
   }
 
   

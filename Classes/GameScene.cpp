@@ -190,13 +190,13 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       }
       else { //a ball was previously touched
         if ( ball->compareColor(this->getSelectedBall()) ) {
-          updateModifier(true);
-          updateGameScoreText();
+          updateModifierAndText(true);
+          updateGameScoreAndText();
           popBalls(ball, i);
           break;
         }
         else{ //the colors don't match
-          updateModifier(false);
+          updateModifierAndText(false);
           this->getSelectedBall()->changeBallImage();
           this->setSelectedBall(NULL);
           break;
@@ -370,17 +370,14 @@ void GameScene::removeGoLabel() {
   }
 }
 
-void GameScene::updateGameScoreText() {
-  _score = _score + (10 * _modifier);
+void GameScene::updateGameScoreAndText() {
+  int points = (10 * _modifier) + (getCurrentTime() - _lastElapsedTime);
+  
+  
+  _score = _score + points;
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel->setString(scoreText);
-}
-
-void GameScene::updateGameModifierText() {
-  char modifierText[15];
-  sprintf(modifierText, "Modifier: %dx", _modifier);
-  _modifierLabel->setString(modifierText);
 }
 
 int GameScene::topScreenAdjust() {
@@ -393,7 +390,7 @@ int GameScene::topScreenAdjust() {
 #endif
 }
 
-void GameScene::updateModifier(bool ballsMatched) {
+void GameScene::updateModifierAndText(bool ballsMatched) {
   if (ballsMatched) {
     if (_lastPairMatched) {
       _lastPairMatched = false;
@@ -402,10 +399,12 @@ void GameScene::updateModifier(bool ballsMatched) {
     else {
       _lastPairMatched = true;
     }
-    updateGameModifierText();
   }
   else {
     _modifier = 1;
-    updateGameModifierText();
   }
+  
+  char modifierText[15];
+  sprintf(modifierText, "Modifier: %dx", _modifier);
+  _modifierLabel->setString(modifierText);
 }
