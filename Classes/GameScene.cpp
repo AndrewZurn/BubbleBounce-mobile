@@ -19,6 +19,7 @@ int nextBallId = 0;
 static int STARTING_BALLS = 12;
 int time_interval = 3750;
 static int LABEL_FONT_SIZE = 60;
+static int POINTS_LABEL_FONT_SIZE = 45;
 static int LABEL_MARGIN = 15;
 static int BALL_COUNT_CEILING = 24;
 static int PROGRESS_OFFSET_Y = 50;
@@ -77,7 +78,7 @@ bool GameScene::init() {
   
   //add modifier label
   char modifierText[15];
-  sprintf(modifierText, "Modifier: %dx", _modifier);
+  sprintf(modifierText, "Bonus %dx", _modifier);
   _modifierLabel = CCLabelTTF::create(modifierText, "Marker Felt.ttf", LABEL_FONT_SIZE);
   _modifierLabel->setAnchorPoint(ccp(0,0));
   _modifierLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN*1.75), windowSize.height - topScreenAdjust() ));
@@ -191,8 +192,8 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
       else { //a ball was previously touched
         if ( ball->compareColor(this->getSelectedBall()) ) {
           updateModifierAndText(true);
-          updateGameScoreAndText();
-          popBalls(ball, i);
+          int points = updateGameScoreAndText();
+          popBalls(ball, i, points);
           break;
         }
         else{ //the colors don't match
@@ -264,12 +265,12 @@ void GameScene::increaseGameDifficulty() {
 // Given a ball and it's position in the ballArray, pop that ball,
 // and it's corresponding selectedBall, and remove it from the ballArray.
 //////////////////////////////////////////////////////////////////////////////////////////
-void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
+void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall, int pointsGained) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
   
-  ballPopExplosion(ball);
-  ballPopExplosion(this->getSelectedBall());
+  ballPopExplosion(ball, pointsGained);
+  ballPopExplosion(this->getSelectedBall(), pointsGained);
   
   this->removeChild(ball);
   this->removeChild(this->getSelectedBall());
@@ -332,7 +333,7 @@ void GameScene::resetGame() {
   time_interval = 3750;
 }
 
-void GameScene::ballPopExplosion(Ball* ball) {
+void GameScene::ballPopExplosion(Ball* ball, int pointsGained) {
   CCParticleExplosion* popEffect = CCParticleExplosion::create();
   ccColor4F effectColor;
   
@@ -358,8 +359,19 @@ void GameScene::ballPopExplosion(Ball* ball) {
   popEffect->setTotalParticles(75);
   popEffect->setLife(0.15);
   popEffect->setPosition(ccp(ball->getX(), ball->getY()));
-  
   this->addChild(popEffect);
+  
+  char pointsEarnedArray[3];
+  sprintf(pointsEarnedArray, "%d", pointsGained);
+  
+  CCLabelTTF* pointsEarnedLabel = CCLabelTTF::create(pointsEarnedArray, "Marker Felt.ttf", POINTS_LABEL_FONT_SIZE);
+  pointsEarnedLabel->setAnchorPoint(ccp(0,0));
+  pointsEarnedLabel->setPosition(ccp(ball->getX(), ball->getY()));
+  this->addChild(pointsEarnedLabel, ZIndexGameTextLabels);
+  
+  CCAction* fadeOut = CCFadeOut::create(1.5);
+  pointsEarnedLabel->runAction(fadeOut);
+  pointsEarnedLabel = NULL;
 }
 
 void GameScene::removeGoLabel() {
@@ -370,14 +382,14 @@ void GameScene::removeGoLabel() {
   }
 }
 
-void GameScene::updateGameScoreAndText() {
+int GameScene::updateGameScoreAndText() {
   int points = (10 * _modifier) + (getCurrentTime() - _lastElapsedTime);
-  
-  
   _score = _score + points;
   char scoreText[10];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel->setString(scoreText);
+  
+  return points;
 }
 
 int GameScene::topScreenAdjust() {
@@ -405,6 +417,6 @@ void GameScene::updateModifierAndText(bool ballsMatched) {
   }
   
   char modifierText[15];
-  sprintf(modifierText, "Modifier: %dx", _modifier);
+  sprintf(modifierText, "Bonus %dx", _modifier);
   _modifierLabel->setString(modifierText);
 }
