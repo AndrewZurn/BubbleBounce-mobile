@@ -365,10 +365,9 @@ void GameScene::ballPopExplosion(Ball* ball) {
     textColor = ccc3(236, 243, 18);
   }
   
-  CCParticleExplosion* popEffect = CCParticleExplosion::create();
+  CCParticleExplosion* popEffect = CCParticleExplosion::createWithTotalParticles(75);
   popEffect->setStartColor(effectColor);
   popEffect->setEndColor(effectColor);
-  popEffect->setTotalParticles(75);
   popEffect->setLife(0.15);
   popEffect->setPosition(ccp(ball->getX(), ball->getY()));
   this->addChild(popEffect);
