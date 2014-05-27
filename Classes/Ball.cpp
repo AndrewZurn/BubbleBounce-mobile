@@ -1,5 +1,6 @@
 #include "Ball.h"
 #include "Constants.h"
+#include <algorithm>
 
 USING_NS_CC;
 
