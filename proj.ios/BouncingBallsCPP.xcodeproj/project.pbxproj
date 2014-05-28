@@ -2736,6 +2736,7 @@
 					"$(PROJECT_DIR)/**",
 				);
 				OTHER_CFLAGS = "-O2";
+				"OTHER_CFLAGS[arch=*]" = "-O2";
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
@@ -2816,10 +2817,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fno-stack-protector";
 				PROVISIONING_PROFILE = "4C4FAECD-64C7-4B81-A481-FF3CD023EB19";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv6 armv7 i386";
@@ -2830,6 +2833,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
