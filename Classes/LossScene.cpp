@@ -46,7 +46,7 @@ bool LossScene::init() {
   this->addChild(background, ZIndexBackground);
   
   //setup score label
-  char scoreText[10];
+  char scoreText[25];
   sprintf(scoreText, "Score: %d", _score);
   CCLabelTTF* scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
   

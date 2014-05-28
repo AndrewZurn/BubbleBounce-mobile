@@ -273,8 +273,8 @@ void GameScene::increaseGameDifficulty() {
 // and it's corresponding selectedBall, and remove it from the ballArray.
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall) {
-  //CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
-  //CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
   
   ballPopExplosion(ball);
   ballPopExplosion(this->getSelectedBall());
@@ -332,7 +332,7 @@ const char * GameScene::getRandomPopSound() {
 void GameScene::resetGame() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
   this->removeAllChildren();
-  this->cleanup(); //using this would stop the multiple ball pops, and would actually make nice trans to next scene
+  //this->cleanup(); //using this would stop the multiple ball pops, and would actually make nice trans to next scene
   _ballArray.clear();
 
   nextBallId = 0;
@@ -398,7 +398,7 @@ int GameScene::getPointsEarned() {
 
 void GameScene::updateGameScoreAndText() {
   _score = _score + getPointsEarned();
-  char scoreText[10];
+  char scoreText[25];
   sprintf(scoreText, "Score: %d", _score);
   _scoreLabel->setString(scoreText);
 }
