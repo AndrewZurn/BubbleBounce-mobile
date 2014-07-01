@@ -75,7 +75,7 @@ bool GameScene::init() {
   
   //add score label
   char scoreText[10];
-  sprintf(scoreText, "Score: %d", _score);
+  sprintf(scoreText, " %d", _score);
   _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
   _scoreLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
   _scoreLabel->setAnchorPoint(ccp(0,0));
@@ -83,13 +83,13 @@ bool GameScene::init() {
   this->addChild(_scoreLabel, ZIndexGameTextLabels);
   
   //add modifier label
-  char modifierText[15];
-  sprintf(modifierText, "Bonus %dx", _modifier);
-  _modifierLabel = CCLabelTTF::create(modifierText, "Marker Felt.ttf", LABEL_FONT_SIZE);
-  _modifierLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
-  _modifierLabel->setAnchorPoint(ccp(0,0));
-  _modifierLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN*1.75), windowSize.height - topScreenAdjust() ));
-  this->addChild(_modifierLabel, ZIndexGameTextLabels);
+//  char modifierText[15];
+//  sprintf(modifierText, "Bonus %dx", _modifier);
+//  _modifierLabel = CCLabelTTF::create(modifierText, "Marker Felt.ttf", LABEL_FONT_SIZE);
+//  _modifierLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
+//  _modifierLabel->setAnchorPoint(ccp(0,0));
+//  _modifierLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN*1.75), windowSize.height - topScreenAdjust() ));
+//  this->addChild(_modifierLabel, ZIndexGameTextLabels);
   
   //add progress bar
   _progressBar = CCProgressTimer::create( CCSprite::create("progress_bar.png"));
@@ -399,7 +399,7 @@ int GameScene::getPointsEarned() {
 void GameScene::updateGameScoreAndText() {
   _score = _score + getPointsEarned();
   char scoreText[25];
-  sprintf(scoreText, "Score: %d", _score);
+  sprintf(scoreText, " %d", _score);
   _scoreLabel->setString(scoreText);
 }
 
@@ -427,7 +427,7 @@ void GameScene::updateModifierAndText(bool ballsMatched) {
     _modifier = 1;
   }
   
-  char modifierText[15];
-  sprintf(modifierText, "Bonus %dx", _modifier);
-  _modifierLabel->setString(modifierText);
+//  char modifierText[15];
+//  sprintf(modifierText, "Bonus %dx", _modifier);
+//  _modifierLabel->setString(modifierText);
 }
