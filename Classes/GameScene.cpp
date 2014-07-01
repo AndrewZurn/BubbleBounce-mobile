@@ -28,9 +28,6 @@ static int LABEL_COLOR_R = 91;
 static int LABEL_COLOR_B = 236;
 static int LABEL_COLOR_G = 255;
 
-static int PROGRESS_OFFSET_Y = 50;
-static int PROGRESS_OFFSET_X = 320;
-
 //////////////////////////////////////////////////////////////////////////////////////////
 // Creates the game layer, and adds it to this scene.
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -45,8 +42,7 @@ CCScene* GameScene::scene()
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-//  Creates the context of the game.  Adds background,
-//  the score text and the progress bar onto the game.
+//  Creates the context of the game.  Adds background, the score text onto the game.
 //  Also setups the game scheduling and other handlers.
 //////////////////////////////////////////////////////////////////////////////////////////
 bool GameScene::init() {
@@ -81,29 +77,6 @@ bool GameScene::init() {
   _scoreLabel->setAnchorPoint(ccp(0,0));
   _scoreLabel->cocos2d::CCNode::setPosition( ccp(LABEL_MARGIN, windowSize.height - topScreenAdjust() ));
   this->addChild(_scoreLabel, ZIndexGameTextLabels);
-  
-  //add modifier label
-//  char modifierText[15];
-//  sprintf(modifierText, "Bonus %dx", _modifier);
-//  _modifierLabel = CCLabelTTF::create(modifierText, "Marker Felt.ttf", LABEL_FONT_SIZE);
-//  _modifierLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
-//  _modifierLabel->setAnchorPoint(ccp(0,0));
-//  _modifierLabel->cocos2d::CCNode::setPosition( ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN*1.75), windowSize.height - topScreenAdjust() ));
-//  this->addChild(_modifierLabel, ZIndexGameTextLabels);
-  
-  //add progress bar
-  _progressBar = CCProgressTimer::create( CCSprite::create("progress_bar.png"));
-  if ( _progressBar != NULL ) {
-    _progressBar->setType(kCCProgressTimerTypeBar);
-    _progressBar->setMidpoint(ccp(0,0));
-    _progressBar->setBarChangeRate(ccp(1, 0));
-    _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
-    _progressBar->setPosition(ccp(PROGRESS_OFFSET_X, PROGRESS_OFFSET_Y));
-    this->addChild(_progressBar, ZIndexProgressBar);
-  }
-//  _progressBarBackground = CCSprite::create("progress_bar_background.png");
-//  _progressBarBackground->setPosition(ccp(PROGRESS_OFFSET_X, PROGRESS_OFFSET_Y));
-//  this->addChild(_progressBarBackground, ZIndexProgressBackground);
   
   //add go image
   _goTextImage = CCMenuItemImage::create("text_go.png", "text_go.png", this, NULL);
@@ -220,9 +193,7 @@ void GameScene::handleBallTouch(cocos2d::CCTouch *touch) {
 //////////////////////////////////////////////////////////////////////////////////////////
 void GameScene::createNewBalls() {
   Ball* firstBall = Ball::createBall(_ballArray, nextBallId++, "");
-  firstBall->setProgressBarHeight(_progressBar->getSprite()->getTexture()->getPixelsHigh() + PROGRESS_OFFSET_Y/2);
   Ball* secondBall = Ball::createBall(_ballArray, nextBallId++, firstBall->getOriginalBallImage());
-  secondBall->setProgressBarHeight(_progressBar->getSprite()->getTexture()->getPixelsHigh() + PROGRESS_OFFSET_Y/2);
   
   _ballArray.push_back(firstBall);
   _ballArray.push_back(secondBall);
@@ -236,7 +207,6 @@ void GameScene::updateBallPositions() {
   for(iterator = _ballArray.begin(); iterator != _ballArray.end(); iterator++) {
     Ball* ball = *iterator;
     ball->updateBallPositions(_ballArray);
-    _progressBar->setPercentage( ((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
   }
 }
 
@@ -248,7 +218,6 @@ void GameScene::updateBallPositions() {
 void GameScene::increaseGameDifficulty() {
   for (int i = 0; i < addMoreBallsCount / 2; i++) {
     createNewBalls();
-    _progressBar->setPercentage(((float) _ballArray.size()/BALL_COUNT_CEILING) * 100);
   }
   
   double random = ((double) rand() / (RAND_MAX)); //number between 0 and 1
@@ -426,8 +395,4 @@ void GameScene::updateModifierAndText(bool ballsMatched) {
   else {
     _modifier = 1;
   }
-  
-//  char modifierText[15];
-//  sprintf(modifierText, "Bonus %dx", _modifier);
-//  _modifierLabel->setString(modifierText);
 }

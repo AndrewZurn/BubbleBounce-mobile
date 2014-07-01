@@ -73,7 +73,7 @@ void Ball::updateBallPositions(std::vector<Ball*> ballList) {
   }
   
   ////BOTTOM SIDE OF SCREEN////
-  if(this->getY() - this->getRadius() < _progressBarHeight ){ //TODO: Find HEIGHT of ProgressTimer here.
+  if(this->getY() - this->getRadius() < 0 ){
     this->setYVelocity(-(this->getYVelocity()));
     this->setY(this->getY() + 10);
   }
@@ -285,7 +285,7 @@ void Ball::setBallPositionToOnScreen(Ball* thisBall) {
   if (y + radius > windowSize.height - topScreenAdjust() ) {
     thisBall->setY(windowSize.height - (radius * 2));
   }
-  else if (y - radius < thisBall->getProgressBarHeight() + 25 ) {
+  else if (y - radius < 0 ) {
     thisBall->setY(radius * 4);
   }
 }
