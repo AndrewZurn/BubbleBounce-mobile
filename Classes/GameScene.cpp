@@ -74,7 +74,7 @@ bool GameScene::init()
     this->addChild(background, ZIndexBackground);
 
     // add score label
-    char scoreText[10];
+    char scoreText[25];
     sprintf(scoreText, " %d", _score);
     _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
     _scoreLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
@@ -107,6 +107,7 @@ bool GameScene::init()
 void GameScene::GameUpdate()
 {
     if (!_gameOver) {
+        removeGoLabel();
 
         // if too many balls on the screen, game over
         if (_ballArray.size() >= BALL_COUNT_CEILING) {
@@ -114,12 +115,8 @@ void GameScene::GameUpdate()
         } else if (_ballArray.size() == 0) {
             _lastElapsedTime = getCurrentTime();
             increaseGameDifficulty();
-
-            removeGoLabel(); // if it hasn't already
         } else if (didTimeElapse()) {
             increaseGameDifficulty();
-
-            removeGoLabel(); // if it hasn't already
         }
         // Update all the balls positions (animate the balls)
         updateBallPositions();
@@ -389,7 +386,7 @@ void GameScene::ballPopExplosion(Ball* ball)
 void GameScene::removeGoLabel()
 {
     if (_goTextImage != NULL) {
-        CCAction* fadeOut = CCFadeOut::create(0.25);
+        CCAction* fadeOut = CCFadeOut::create(2.25);
         _goTextImage->runAction(fadeOut);
         _goTextImage = NULL;
     }
