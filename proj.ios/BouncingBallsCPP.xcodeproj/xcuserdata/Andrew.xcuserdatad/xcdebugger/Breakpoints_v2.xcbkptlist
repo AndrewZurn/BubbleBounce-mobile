@@ -371,7 +371,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
             endingLineNumber = "66"
-            landmarkName = "FirstScene::init()"
+            landmarkName = "FirstScene::scene()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -466,7 +466,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
-            endingLineNumber = "208">
+            endingLineNumber = "208"
+            landmarkName = "FirstScene::scene()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

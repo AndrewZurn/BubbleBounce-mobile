@@ -15,26 +15,27 @@
 
 @implementation ViewLeaderboardPicker
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    // Custom initialization
-    NSLog(@"Single Leaderboard Picker Screen Ready");
-  }
-  return self;
+    self = [super initWithNibName:nibNameOrNil
+                           bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        NSLog(@"Single Leaderboard Picker Screen Ready");
+    }
+    return self;
 }
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  // Do any additional setup after loading the view.
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*
@@ -50,26 +51,30 @@
 
 #pragma mark - Leader Board View Controller
 
-- (void)leaderboardsViewControllerDidFinish: (GPGLeaderboardsController *)viewController {
-  
-  BOOL animated = YES;
-  if ([[UIDevice currentDevice].systemVersion floatValue] < 7.0)
-    animated = NO;
-  
-  [self dismissViewControllerAnimated:animated completion:nil];
-  PlayGameSingleton::sharedInstance().finishLeaderboards();
+- (void)leaderboardsViewControllerDidFinish:(GPGLeaderboardsController*)viewController
+{
+
+    BOOL animated = YES;
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 7.0)
+        animated = NO;
+
+    [self dismissViewControllerAnimated:animated
+                             completion:nil];
+    PlayGameSingleton::sharedInstance().finishLeaderboards();
 }
 
--(void) showLeaderboards
+- (void)showLeaderboards
 {
-  GPGLeaderboardsController *leadsController = [[GPGLeaderboardsController alloc] init];
-  leadsController.leaderboardsDelegate = self;
-  
-  BOOL animated = YES;
-  if ([[UIDevice currentDevice].systemVersion floatValue] < 7.0)
-    animated = NO;
-  
-  [self presentViewController:leadsController animated:animated completion:nil];
+    GPGLeaderboardsController* leadsController = [[GPGLeaderboardsController alloc] init];
+    leadsController.leaderboardsDelegate = self;
+
+    BOOL animated = YES;
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 7.0)
+        animated = NO;
+
+    [self presentViewController:leadsController
+                       animated:animated
+                     completion:nil];
 }
 
 @end

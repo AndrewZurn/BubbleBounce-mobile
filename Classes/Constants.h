@@ -10,7 +10,6 @@
 #define ZIndexButtonMenu 2
 #define ZIndexGoImage 2
 
-
 //ball constants
 #define BallSpeed 2
 #define BallSelected 3
