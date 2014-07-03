@@ -408,7 +408,7 @@ void GameScene::updateGameScoreAndText()
 int GameScene::topScreenAdjust()
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    return LABEL_FONT_SIZE * 2.75;
+    return LABEL_FONT_SIZE * 2.90;
 #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
