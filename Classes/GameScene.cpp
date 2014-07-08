@@ -24,9 +24,6 @@ static int BALL_COUNT_CEILING = 24;
 static int LABEL_FONT_SIZE = 60;
 static int POINTS_LABEL_FONT_SIZE = 60;
 static int LABEL_MARGIN = 15;
-static int LABEL_COLOR_R = 91;
-static int LABEL_COLOR_B = 236;
-static int LABEL_COLOR_G = 255;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Creates the game layer, and adds it to this scene.
@@ -68,7 +65,7 @@ bool GameScene::init()
     this->setTouchEnabled(true);
 
     // add background
-    CCSprite* background = CCSprite::create("background_2.png");
+    CCSprite* background = CCSprite::create(BackgroundImage);
     background->setPosition(
         ccp(windowSize.width / 2 + origin.x, windowSize.height / 2 + origin.y));
     this->addChild(background, ZIndexBackground);
@@ -77,7 +74,7 @@ bool GameScene::init()
     char scoreText[25];
     sprintf(scoreText, " %d", _score);
     _scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
-    _scoreLabel->setColor(ccc3(LABEL_COLOR_R, LABEL_COLOR_B, LABEL_COLOR_G));
+    _scoreLabel->setColor(ccc3(ScoreLabelR, ScoreLabelG, ScoreLabelB));
     _scoreLabel->setAnchorPoint(ccp(0, 0));
     _scoreLabel->cocos2d::CCNode::setPosition(
         ccp(LABEL_MARGIN, windowSize.height - topScreenAdjust()));

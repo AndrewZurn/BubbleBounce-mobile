@@ -15,6 +15,12 @@
 #define BallSelected 3
 #define BallNotSelected 4
 
+#define ScoreLabelR 192
+#define ScoreLabelG 60
+#define ScoreLabelB 232
+
+#define BackgroundImage "background.png"
+
 //exception values
 #define BallSelectedColorNotFound 5
 #define BallColorFromFileNotFound 6

@@ -11,6 +11,7 @@
 #include "GameScene.h"
 #include "NativeUtils.h"
 #include "PlayGameConstants.h"
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -42,7 +43,7 @@ bool LossScene::init()
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
     //add background
-    CCSprite* background = CCSprite::create("background_2.png");
+    CCSprite* background = CCSprite::create(BackgroundImage);
     background->setPosition(ccp(windowSize.width / 2 + origin.x, windowSize.height / 2 + origin.y));
     this->addChild(background, ZIndexBackground);
 
@@ -50,6 +51,7 @@ bool LossScene::init()
     char scoreText[25];
     sprintf(scoreText, "Score: %d", _score);
     CCLabelTTF* scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
+    scoreLabel->setColor(ccc3(ScoreLabelR, ScoreLabelG, ScoreLabelB));
 
     //add game buttons
     CCMenuItemImage* gameLogo = CCMenuItemImage::create("text_you_lose.png", "text_you_lose.png", this, NULL);

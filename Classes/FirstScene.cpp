@@ -46,7 +46,7 @@ bool FirstScene::init()
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
     //add background
-    CCSprite* background = CCSprite::create("background_2.png");
+    CCSprite* background = CCSprite::create(BackgroundImage);
     background->setPosition(ccp(windowSize.width / 2 + origin.x, windowSize.height / 2 + origin.y));
     this->addChild(background, ZIndexBackground);
 
