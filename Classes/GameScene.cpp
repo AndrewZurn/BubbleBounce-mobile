@@ -21,7 +21,7 @@ int time_interval = 3750;
 int addMoreBallsCount = 4;
 static int BALL_COUNT_CEILING = 24;
 
-static int LABEL_FONT_SIZE = 60;
+static int LABEL_FONT_SIZE = 65;
 static int POINTS_LABEL_FONT_SIZE = 60;
 static int LABEL_MARGIN = 15;
 
@@ -333,31 +333,31 @@ void GameScene::ballPopExplosion(Ball* ball)
         effectColor.g = 40.0f / 255.0f;
         effectColor.b = 243.0f / 255.0f;
         effectColor.a = 1.0f;
-        textColor = ccc3(243, 108, 18);
+        textColor = ccc3(18, 40, 243);
     } else if (strcmp(color, "orange") == 0) {
         effectColor.r = 243.0f / 255.0f;
         effectColor.g = 108.0f / 255.0f;
         effectColor.b = 18.0f / 255.0f;
         effectColor.a = 1.0f;
-        textColor = ccc3(18, 40, 243);
+        textColor = ccc3(243, 108, 18);
     } else if (strcmp(color, "pink") == 0) {
         effectColor.r = 198.0f / 255.0f;
         effectColor.g = 17.0f / 255.0f;
         effectColor.b = 235.0f / 255.0f;
         effectColor.a = 1.0f;
-        textColor = ccc3(236, 243, 18);
+        textColor = ccc3(198, 17, 235);
     } else if (strcmp(color, "red") == 0) {
         effectColor.r = 235.0f / 255.0f;
         effectColor.g = 17.0f / 255.0f;
         effectColor.b = 17.0f / 255.0f;
         effectColor.a = 1.0f;
-        textColor = ccc3(22, 250, 49);
+        textColor = ccc3(235, 17, 17);
     } else if (strcmp(color, "yellow") == 0) {
         effectColor.r = 236.0f / 255.0f;
         effectColor.g = 243.0f / 255.0f;
         effectColor.b = 18.0f / 255.0f;
         effectColor.a = 1.0f;
-        textColor = ccc3(198, 17, 235);
+        textColor = ccc3(236, 243, 18);
     }
 
     CCParticleExplosion* popEffect = CCParticleExplosion::createWithTotalParticles(75);
