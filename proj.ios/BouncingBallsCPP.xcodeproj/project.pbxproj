@@ -276,7 +276,7 @@
 		497B659618EDDABF004168B0 /* progress_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 497B659518EDDABF004168B0 /* progress_bar.png */; };
 		497B659D18EDEE65004168B0 /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 497B659A18EDEE65004168B0 /* Action Man.ttf */; };
 		497B65A118EDFC31004168B0 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 497B65A018EDFC31004168B0 /* play_button.png */; };
-		499B8C8018D9371C000F55E5 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7018D9371C000F55E5 /* background.png */; };
+		49890568197D9E800010FE02 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 49890567197D9E800010FE02 /* background.png */; };
 		499B8C8B18D9371C000F55E5 /* bouncinballslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */; };
 		499B8C8C18D9371C000F55E5 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7E18D9371C000F55E5 /* arial.ttf */; };
 		49A4BE5C18DA871F007CE796 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5918DA871F007CE796 /* Ball.cpp */; };
@@ -308,7 +308,6 @@
 		49C7AF44191B263B003F203C /* appicon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C7AF36191B263B003F203C /* appicon-Small@2x.png */; };
 		49C7AF45191B263B003F203C /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C7AF37191B263B003F203C /* appicon.png */; };
 		49C7AF46191B263B003F203C /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C7AF38191B263B003F203C /* appicon@2x.png */; };
-		49D0F1F9196C88C100FAD473 /* background_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49D0F1F8196C88C100FAD473 /* background_2.jpg */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -875,7 +874,7 @@
 		497B659518EDDABF004168B0 /* progress_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bar.png; sourceTree = "<group>"; };
 		497B659A18EDEE65004168B0 /* Action Man.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man.ttf"; sourceTree = "<group>"; };
 		497B65A018EDFC31004168B0 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
-		499B8C7018D9371C000F55E5 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		49890567197D9E800010FE02 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouncinballslogo.png; sourceTree = "<group>"; };
 		499B8C7E18D9371C000F55E5 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
 		49A4BE5918DA871F007CE796 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = ../Classes/Ball.cpp; sourceTree = "<group>"; };
@@ -912,7 +911,6 @@
 		49C7AF36191B263B003F203C /* appicon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-Small@2x.png"; sourceTree = SOURCE_ROOT; };
 		49C7AF37191B263B003F203C /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = SOURCE_ROOT; };
 		49C7AF38191B263B003F203C /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = SOURCE_ROOT; };
-		49D0F1F8196C88C100FAD473 /* background_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_2.jpg; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -2282,13 +2280,12 @@
 		49F3BFEF18F908F200728CF6 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				49D0F1F8196C88C100FAD473 /* background_2.jpg */,
+				49890567197D9E800010FE02 /* background.png */,
 				492B6E0819141FCB00B507CB /* bubble_pop_2.mp3 */,
 				492B231518F46E36003742A0 /* text_you_lose.png */,
 				492B231018F431F1003742A0 /* text_go.png */,
 				492B230B18F36E8D003742A0 /* bubble_pop.mp3 */,
 				497B659518EDDABF004168B0 /* progress_bar.png */,
-				499B8C7018D9371C000F55E5 /* background.png */,
 				499B8C7C18D9371C000F55E5 /* bouncinballslogo.png */,
 			);
 			name = Others;
@@ -2381,10 +2378,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49D0F1F9196C88C100FAD473 /* background_2.jpg in Resources */,
 				492B230818F35A3C003742A0 /* play_button_pressed.png in Resources */,
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				49A4BE7D18DB253A007CE796 /* yellowballselected.png in Resources */,
+				49890568197D9E800010FE02 /* background.png in Resources */,
 				492B231A18F495D1003742A0 /* play_again_button.png in Resources */,
 				497B65A118EDFC31004168B0 /* play_button.png in Resources */,
 				49A4BE7718DB253A007CE796 /* orangeballselected.png in Resources */,
@@ -2394,7 +2391,6 @@
 				492B231418F431F1003742A0 /* text_go.png in Resources */,
 				492B230C18F36E8D003742A0 /* bubble_pop.mp3 in Resources */,
 				49C7AF3E191B263B003F203C /* appicon-76@2x.png in Resources */,
-				499B8C8018D9371C000F55E5 /* background.png in Resources */,
 				49A4BE7518DB253A007CE796 /* blueballselected.png in Resources */,
 				49A4BE7A18DB253A007CE796 /* redball.png in Resources */,
 				49A4BE7418DB253A007CE796 /* blueball.png in Resources */,
