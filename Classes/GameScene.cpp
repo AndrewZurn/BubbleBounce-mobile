@@ -25,6 +25,8 @@ static int LABEL_FONT_SIZE = 65;
 static int POINTS_LABEL_FONT_SIZE = 60;
 static int LABEL_MARGIN = 15;
 
+CCSize windowSize;
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // Creates the game layer, and adds it to this scene.
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +51,7 @@ bool GameScene::init()
         return false;
     }
 
-    CCSize windowSize = CCDirector::sharedDirector()->getVisibleSize();
+    windowSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
     // setup game scheduling/handling/other attributes
@@ -79,6 +81,15 @@ bool GameScene::init()
     _scoreLabel->cocos2d::CCNode::setPosition(
         ccp(LABEL_MARGIN, windowSize.height - topScreenAdjust()));
     this->addChild(_scoreLabel, ZIndexGameTextLabels);
+
+    //add modifier label
+    char modifierText[15];
+    sprintf(modifierText, "%dx", _modifier);
+    _modifierLabel = CCLabelTTF::create(modifierText, "Marker Felt.ttf", LABEL_FONT_SIZE);
+    _modifierLabel->setColor(ccc3(ScoreLabelR, ScoreLabelG, ScoreLabelB));
+    _modifierLabel->setAnchorPoint(ccp(0, 0));
+    _modifierLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN * 1.75), windowSize.height - topScreenAdjust()));
+    this->addChild(_modifierLabel, ZIndexGameTextLabels);
 
     // add go image
     _goTextImage = CCMenuItemImage::create("text_go.png", "text_go.png", this, NULL);
@@ -232,14 +243,14 @@ void GameScene::increaseGameDifficulty()
     if (random <= 0.30 && addMoreBallsCount > 4) {
         addMoreBallsCount = addMoreBallsCount - 2;
     } else if (random <= 0.66 && addMoreBallsCount > 8) {
-        addMoreBallsCount = addMoreBallsCount + 2;
+        //addMoreBallsCount = addMoreBallsCount + 2; //keep it the same
     } else if (random <= 1 && addMoreBallsCount > 8) {
-        addMoreBallsCount = addMoreBallsCount + 4;
-    } else {
         addMoreBallsCount = addMoreBallsCount + 2;
+    } else {
+        //addMoreBallsCount = addMoreBallsCount + 2; //keep it the same
     }
 
-    time_interval = time_interval - 15;
+    time_interval = time_interval - 10;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -424,5 +435,14 @@ void GameScene::updateModifierAndText(bool ballsMatched)
         }
     } else {
         _modifier = 1;
+    }
+
+    char modifierText[15];
+    sprintf(modifierText, "%dx", _modifier);
+    _modifierLabel->setString(modifierText);
+    if (_modifier >= 10) {
+        _modifierLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width - _modifierLabel->getContentSize().width * 1.10 - (LABEL_MARGIN * 1.75), windowSize.height - topScreenAdjust()));
+    } else {
+        _modifierLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN * 1.75), windowSize.height - topScreenAdjust()));
     }
 }
