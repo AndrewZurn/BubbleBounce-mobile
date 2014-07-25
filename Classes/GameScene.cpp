@@ -402,7 +402,8 @@ void GameScene::removeGoLabel()
 
 int GameScene::getPointsEarned()
 {
-    return (10 * _modifier) + ((getCurrentTime() - _lastElapsedTime) * 0.1);
+    //    return (10 * _modifier) + ((getCurrentTime() - _lastElapsedTime) * 0.1);
+    return 100 * _modifier;
 }
 
 void GameScene::updateGameScoreAndText()
