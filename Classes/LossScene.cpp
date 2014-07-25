@@ -67,6 +67,8 @@ bool LossScene::init()
 
     this->setTouchEnabled(true);
 
+    NativeUtils::submitScore(LEADERBOARD, _score);
+
     return true;
 }
 
@@ -89,6 +91,5 @@ void LossScene::playButtonCallback(CCObject* pSender)
 //////////////////////////////////////////////////////////////////////////////////////////
 void LossScene::statsButtonCallback(CCObject* pSender)
 {
-    NativeUtils::submitScore(LEADERBOARD, _score);
     NativeUtils::showLeaderboards();
 }
