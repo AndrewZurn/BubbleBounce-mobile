@@ -16,6 +16,7 @@
 USING_NS_CC;
 
 int nextBallId = 0;
+int _pairsMatched = 0;
 static int STARTING_BALLS = 12;
 int time_interval = 3750;
 int addMoreBallsCount = 4;
@@ -243,11 +244,11 @@ void GameScene::increaseGameDifficulty()
     if (random <= 0.30 && addMoreBallsCount > 4) {
         addMoreBallsCount = addMoreBallsCount - 2;
     } else if (random <= 0.66 && addMoreBallsCount > 8) {
-        //addMoreBallsCount = addMoreBallsCount + 2; //keep it the same
-    } else if (random <= 1 && addMoreBallsCount > 8) {
         addMoreBallsCount = addMoreBallsCount + 2;
+    } else if (random <= 1 && addMoreBallsCount > 8) {
+        addMoreBallsCount = addMoreBallsCount + 4;
     } else {
-        //addMoreBallsCount = addMoreBallsCount + 2; //keep it the same
+        addMoreBallsCount = addMoreBallsCount + 2;
     }
 
     time_interval = time_interval - 10;
@@ -428,11 +429,11 @@ int GameScene::topScreenAdjust()
 void GameScene::updateModifierAndText(bool ballsMatched)
 {
     if (ballsMatched) {
-        if (_lastPairMatched) {
-            _lastPairMatched = false;
+        if (_modifier <= 8 && _pairsMatched == pow(_modifier, 2)) {
             _modifier++;
+            _pairsMatched = 0;
         } else {
-            _lastPairMatched = true;
+            _pairsMatched++;
         }
     } else {
         _modifier = 1;
@@ -441,6 +442,8 @@ void GameScene::updateModifierAndText(bool ballsMatched)
     char modifierText[15];
     sprintf(modifierText, "%dx", _modifier);
     _modifierLabel->setString(modifierText);
+
+    //may no longer be needed
     if (_modifier >= 10) {
         _modifierLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width - _modifierLabel->getContentSize().width * 1.10 - (LABEL_MARGIN * 1.75), windowSize.height - topScreenAdjust()));
     } else {
