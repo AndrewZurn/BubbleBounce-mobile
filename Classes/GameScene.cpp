@@ -195,7 +195,8 @@ void GameScene::handleBallTouch(cocos2d::CCTouch* touch)
                 } else { // the colors don't match
                     updateModifierAndText(false);
                     this->getSelectedBall()->changeBallImage();
-                    this->setSelectedBall(NULL);
+                    this->setSelectedBall(ball);
+                    ball->changeBallImage();
                     break;
                 }
             }
