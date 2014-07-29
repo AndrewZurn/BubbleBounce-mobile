@@ -59,6 +59,7 @@ bool GameScene::init()
     _score = 0;
     _modifier = 1;
     _lastPairMatched = false;
+    _pairsMatched = 0;
     this->_gameOver = false;
     this->_lastElapsedTime = getCurrentTime();
     CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(
@@ -330,6 +331,8 @@ void GameScene::resetGame()
     // actually make nice trans to next scene
     _ballArray.clear();
 
+    _pairsMatched = 0;
+    _modifier = 1;
     nextBallId = 0;
     addMoreBallsCount = 4;
     time_interval = 3750;
@@ -437,16 +440,12 @@ void GameScene::updateModifierAndText(bool ballsMatched)
         }
     } else {
         _modifier = 1;
+        _pairsMatched = 0;
     }
 
     char modifierText[15];
     sprintf(modifierText, "%dx", _modifier);
     _modifierLabel->setString(modifierText);
-
-    //may no longer be needed
-    if (_modifier >= 10) {
-        _modifierLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width - _modifierLabel->getContentSize().width * 1.10 - (LABEL_MARGIN * 1.75), windowSize.height - topScreenAdjust()));
-    } else {
-        _modifierLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN * 1.75), windowSize.height - topScreenAdjust()));
-    }
+    _modifierLabel->setFontSize(LABEL_FONT_SIZE + (_modifier * 6));
+    _modifierLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN * 1.75), windowSize.height - topScreenAdjust() - (_modifier * 7)));
 }

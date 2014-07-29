@@ -456,7 +456,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../classes/FirstScene.cpp"
@@ -638,6 +638,68 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "LossScene::scene(int score)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../classes/GameScene.cpp"
+            timestampString = "428291173.183984"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "GameScene::ccTouchesEnded(cocos2d::CCSet* pTouches, cocos2d::CCEvent* event)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GameScene::ccTouchesEnded(cocos2d::CCSet*, cocos2d::CCEvent*)"
+                  moduleName = "BouncingBallsCPP"
+                  urlString = "file:///Library/Cocos2Dx/projects/BouncingBallCPP/classes/GameScene.cpp"
+                  timestampString = "428290861.546523"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "55">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "non-virtual thunk to GameScene::ccTouchesEnded(cocos2d::CCSet*, cocos2d::CCEvent*)"
+                  moduleName = "BouncingBallsCPP"
+                  urlString = "file:///Library/Cocos2Dx/projects/BouncingBallCPP/classes/GameScene.cpp"
+                  timestampString = "428290861.546884"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "55">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../classes/GameScene.cpp"
+            timestampString = "428291173.183984"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "GameScene::updateModifierAndText(bool ballsMatched)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
