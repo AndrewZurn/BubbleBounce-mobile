@@ -1,0 +1,1 @@
+Will be future class for a utilities class to hold commonly accessed code.
