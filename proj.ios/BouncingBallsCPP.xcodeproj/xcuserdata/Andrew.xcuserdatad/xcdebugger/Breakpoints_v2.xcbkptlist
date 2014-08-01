@@ -44,9 +44,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7"
-            endingLineNumber = "7"
-            landmarkName = "operator==(const Ball &amp;ball)"
-            landmarkType = "7">
+            endingLineNumber = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -263,6 +263,7 @@
 		4944493E190FDDAA00346D31 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4944493A190FDDA900346D31 /* MessageUI.framework */; };
 		4944493F190FDDAA00346D31 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4944493B190FDDA900346D31 /* StoreKit.framework */; };
 		49444943190FE19500346D31 /* AdMobBannerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49444942190FE19500346D31 /* AdMobBannerView.mm */; };
+		49617E5E198B243900523744 /* GameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49617E5C198B243900523744 /* GameUtils.cpp */; };
 		496AB94D18F904A8008A42E1 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94318F904A8008A42E1 /* AddressBook.framework */; };
 		496AB94E18F904A8008A42E1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94418F904A8008A42E1 /* AssetsLibrary.framework */; };
 		496AB94F18F904A8008A42E1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94518F904A8008A42E1 /* CoreData.framework */; };
@@ -860,6 +861,8 @@
 		4944493B190FDDA900346D31 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		49444941190FE15E00346D31 /* AdMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMobBannerView.h; sourceTree = SOURCE_ROOT; };
 		49444942190FE19500346D31 /* AdMobBannerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdMobBannerView.mm; sourceTree = SOURCE_ROOT; };
+		49617E5C198B243900523744 /* GameUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameUtils.cpp; path = ../Classes/GameUtils.cpp; sourceTree = "<group>"; };
+		49617E5D198B243900523744 /* GameUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUtils.h; path = ../Classes/GameUtils.h; sourceTree = "<group>"; };
 		496AB94318F904A8008A42E1 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		496AB94418F904A8008A42E1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		496AB94518F904A8008A42E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -2217,6 +2220,8 @@
 				4918A35A1901607800CEC6D9 /* JNIHelpers.h */,
 				492B231E18F8A869003742A0 /* NativeUtils.h */,
 				492B231F18F8A890003742A0 /* NativeUtils.cpp */,
+				49617E5C198B243900523744 /* GameUtils.cpp */,
+				49617E5D198B243900523744 /* GameUtils.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -2534,6 +2539,7 @@
 				15A3DA3E1682F826002FB0C5 /* CCLayerGradientLoader.cpp in Sources */,
 				15A3DA3F1682F826002FB0C5 /* CCLayerLoader.cpp in Sources */,
 				15A3DA401682F826002FB0C5 /* CCMenuItemImageLoader.cpp in Sources */,
+				49617E5E198B243900523744 /* GameUtils.cpp in Sources */,
 				375BD5101868454E0024609E /* CCActionFrameEasing.cpp in Sources */,
 				298B29C318D0668400C1920F /* PageViewReader.cpp in Sources */,
 				15A3DA411682F826002FB0C5 /* CCMenuItemLoader.cpp in Sources */,
