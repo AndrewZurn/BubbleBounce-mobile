@@ -614,11 +614,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../classes/GameScene.cpp"
-            timestampString = "428556216.037732"
+            timestampString = "428618355.371022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "GameScene::ccTouchesEnded(cocos2d::CCSet* pTouches, cocos2d::CCEvent* event)"
             landmarkType = "5">
             <Locations>
@@ -660,11 +660,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../classes/GameScene.cpp"
-            timestampString = "428556216.037732"
+            timestampString = "428618706.950689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "GameScene::updateModifierAndText(bool ballsMatched)"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,6 +698,38 @@
             startingLineNumber = "21"
             endingLineNumber = "21"
             landmarkName = "GameUtils::getBackgrounds()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../classes/GameScene.cpp"
+            timestampString = "428618591.748122"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "GameScene::increaseGameDifficulty2(bool timeElapsed)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../classes/GameScene.cpp"
+            timestampString = "428618747.112413"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "GameScene::increaseGameDifficulty2(bool timeElapsed)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -37,6 +37,7 @@ private:
     void ballPopExplosion(Ball* ball);
     const char* getRandomPopSound();
     void increaseGameDifficulty();
+	void increaseGameDifficulty2(bool timeElapsed);
     void resetGame();
     void updateModifierAndText(bool ballsMatched);
     void giveBonus();

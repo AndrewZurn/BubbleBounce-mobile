@@ -19,7 +19,8 @@ USING_NS_CC;
 int nextBallId = 0;
 int _pairsMatched = 0;
 static int STARTING_BALLS = 12;
-int time_interval = 53750;
+int time_interval = 2500;
+int penaltyTime = 0;
 int addMoreBallsCount = 4;
 static int BALL_COUNT_CEILING = 24;
 
@@ -126,10 +127,10 @@ void GameScene::GameUpdate()
             _gameOver = true;
         } else if (_ballArray.size() == 0) {
             _lastElapsedTime = GameUtils::getCurrentTime();
-            increaseGameDifficulty();
+            increaseGameDifficulty2(false);
             giveBonus();
         } else if (didTimeElapse()) {
-            increaseGameDifficulty();
+            increaseGameDifficulty2(true);
         }
         // Update all the balls positions (animate the balls)
         updateBallPositions();
@@ -257,6 +258,37 @@ void GameScene::increaseGameDifficulty()
     }
 
     time_interval = time_interval - 10;
+}
+
+void GameScene::increaseGameDifficulty2(bool timeElapsed)
+{
+
+    double random = ((double)rand() / (RAND_MAX)); // number between 0 and 1
+    if (random <= 0.5) {
+        addMoreBallsCount = 1;
+    } else {
+        addMoreBallsCount = 2;
+    }
+    std::cout << "Random Balls: " << addMoreBallsCount << std::endl;
+
+    for (int i = 0; i < addMoreBallsCount; i++) {
+        createNewBalls();
+    }
+
+    random = ((double)rand() / (RAND_MAX)); // number between 0 and 1
+    if (random <= 0.4) {
+        time_interval = 750;
+    } else if (random <= 0.8) {
+        time_interval = 1500;
+    } else {
+        time_interval = 2250;
+    }
+    std::cout << "Random Time: " << time_interval << std::endl;
+
+    if (timeElapsed) {
+        time_interval = time_interval - penaltyTime;
+        penaltyTime = penaltyTime + 10;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
