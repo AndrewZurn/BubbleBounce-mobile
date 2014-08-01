@@ -9,6 +9,7 @@
 #include "Constants.h"
 #include "Ball.h"
 #include "LossScene.h"
+#include "GameUtils.h"
 
 #include <sys/time.h>
 #include "SimpleAudioEngine.h"
@@ -18,12 +19,13 @@ USING_NS_CC;
 int nextBallId = 0;
 int _pairsMatched = 0;
 static int STARTING_BALLS = 12;
-int time_interval = 3750;
+int time_interval = 53750;
 int addMoreBallsCount = 4;
 static int BALL_COUNT_CEILING = 24;
 
 static int LABEL_FONT_SIZE = 65;
 static int POINTS_LABEL_FONT_SIZE = 60;
+static int CLEARED_BONUS_LABEL_FONT_SIZE = 125;
 static int LABEL_MARGIN = 15;
 
 CCSize windowSize;
@@ -61,7 +63,7 @@ bool GameScene::init()
     _lastPairMatched = false;
     _pairsMatched = 0;
     this->_gameOver = false;
-    this->_lastElapsedTime = getCurrentTime();
+    this->_lastElapsedTime = GameUtils::getCurrentTime();
     CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(
         "bubble_pop.mp3");
     CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(
@@ -123,8 +125,9 @@ void GameScene::GameUpdate()
         if (_ballArray.size() >= BALL_COUNT_CEILING) {
             _gameOver = true;
         } else if (_ballArray.size() == 0) {
-            _lastElapsedTime = getCurrentTime();
+            _lastElapsedTime = GameUtils::getCurrentTime();
             increaseGameDifficulty();
+            giveBonus();
         } else if (didTimeElapse()) {
             increaseGameDifficulty();
         }
@@ -264,9 +267,9 @@ void GameScene::popBalls(Ball* ball,
                          std::vector<Ball*>::iterator indexOfBall)
 {
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(
-        getRandomPopSound());
+        GameUtils::getRandomPopSound());
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(
-        getRandomPopSound());
+        GameUtils::getRandomPopSound());
 
     ballPopExplosion(ball);
     ballPopExplosion(this->getSelectedBall());
@@ -292,41 +295,20 @@ void GameScene::popBalls(Ball* ball,
 //////////////////////////////////////////////////////////////////////////////////////////
 bool GameScene::didTimeElapse()
 {
-    long currentTime = getCurrentTime();
+    long currentTime = GameUtils::getCurrentTime();
     long lastElapsedTime = _lastElapsedTime;
 
     if (currentTime - lastElapsedTime > time_interval) {
-        _lastElapsedTime = getCurrentTime();
+        _lastElapsedTime = GameUtils::getCurrentTime();
         return true;
     }
     return false;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////
-// Private method to return the current time of the in milliseconds.
-//////////////////////////////////////////////////////////////////////////////////////////
-long GameScene::getCurrentTime()
-{
-    timeval time;
-    gettimeofday(&time, NULL);
-    return (time.tv_sec * 1000) + (time.tv_usec / 1000);
-}
-
-const char* GameScene::getRandomPopSound()
-{
-    double random = ((double)rand() / (RAND_MAX));
-
-    if (random <= 0.5) {
-        return "bubble_pop.mp3";
-    } else {
-        return "bubble_pop_2.mp3";
-    }
-}
-
 void GameScene::resetGame()
 {
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(
-        getRandomPopSound());
+        GameUtils::getRandomPopSound());
     this->removeAllChildren();
     // this->cleanup(); //using this would stop the multiple ball pops, and would
     // actually make nice trans to next scene
@@ -341,40 +323,9 @@ void GameScene::resetGame()
 
 void GameScene::ballPopExplosion(Ball* ball)
 {
-    ccColor4F effectColor;
-    ccColor3B textColor;
     const char* color = ball->getBallColor();
-    if (strcmp(color, "blue") == 0) {
-        effectColor.r = 18.0f / 255.0f;
-        effectColor.g = 40.0f / 255.0f;
-        effectColor.b = 243.0f / 255.0f;
-        effectColor.a = 1.0f;
-        textColor = ccc3(18, 40, 243);
-    } else if (strcmp(color, "orange") == 0) {
-        effectColor.r = 243.0f / 255.0f;
-        effectColor.g = 108.0f / 255.0f;
-        effectColor.b = 18.0f / 255.0f;
-        effectColor.a = 1.0f;
-        textColor = ccc3(243, 108, 18);
-    } else if (strcmp(color, "pink") == 0) {
-        effectColor.r = 198.0f / 255.0f;
-        effectColor.g = 17.0f / 255.0f;
-        effectColor.b = 235.0f / 255.0f;
-        effectColor.a = 1.0f;
-        textColor = ccc3(198, 17, 235);
-    } else if (strcmp(color, "red") == 0) {
-        effectColor.r = 235.0f / 255.0f;
-        effectColor.g = 17.0f / 255.0f;
-        effectColor.b = 17.0f / 255.0f;
-        effectColor.a = 1.0f;
-        textColor = ccc3(235, 17, 17);
-    } else if (strcmp(color, "yellow") == 0) {
-        effectColor.r = 236.0f / 255.0f;
-        effectColor.g = 243.0f / 255.0f;
-        effectColor.b = 18.0f / 255.0f;
-        effectColor.a = 1.0f;
-        textColor = ccc3(236, 243, 18);
-    }
+    ccColor4F effectColor = GameUtils::getColor4F(color);
+    ccColor3B textColor = GameUtils::getColor3B(color);
 
     CCParticleExplosion* popEffect = CCParticleExplosion::createWithTotalParticles(75);
     popEffect->setStartColor(effectColor);
@@ -407,7 +358,7 @@ void GameScene::removeGoLabel()
 
 int GameScene::getPointsEarned()
 {
-    //    return (10 * _modifier) + ((getCurrentTime() - _lastElapsedTime) * 0.1);
+    //    return (10 * _modifier) + ((GameUtils::getCurrentTime() - _lastElapsedTime) * 0.1);
     return 100 * _modifier;
 }
 
@@ -449,4 +400,21 @@ void GameScene::updateModifierAndText(bool ballsMatched)
     _modifierLabel->setString(modifierText);
     _modifierLabel->setFontSize(LABEL_FONT_SIZE + (_modifier * 6));
     _modifierLabel->cocos2d::CCNode::setPosition(ccp(windowSize.width - _modifierLabel->getContentSize().width - (LABEL_MARGIN * 1.75), windowSize.height - topScreenAdjust() - (_modifier * 7)));
+}
+
+void GameScene::giveBonus()
+{
+    _score = _score + 1000;
+    updateGameScoreAndText();
+
+    const char* bonusText = "+1000";
+    CCLabelTTF* bonusEarnedLabel = CCLabelTTF::create(
+        bonusText, "Marker Felt.ttf", CLEARED_BONUS_LABEL_FONT_SIZE);
+    bonusEarnedLabel->setColor(GameUtils::getRandomColor3B());
+    bonusEarnedLabel->setPosition(ccp((windowSize.width / 2) - (bonusEarnedLabel->getDimensions().width / 2), (windowSize.height / 2) - (bonusEarnedLabel->getDimensions().height / 2)));
+    this->addChild(bonusEarnedLabel, ZIndexGameTextLabels);
+
+    CCAction* fadeOut = CCFadeOut::create(1.5);
+    bonusEarnedLabel->runAction(fadeOut);
+    bonusEarnedLabel = NULL;
 }

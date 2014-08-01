@@ -8,18 +8,103 @@
 
 #include "GameUtils.h"
 
-std::vector<const char*> getBackgrounds()
+std::vector<const char*> GameUtils::getBackgrounds()
 {
+    char buffer[22];
+    std::vector<const char*> backgrounds;
+    for (int i = 0; i < 24; i++) {
+        sprintf(buffer, "background_%d.png", i);
+        backgrounds.push_back(buffer);
+    }
+
+    return backgrounds;
 }
 
-const char* getRandomPopSound()
+const char* GameUtils::getRandomPopSound()
 {
+    double random = ((double)rand() / (RAND_MAX));
+
+    if (random <= 0.5) {
+        return "bubble_pop.mp3";
+    } else {
+        return "bubble_pop_2.mp3";
+    }
 }
 
-cocos2d::ccColor4F getOppositeColor4F(const char*)
+cocos2d::ccColor4F GameUtils::getColor4F(const char* color)
 {
+    cocos2d::ccColor4F oppColor;
+
+    if (strcmp(color, "blue") == 0) {
+        oppColor.r = 18.0f / 255.0f;
+        oppColor.g = 40.0f / 255.0f;
+        oppColor.b = 243.0f / 255.0f;
+        oppColor.a = 1.0f;
+    } else if (strcmp(color, "orange") == 0) {
+        oppColor.r = 243.0f / 255.0f;
+        oppColor.g = 108.0f / 255.0f;
+        oppColor.b = 18.0f / 255.0f;
+        oppColor.a = 1.0f;
+    } else if (strcmp(color, "pink") == 0) {
+        oppColor.r = 198.0f / 255.0f;
+        oppColor.g = 17.0f / 255.0f;
+        oppColor.b = 235.0f / 255.0f;
+        oppColor.a = 1.0f;
+    } else if (strcmp(color, "red") == 0) {
+        oppColor.r = 235.0f / 255.0f;
+        oppColor.g = 17.0f / 255.0f;
+        oppColor.b = 17.0f / 255.0f;
+        oppColor.a = 1.0f;
+    } else if (strcmp(color, "yellow") == 0) {
+        oppColor.r = 236.0f / 255.0f;
+        oppColor.g = 243.0f / 255.0f;
+        oppColor.b = 18.0f / 255.0f;
+        oppColor.a = 1.0f;
+    }
+
+    return oppColor;
 }
 
-cocos2d::ccColor3B getOppositeColor3B(const char*)
+cocos2d::ccColor3B GameUtils::getColor3B(const char* color)
 {
+    if (strcmp(color, "blue") == 0) {
+        return cocos2d::ccc3(18, 40, 243);
+    } else if (strcmp(color, "orange") == 0) {
+        return cocos2d::ccc3(243, 108, 18);
+    } else if (strcmp(color, "pink") == 0) {
+        return cocos2d::ccc3(198, 17, 235);
+    } else if (strcmp(color, "red") == 0) {
+        return cocos2d::ccc3(235, 17, 17);
+    } else if (strcmp(color, "yellow") == 0) {
+        return cocos2d::ccc3(236, 243, 18);
+    } else {
+        return cocos2d::ccc3(0, 0, 0);
+    }
+}
+
+cocos2d::ccColor3B GameUtils::getRandomColor3B()
+{
+    double random = ((double)rand() / (RAND_MAX));
+
+    if (random <= 0.2) {
+        return cocos2d::ccc3(18, 40, 243); //blue
+    } else if (random <= 0.4) {
+        return cocos2d::ccc3(243, 108, 18); //orange
+    } else if (random <= 0.6) {
+        return cocos2d::ccc3(198, 17, 235); //pink
+    } else if (random <= 0.8) {
+        return cocos2d::ccc3(235, 17, 17); //red
+    } else {
+        return cocos2d::ccc3(236, 243, 18); //yellow
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Private method to return the current time of the in milliseconds.
+//////////////////////////////////////////////////////////////////////////////////////////
+long GameUtils::getCurrentTime()
+{
+    timeval time;
+    gettimeofday(&time, NULL);
+    return (time.tv_sec * 1000) + (time.tv_usec / 1000);
 }

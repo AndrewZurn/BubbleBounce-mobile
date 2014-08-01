@@ -39,6 +39,7 @@ private:
     void increaseGameDifficulty();
     void resetGame();
     void updateModifierAndText(bool ballsMatched);
+    void giveBonus();
 
     long _lastElapsedTime;
     bool didTimeElapse();
@@ -60,15 +61,23 @@ public:
     virtual void ccTouchesEnded(cocos2d::CCSet* pTouches, cocos2d::CCEvent* event);
     void handleBallTouch(cocos2d::CCTouch* touch);
 
-    Ball* getSelectedBall() {
-        return _selectedBall; }
-    std::vector<Ball*> getBallArray() {
-        return _ballArray; }
+    Ball* getSelectedBall()
+    {
+        return _selectedBall;
+    }
+    std::vector<Ball*> getBallArray()
+    {
+        return _ballArray;
+    }
 
-    void setBallArray(std::vector<Ball*> ballArray) {
-        _ballArray = ballArray; }
-    void setSelectedBall(Ball* ball) {
-        _selectedBall = ball; }
+    void setBallArray(std::vector<Ball*> ballArray)
+    {
+        _ballArray = ballArray;
+    }
+    void setSelectedBall(Ball* ball)
+    {
+        _selectedBall = ball;
+    }
 };
 
 #endif

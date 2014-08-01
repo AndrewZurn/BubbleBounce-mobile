@@ -2134,6 +2134,14 @@
 			name = AdMob;
 			sourceTree = "<group>";
 		};
+		49617E5F198B267800523744 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				49890567197D9E800010FE02 /* background.png */,
+			);
+			name = Backgrounds;
+			sourceTree = "<group>";
+		};
 		499B8C7D18D9371C000F55E5 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2283,7 +2291,6 @@
 		49F3BFEF18F908F200728CF6 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				49890567197D9E800010FE02 /* background.png */,
 				492B6E0819141FCB00B507CB /* bubble_pop_2.mp3 */,
 				492B231518F46E36003742A0 /* text_you_lose.png */,
 				492B231018F431F1003742A0 /* text_go.png */,
@@ -2296,6 +2303,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				49617E5F198B267800523744 /* Backgrounds */,
 				49F3BFEF18F908F200728CF6 /* Others */,
 				49F3BFEE18F908D900728CF6 /* Buttons */,
 				49F3BFED18F908BC00728CF6 /* Icon-SplashScreen */,

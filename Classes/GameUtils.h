@@ -16,8 +16,10 @@ class GameUtils {
 public:
     static std::vector<const char*> getBackgrounds();
     static const char* getRandomPopSound();
-    static cocos2d::ccColor4F getOppositeColor4F(const char*);
-    static cocos2d::ccColor3B getOppositeColor3B(const char*);
+    static cocos2d::ccColor4F getColor4F(const char*);
+    static cocos2d::ccColor3B getColor3B(const char*);
+    static cocos2d::ccColor3B getRandomColor3B();
+    static long getCurrentTime();
 };
 
 #endif /* defined(__BouncingBallsCPP__GameUtils__) */

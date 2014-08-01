@@ -11,6 +11,7 @@
 #include "AppDelegate.h"
 #include "Constants.h"
 #include "SimpleAudioEngine.h"
+#include "GameUtils.h"
 
 #include "NativeUtils.h"
 
@@ -147,7 +148,7 @@ void FirstScene::createNewBalls()
 //////////////////////////////////////////////////////////////////////////////////////////
 void FirstScene::popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall)
 {
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(getRandomPopSound());
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(GameUtils::getRandomPopSound());
 
     ballPopExplosion(ball);
 
@@ -155,50 +156,12 @@ void FirstScene::popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall)
     _ballArray.erase(indexOfBall);
 }
 
-const char* FirstScene::getRandomPopSound()
-{
-    double random = ((double)rand() / (RAND_MAX));
-
-    if (random <= 0.5) {
-        return "bubble_pop.mp3";
-    } else {
-        return "bubble_pop_2.mp3";
-    }
-}
-
 void FirstScene::ballPopExplosion(Ball* ball)
 {
-    CCParticleExplosion* popEffect = CCParticleExplosion::create();
-    ccColor4F effectColor;
-
     const char* color = ball->getBallColor();
-    if (strcmp(color, "blue") == 0) {
-        effectColor.r = 18.0f / 255.0f;
-        effectColor.g = 40.0f / 255.0f;
-        effectColor.b = 243.0f / 255.0f;
-        effectColor.a = 1.0f;
-    } else if (strcmp(color, "orange") == 0) {
-        effectColor.r = 243.0f / 255.0f;
-        effectColor.g = 108.0f / 255.0f;
-        effectColor.b = 18.0f / 255.0f;
-        effectColor.a = 1.0f;
-    } else if (strcmp(color, "pink") == 0) {
-        effectColor.r = 198.0f / 255.0f;
-        effectColor.g = 17.0f / 255.0f;
-        effectColor.b = 235.0f / 255.0f;
-        effectColor.a = 1.0f;
-    } else if (strcmp(color, "red") == 0) {
-        effectColor.r = 235.0f / 255.0f;
-        effectColor.g = 17.0f / 255.0f;
-        effectColor.b = 17.0f / 255.0f;
-        effectColor.a = 1.0f;
-    } else if (strcmp(color, "yellow") == 0) {
-        effectColor.r = 236.0f / 255.0f;
-        effectColor.g = 243.0f / 255.0f;
-        effectColor.b = 18.0f / 255.0f;
-        effectColor.a = 1.0f;
-    }
+    ccColor4F effectColor = GameUtils::getColor4F(color);
 
+    CCParticleExplosion* popEffect = CCParticleExplosion::create();
     popEffect->setStartColor(effectColor);
     popEffect->setEndColor(effectColor);
     popEffect->setTotalParticles(75);
