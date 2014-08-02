@@ -99,6 +99,41 @@ cocos2d::ccColor3B GameUtils::getRandomColor3B()
     }
 }
 
+cocos2d::ccColor4F GameUtils::getRandomColor4F()
+{
+    cocos2d::ccColor4F color;
+
+    double random = ((double)rand() / (RAND_MAX));
+    if (random <= 0.2) { //blue
+        color.r = 18.0f / 255.0f;
+        color.g = 40.0f / 255.0f;
+        color.b = 243.0f / 255.0f;
+        color.a = 1.0f;
+    } else if (random <= 0.4) { //orange
+        color.r = 243.0f / 255.0f;
+        color.g = 108.0f / 255.0f;
+        color.b = 18.0f / 255.0f;
+        color.a = 1.0f;
+    } else if (random <= 0.6) { //pink
+        color.r = 198.0f / 255.0f;
+        color.g = 17.0f / 255.0f;
+        color.b = 235.0f / 255.0f;
+        color.a = 1.0f;
+    } else if (random <= 0.8) { //red
+        color.r = 235.0f / 255.0f;
+        color.g = 17.0f / 255.0f;
+        color.b = 17.0f / 255.0f;
+        color.a = 1.0f;
+    } else { //yellow
+        color.r = 236.0f / 255.0f;
+        color.g = 243.0f / 255.0f;
+        color.b = 18.0f / 255.0f;
+        color.a = 1.0f;
+    }
+
+    return color;
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // Private method to return the current time of the in milliseconds.
 //////////////////////////////////////////////////////////////////////////////////////////

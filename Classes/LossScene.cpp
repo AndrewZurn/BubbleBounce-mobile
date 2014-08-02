@@ -10,6 +10,7 @@
 #include "Constants.h"
 #include "GameScene.h"
 #include "NativeUtils.h"
+#include "GameUtils.h"
 #include "PlayGameConstants.h"
 #include "Constants.h"
 
@@ -51,7 +52,7 @@ bool LossScene::init()
     char scoreText[25];
     sprintf(scoreText, "Score: %d", _score);
     CCLabelTTF* scoreLabel = CCLabelTTF::create(scoreText, "Marker Felt.ttf", LABEL_FONT_SIZE);
-    scoreLabel->setColor(ccc3(ScoreLabelR, ScoreLabelG, ScoreLabelB));
+    scoreLabel->setColor(GameUtils::getRandomColor3B());
 
     //add game buttons
     CCMenuItemImage* gameLogo = CCMenuItemImage::create("text_you_lose.png", "text_you_lose.png", this, NULL);
