@@ -19,7 +19,7 @@ public:
     static cocos2d::ccColor4F getColor4F(const char*);
     static cocos2d::ccColor3B getColor3B(const char*);
     static cocos2d::ccColor3B getRandomColor3B();
-	static cocos2d::ccColor4F getRandomColor4F();
+    static cocos2d::ccColor4F getRandomColor4F();
     static long getCurrentTime();
 };
 

@@ -18,7 +18,7 @@ USING_NS_CC;
 
 int nextBallId = 0;
 int _pairsMatched = 0;
-static int STARTING_BALLS = 12;
+static int STARTING_BALLS = 10;
 int time_interval = 2500;
 int penaltyTime = 0;
 int addMoreBallsCount = 1;
@@ -127,9 +127,9 @@ void GameScene::GameUpdate()
         if (_ballArray.size() >= BALL_COUNT_CEILING) {
             _gameOver = true;
         } else if (_ballArray.size() == 0) {
-            _lastElapsedTime = GameUtils::getCurrentTime();
             increaseGameDifficulty2(false);
             giveBonus();
+            _lastElapsedTime = GameUtils::getCurrentTime();
         } else if (didTimeElapse()) {
             increaseGameDifficulty2(true);
         }
@@ -277,11 +277,11 @@ void GameScene::increaseGameDifficulty2(bool timeElapsed)
 
     random = ((double)rand() / (RAND_MAX)); // number between 0 and 1
     if (random <= 0.33) {
-        time_interval = 750;
+        time_interval = 600;
     } else if (random <= 0.8) {
-        time_interval = 1500;
+        time_interval = 1200;
     } else {
-        time_interval = 2000;
+        time_interval = 1800;
         penaltyTime = penaltyTime + 5;
     }
 
@@ -364,7 +364,7 @@ void GameScene::ballPopExplosion(Ball* ball)
     CCParticleExplosion* popEffect = CCParticleExplosion::createWithTotalParticles(75);
     popEffect->setStartColor(effectColor);
     popEffect->setEndColor(effectColor);
-    popEffect->setLife(0.35);
+    popEffect->setLife(0.15);
     popEffect->setPosition(ccp(ball->getX(), ball->getY()));
     this->addChild(popEffect);
 
@@ -376,7 +376,7 @@ void GameScene::ballPopExplosion(Ball* ball)
     pointsEarnedLabel->setPosition(ccp(ball->getX(), ball->getY()));
     this->addChild(pointsEarnedLabel, ZIndexGameTextLabels);
 
-    CCAction* fadeOut = CCFadeOut::create(1.5);
+    CCAction* fadeOut = CCFadeOut::create(0.75);
     pointsEarnedLabel->runAction(fadeOut);
     pointsEarnedLabel = NULL;
 }
@@ -392,7 +392,7 @@ void GameScene::removeGoLabel()
 
 int GameScene::getPointsEarned()
 {
-    //    return (10 * _modifier) + ((GameUtils::getCurrentTime() - _lastElapsedTime) * 0.1);
+    //return (10 * _modifier) + ((GameUtils::getCurrentTime() - _lastElapsedTime) * 0.1);
     return 100 * _modifier;
 }
 
