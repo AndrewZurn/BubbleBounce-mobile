@@ -21,7 +21,7 @@ int _pairsMatched = 0;
 static int STARTING_BALLS = 12;
 int time_interval = 2500;
 int penaltyTime = 0;
-int addMoreBallsCount = 4;
+int addMoreBallsCount = 1;
 int _oldScore = 0;
 static int BALL_COUNT_CEILING = 24;
 
@@ -265,28 +265,27 @@ void GameScene::increaseGameDifficulty2(bool timeElapsed)
 {
 
     double random = ((double)rand() / (RAND_MAX)); // number between 0 and 1
-    if (random <= 0.5) {
-        addMoreBallsCount = 1;
-    } else {
+    if (!timeElapsed || random <= 0.2) { //if they cleared the screen, or if random <= 0.2
         addMoreBallsCount = 2;
+    } else {
+        addMoreBallsCount = 1;
     }
-    std::cout << "Random Balls: " << addMoreBallsCount << std::endl;
 
     for (int i = 0; i < addMoreBallsCount; i++) {
         createNewBalls();
     }
 
     random = ((double)rand() / (RAND_MAX)); // number between 0 and 1
-    if (random <= 0.4) {
+    if (random <= 0.33) {
         time_interval = 750;
     } else if (random <= 0.8) {
         time_interval = 1500;
     } else {
-        time_interval = 2250;
+        time_interval = 2000;
+        penaltyTime = penaltyTime + 5;
     }
-    std::cout << "Random Time: " << time_interval << std::endl;
 
-    if (timeElapsed) {
+    if (timeElapsed && penaltyTime < 300) {
         time_interval = time_interval - penaltyTime;
         penaltyTime = penaltyTime + 10;
     }
@@ -320,6 +319,7 @@ void GameScene::popBalls(Ball* ball,
         }
     }
     this->setSelectedBall(NULL);
+    std::cout << "Array size: " << _ballArray.size() << std::endl;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -347,11 +347,12 @@ void GameScene::resetGame()
     // actually make nice trans to next scene
     _ballArray.clear();
 
-    _pairsMatched = 0;
-    _modifier = 1;
     nextBallId = 0;
-    addMoreBallsCount = 4;
-    time_interval = 3750;
+    _pairsMatched = 0;
+    time_interval = 2500;
+    penaltyTime = 0;
+    addMoreBallsCount = 1;
+    _oldScore = 0;
 }
 
 void GameScene::ballPopExplosion(Ball* ball)
@@ -443,10 +444,12 @@ void GameScene::updateModifierAndText(bool ballsMatched)
 
 void GameScene::giveBonus()
 {
-    _score = _score + 1000;
+    int bonus = 1000 + ((GameUtils::getCurrentTime() - _lastElapsedTime) * 0.1); //FIXME: This seems to only compute correctly when debugging... which is wierd
+    _score = _score + bonus;
     updateGameScoreAndText();
 
-    const char* bonusText = "+1000";
+    char bonusText[10];
+    sprintf(bonusText, "+%d", bonus);
     CCLabelTTF* bonusEarnedLabel = CCLabelTTF::create(
         bonusText, "Marker Felt.ttf", CLEARED_BONUS_LABEL_FONT_SIZE);
     bonusEarnedLabel->setColor(GameUtils::getRandomColor3B());
