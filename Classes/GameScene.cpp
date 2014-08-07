@@ -19,7 +19,7 @@ USING_NS_CC;
 int nextBallId = 0;
 int _pairsMatched = 0;
 static int STARTING_BALLS = 10;
-int time_interval = 2500;
+int time_interval = 2800;
 int penaltyTime = 0;
 int addMoreBallsCount = 1;
 int _oldScore = 0;
@@ -444,7 +444,7 @@ void GameScene::updateModifierAndText(bool ballsMatched)
 
 void GameScene::giveBonus()
 {
-    int bonus = 1000 + ((GameUtils::getCurrentTime() - _lastElapsedTime) * 0.1); //FIXME: This seems to only compute correctly when debugging... which is wierd
+    int bonus = 1000 + ((GameUtils::getCurrentTime() - _lastElapsedTime) * 0.1);
     _score = _score + bonus;
     updateGameScoreAndText();
 

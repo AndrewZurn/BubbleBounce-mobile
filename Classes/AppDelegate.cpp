@@ -29,6 +29,23 @@ bool AppDelegate::applicationDidFinishLaunching()
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
+    // get the screen size of the device
+    auto screenSize = pEGLView->getFrameSize();
+    std::cout << "INFO: Screen Size - " << screenSize.height << " x " << screenSize.width << std::endl;
+
+    // check which resources should be used
+    std::vector<std::string> resDirOrders;
+    if (1920 <= screenSize.width || 1920 <= screenSize.height) { //TODO: MAKE SURE THIS IS CORRECT
+        resDirOrders.push_back("HD");
+        resDirOrders.push_back("SD");
+    } else {
+        resDirOrders.push_back("SD");
+    }
+
+    // set the resource directory for the resources
+    CCFileUtils::sharedFileUtils()->setSearchPaths(resDirOrders);
+    std::cout << "INFO: Resource Directory - " << resDirOrders.front() << std::endl;
+
     // create a scene. it's an autorelease object
     CCScene* pScene = FirstScene::scene();
 

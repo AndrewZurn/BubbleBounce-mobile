@@ -293,6 +293,8 @@
 		49A4BE7B18DB253A007CE796 /* redballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE7118DB253A007CE796 /* redballselected.png */; };
 		49A4BE7C18DB253A007CE796 /* yellowball.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE7218DB253A007CE796 /* yellowball.png */; };
 		49A4BE7D18DB253A007CE796 /* yellowballselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A4BE7318DB253A007CE796 /* yellowballselected.png */; };
+		49A6EFD41992CF5900E1E829 /* HD in Resources */ = {isa = PBXBuildFile; fileRef = 49A6EFD21992CF5900E1E829 /* HD */; };
+		49A6EFD51992CF5900E1E829 /* SD in Resources */ = {isa = PBXBuildFile; fileRef = 49A6EFD31992CF5900E1E829 /* SD */; };
 		49C723AE1912E8F800C6708E /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49C723AD1912E8F800C6708E /* Marker Felt.ttf */; };
 		49C7AF39191B263B003F203C /* appicon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C7AF2B191B263B003F203C /* appicon-60.png */; };
 		49C7AF3A191B263B003F203C /* appicon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C7AF2C191B263B003F203C /* appicon-60@2x.png */; };
@@ -897,6 +899,8 @@
 		49A4BE7118DB253A007CE796 /* redballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redballselected.png; sourceTree = "<group>"; };
 		49A4BE7218DB253A007CE796 /* yellowball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowball.png; sourceTree = "<group>"; };
 		49A4BE7318DB253A007CE796 /* yellowballselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowballselected.png; sourceTree = "<group>"; };
+		49A6EFD21992CF5900E1E829 /* HD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HD; sourceTree = "<group>"; };
+		49A6EFD31992CF5900E1E829 /* SD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SD; sourceTree = "<group>"; };
 		49C723AD1912E8F800C6708E /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Marker Felt.ttf"; path = "../Marker Felt.ttf"; sourceTree = "<group>"; };
 		49C7AF2B191B263B003F203C /* appicon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60.png"; sourceTree = SOURCE_ROOT; };
 		49C7AF2C191B263B003F203C /* appicon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -2303,6 +2307,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				49A6EFD21992CF5900E1E829 /* HD */,
+				49A6EFD31992CF5900E1E829 /* SD */,
 				49617E5F198B267800523744 /* Backgrounds */,
 				49F3BFEF18F908F200728CF6 /* Others */,
 				49F3BFEE18F908D900728CF6 /* Buttons */,
@@ -2401,6 +2407,7 @@
 				492B231418F431F1003742A0 /* text_go.png in Resources */,
 				492B230C18F36E8D003742A0 /* bubble_pop.mp3 in Resources */,
 				49C7AF3E191B263B003F203C /* appicon-76@2x.png in Resources */,
+				49A6EFD51992CF5900E1E829 /* SD in Resources */,
 				49A4BE7518DB253A007CE796 /* blueballselected.png in Resources */,
 				49A4BE7A18DB253A007CE796 /* redball.png in Resources */,
 				49A4BE7418DB253A007CE796 /* blueball.png in Resources */,
@@ -2422,6 +2429,7 @@
 				499B8C8B18D9371C000F55E5 /* bouncinballslogo.png in Resources */,
 				49C7AF41191B263B003F203C /* appicon-Small-50.png in Resources */,
 				49C7AF3C191B263B003F203C /* appicon-72@2x.png in Resources */,
+				49A6EFD41992CF5900E1E829 /* HD in Resources */,
 				49C7AF3D191B263B003F203C /* appicon-76.png in Resources */,
 				49C7AF46191B263B003F203C /* appicon@2x.png in Resources */,
 				492B233C18F8ABFC003742A0 /* GooglePlus.bundle in Resources */,
@@ -2731,7 +2739,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"/**",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"/**",
@@ -2792,7 +2800,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"/**",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"/**",
@@ -2823,6 +2831,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fno-stack-protector";
 				PROVISIONING_PROFILE = "4C4FAECD-64C7-4B81-A481-FF3CD023EB19";
@@ -2839,6 +2848,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "61A31DB3-A612-4656-809D-7DADB5E9998B";
 				SDKROOT = iphoneos;
