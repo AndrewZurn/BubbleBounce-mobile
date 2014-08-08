@@ -35,13 +35,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // check which resources should be used
     std::vector<std::string> resDirOrders;
-    if (1920 <= screenSize.width || 1920 <= screenSize.height) { //TODO: MAKE SURE THIS IS CORRECT
+    if (1800 <= screenSize.width || 1800 <= screenSize.height) {
         resDirOrders.push_back("HD");
+    } else if (1000 <= screenSize.width || 1000 <= screenSize.height) {
         resDirOrders.push_back("MD");
-        resDirOrders.push_back("SD");
-    } else if (1200 <= screenSize.width || 1200 <= screenSize.height) {
-        resDirOrders.push_back("MD");
-        resDirOrders.push_back("SD");
     } else {
         resDirOrders.push_back("SD");
     }
