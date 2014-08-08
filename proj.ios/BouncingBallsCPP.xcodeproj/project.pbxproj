@@ -265,8 +265,7 @@
 		496AB95418F904A8008A42E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94A18F904A8008A42E1 /* MediaPlayer.framework */; };
 		496AB95518F904A8008A42E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94B18F904A8008A42E1 /* Security.framework */; };
 		496AB95618F904A8008A42E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496AB94C18F904A8008A42E1 /* SystemConfiguration.framework */; };
-		497B659D18EDEE65004168B0 /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 497B659A18EDEE65004168B0 /* Action Man.ttf */; };
-		499B8C8C18D9371C000F55E5 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B8C7E18D9371C000F55E5 /* arial.ttf */; };
+		4984FC9019954EF20050595C /* MD in Resources */ = {isa = PBXBuildFile; fileRef = 4984FC8F19954EF20050595C /* MD */; };
 		49A4BE5C18DA871F007CE796 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5918DA871F007CE796 /* Ball.cpp */; };
 		49A4BE5F18DA987D007CE796 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE5E18DA987D007CE796 /* GameScene.cpp */; };
 		49A4BE6218DA9977007CE796 /* FirstScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A4BE6118DA9977007CE796 /* FirstScene.cpp */; };
@@ -843,8 +842,7 @@
 		496AB94A18F904A8008A42E1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		496AB94B18F904A8008A42E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		496AB94C18F904A8008A42E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		497B659A18EDEE65004168B0 /* Action Man.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man.ttf"; sourceTree = "<group>"; };
-		499B8C7E18D9371C000F55E5 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
+		4984FC8F19954EF20050595C /* MD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD; sourceTree = "<group>"; };
 		49A4BE5918DA871F007CE796 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = ../Classes/Ball.cpp; sourceTree = "<group>"; };
 		49A4BE5A18DA871F007CE796 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = ../Classes/Ball.h; sourceTree = "<group>"; };
 		49A4BE5B18DA871F007CE796 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
@@ -2092,15 +2090,6 @@
 			name = AdMob;
 			sourceTree = "<group>";
 		};
-		499B8C7D18D9371C000F55E5 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				497B659A18EDEE65004168B0 /* Action Man.ttf */,
-				499B8C7E18D9371C000F55E5 /* arial.ttf */,
-			);
-			path = fonts;
-			sourceTree = "<group>";
-		};
 		49CF9CC118F8D9BF00EFDE7E /* PlayGameSingleton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2211,9 +2200,9 @@
 			isa = PBXGroup;
 			children = (
 				49A6EFD21992CF5900E1E829 /* HD */,
+				4984FC8F19954EF20050595C /* MD */,
 				49A6EFD31992CF5900E1E829 /* SD */,
 				49F3BFED18F908BC00728CF6 /* Icon-SplashScreen */,
-				499B8C7D18D9371C000F55E5 /* fonts */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -2296,10 +2285,10 @@
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				49C7AF43191B263B003F203C /* appicon-Small.png in Resources */,
 				49C7AF3E191B263B003F203C /* appicon-76@2x.png in Resources */,
+				4984FC9019954EF20050595C /* MD in Resources */,
 				49A6EFD51992CF5900E1E829 /* SD in Resources */,
 				49C7AF45191B263B003F203C /* appicon.png in Resources */,
 				49C7AF40191B263B003F203C /* appicon-Small-40@2x.png in Resources */,
-				497B659D18EDEE65004168B0 /* Action Man.ttf in Resources */,
 				49C7AF3A191B263B003F203C /* appicon-60@2x.png in Resources */,
 				49444937190FDD4D00346D31 /* README.txt in Resources */,
 				492B233A18F8ABFC003742A0 /* GooglePlayGames.bundle in Resources */,
@@ -2317,7 +2306,6 @@
 				49C7AF3B191B263B003F203C /* appicon-72.png in Resources */,
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
-				499B8C8C18D9371C000F55E5 /* arial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

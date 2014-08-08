@@ -664,9 +664,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "425"
-            endingLineNumber = "425"
-            landmarkName = "GameScene::updateModifierAndText(bool ballsMatched)"
-            landmarkType = "5">
+            endingLineNumber = "425">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -744,9 +742,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "447"
-            endingLineNumber = "447"
-            landmarkName = "GameScene::giveBonus()"
-            landmarkType = "5">
+            endingLineNumber = "447">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -760,9 +756,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "446"
-            endingLineNumber = "446"
-            landmarkName = "GameScene::giveBonus()"
-            landmarkType = "5">
+            endingLineNumber = "446">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

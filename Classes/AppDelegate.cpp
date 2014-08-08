@@ -30,13 +30,17 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setAnimationInterval(1.0 / 60);
 
     // get the screen size of the device
-    auto screenSize = pEGLView->getFrameSize();
+    CCSize screenSize = pEGLView->getFrameSize();
     std::cout << "INFO: Screen Size - " << screenSize.height << " x " << screenSize.width << std::endl;
 
     // check which resources should be used
     std::vector<std::string> resDirOrders;
     if (1920 <= screenSize.width || 1920 <= screenSize.height) { //TODO: MAKE SURE THIS IS CORRECT
         resDirOrders.push_back("HD");
+        resDirOrders.push_back("MD");
+        resDirOrders.push_back("SD");
+    } else if (1200 <= screenSize.width || 1200 <= screenSize.height) {
+        resDirOrders.push_back("MD");
         resDirOrders.push_back("SD");
     } else {
         resDirOrders.push_back("SD");

@@ -27,7 +27,7 @@ static int BALL_COUNT_CEILING = 24;
 
 static int LABEL_FONT_SIZE = 65;
 static int POINTS_LABEL_FONT_SIZE = 60;
-static int CLEARED_BONUS_LABEL_FONT_SIZE = 125;
+static int CLEARED_BONUS_LABEL_FONT_SIZE = 60;
 static int LABEL_MARGIN = 15;
 
 CCSize windowSize;
@@ -315,11 +315,13 @@ void GameScene::popBalls(Ball* ball,
         Ball* otherBall = (Ball*)(*j);
         if (otherBall->getBallId() == this->getSelectedBall()->getBallId()) {
             _ballArray.erase(j);
+            //otherBall->release();
             break;
         }
     }
+    //ball->release(); //TO CHECK: See if release should be used or if NULL should be used?
+
     this->setSelectedBall(NULL);
-    std::cout << "Array size: " << _ballArray.size() << std::endl;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -361,10 +363,10 @@ void GameScene::ballPopExplosion(Ball* ball)
     ccColor4F effectColor = GameUtils::getColor4F(color);
     ccColor3B textColor = GameUtils::getColor3B(color);
 
-    CCParticleExplosion* popEffect = CCParticleExplosion::createWithTotalParticles(75);
+    CCParticleExplosion* popEffect = CCParticleExplosion::createWithTotalParticles(45);
     popEffect->setStartColor(effectColor);
     popEffect->setEndColor(effectColor);
-    popEffect->setLife(0.15);
+    popEffect->setLife(0.075);
     popEffect->setPosition(ccp(ball->getX(), ball->getY()));
     this->addChild(popEffect);
 
@@ -453,10 +455,11 @@ void GameScene::giveBonus()
     CCLabelTTF* bonusEarnedLabel = CCLabelTTF::create(
         bonusText, "Marker Felt.ttf", CLEARED_BONUS_LABEL_FONT_SIZE);
     bonusEarnedLabel->setColor(GameUtils::getRandomColor3B());
-    bonusEarnedLabel->setPosition(ccp((windowSize.width / 2) - (bonusEarnedLabel->getDimensions().width / 2), (windowSize.height / 2) - (bonusEarnedLabel->getDimensions().height / 2)));
+    //bonusEarnedLabel->setPosition(ccp((windowSize.width / 2) - (bonusEarnedLabel->getDimensions().width / 2), (windowSize.height / 2) - (bonusEarnedLabel->getDimensions().height / 2)));
+    bonusEarnedLabel->setPosition(ccp(_scoreLabel->getPositionX() + _scoreLabel->getDimensions().width + 200, _scoreLabel->getPositionY()));
     this->addChild(bonusEarnedLabel, ZIndexGameTextLabels);
 
-    CCAction* fadeOut = CCFadeOut::create(1.5);
+    CCAction* fadeOut = CCFadeOut::create(1);
     bonusEarnedLabel->runAction(fadeOut);
     bonusEarnedLabel = NULL;
 }
