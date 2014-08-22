@@ -68,7 +68,9 @@ bool LossScene::init()
 
     this->setTouchEnabled(true);
 
-    NativeUtils::submitScore(LEADERBOARD, _score);
+    if (NativeUtils::isSignedIn()) {
+        NativeUtils::submitScore(LEADERBOARD, _score);
+    }
 
     return true;
 }

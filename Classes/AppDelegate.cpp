@@ -37,7 +37,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     std::vector<std::string> resDirOrders;
     if (1800 <= screenSize.width || 1800 <= screenSize.height) {
         resDirOrders.push_back("HD");
-    } else if (1000 <= screenSize.width || 1000 <= screenSize.height) {
+    } else if (1150 <= screenSize.width || 1150 <= screenSize.height) {
         resDirOrders.push_back("MD");
     } else {
         resDirOrders.push_back("SD");

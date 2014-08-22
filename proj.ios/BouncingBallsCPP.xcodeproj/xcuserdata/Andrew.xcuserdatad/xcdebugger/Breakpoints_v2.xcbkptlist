@@ -613,66 +613,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../classes/GameScene.cpp"
-            timestampString = "428966988.241783"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "GameScene::ccTouchesEnded(cocos2d::CCSet* pTouches, cocos2d::CCEvent* event)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GameScene::ccTouchesEnded(cocos2d::CCSet*, cocos2d::CCEvent*)"
-                  moduleName = "BouncingBallsCPP"
-                  urlString = "file:///Library/Cocos2Dx/projects/BouncingBallCPP/classes/GameScene.cpp"
-                  timestampString = "428290861.546523"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
-                  offsetFromSymbolStart = "55">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "non-virtual thunk to GameScene::ccTouchesEnded(cocos2d::CCSet*, cocos2d::CCEvent*)"
-                  moduleName = "BouncingBallsCPP"
-                  urlString = "file:///Library/Cocos2Dx/projects/BouncingBallCPP/classes/GameScene.cpp"
-                  timestampString = "428290861.546884"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
-                  offsetFromSymbolStart = "55">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../classes/GameScene.cpp"
-            timestampString = "428966988.241783"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "425"
-            endingLineNumber = "425">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/GameUtils.cpp"
             timestampString = "428553926.303697"
             startingColumnNumber = "9223372036854775807"
@@ -706,12 +646,26 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../classes/GameScene.cpp"
-            timestampString = "428966988.241783"
+            timestampString = "430411334.678417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "GameScene::increaseGameDifficulty2(bool timeElapsed)"
+            startingLineNumber = "489"
+            endingLineNumber = "489">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../classes/GameScene.cpp"
+            timestampString = "430409515.2842"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "GameScene::GameUpdate()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -722,27 +676,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../classes/GameScene.cpp"
-            timestampString = "428966988.241783"
+            timestampString = "430411334.678417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "GameScene::increaseGameDifficulty2(bool timeElapsed)"
+            startingLineNumber = "490"
+            endingLineNumber = "490"
+            landmarkName = "GameScene::updateTintByBackground()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../classes/GameScene.cpp"
-            timestampString = "428966988.241783"
+            timestampString = "430411334.678417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447">
+            startingLineNumber = "491"
+            endingLineNumber = "491"
+            landmarkName = "GameScene::updateTintByBackground()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GameScene::GameUpdate()"
+                  moduleName = "BouncingBallsCPP"
+                  urlString = "file:///Library/Cocos2Dx/projects/BouncingBallCPP/classes/GameScene.cpp"
+                  timestampString = "429219732.430894"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "470"
+                  endingLineNumber = "470"
+                  offsetFromSymbolStart = "509">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GameScene::updateTintByBackground()"
+                  moduleName = "BouncingBallsCPP"
+                  urlString = "file:///Library/Cocos2Dx/projects/BouncingBallCPP/classes/GameScene.cpp"
+                  timestampString = "429219732.431136"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "470"
+                  endingLineNumber = "470"
+                  offsetFromSymbolStart = "10">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -752,11 +738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../classes/GameScene.cpp"
-            timestampString = "428966988.241783"
+            timestampString = "430411334.678417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446">
+            startingLineNumber = "488"
+            endingLineNumber = "488">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

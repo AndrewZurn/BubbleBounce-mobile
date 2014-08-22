@@ -23,24 +23,26 @@ private:
     bool _gameOver;
     cocos2d::CCLabelTTF* _scoreLabel;
     cocos2d::CCLabelTTF* _modifierLabel;
-    cocos2d::CCProgressTimer* _progressBar;
-    cocos2d::CCSprite* _progressBarBackground;
+    cocos2d::CCSprite* _background;
     cocos2d::CCMenuItemImage* _goTextImage;
 
     void removeGoLabel();
     void GameUpdate();
+    void updateTintByBackground();
     void updateBallPositions();
     void updateGameScoreAndText();
     int getPointsEarned();
     void createNewBalls();
     void popBalls(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
-    void ballPopExplosion(Ball* ball);
+    void popBall(Ball* ball, std::vector<Ball*>::iterator indexOfBall);
+    void ballPopExplosion(Ball* ball, bool showScore);
     const char* getRandomPopSound();
     void increaseGameDifficulty();
-	void increaseGameDifficulty2(bool timeElapsed);
+    void increaseGameDifficulty2(bool timeElapsed);
     void resetGame();
     void updateModifierAndText(bool ballsMatched);
     void giveBonus();
+    void GameEnd();
 
     long _lastElapsedTime;
     bool didTimeElapse();

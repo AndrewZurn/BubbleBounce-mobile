@@ -12,6 +12,7 @@
 #include "GameUtils.h"
 
 #include <sys/time.h>
+#include <unistd.h>
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
@@ -73,10 +74,10 @@ bool GameScene::init()
     this->setTouchEnabled(true);
 
     // add background
-    CCSprite* background = CCSprite::create(BackgroundImage);
-    background->setPosition(
+    _background = CCSprite::create(BackgroundImage);
+    _background->setPosition(
         ccp(windowSize.width / 2 + origin.x, windowSize.height / 2 + origin.y));
-    this->addChild(background, ZIndexBackground);
+    this->addChild(_background, ZIndexBackground);
 
     // add score label
     char scoreText[25];
@@ -133,14 +134,12 @@ void GameScene::GameUpdate()
         } else if (didTimeElapse()) {
             increaseGameDifficulty2(true);
         }
-        // Update all the balls positions (animate the balls)
+        // Update all the balls positions (animate the balls);
+        // updateTintByBackground();
         updateBallPositions();
     } else { // GAME OVER
-        CCScene* lossScene = LossScene::scene(_score);
-        CCDirector::sharedDirector()->replaceScene(
-            CCTransitionFade::create(2, lossScene));
-        CCDirector::sharedDirector()->retain();
-        resetGame();
+        unschedule(schedule_selector(GameScene::GameUpdate));
+        this->schedule(schedule_selector(GameScene::GameEnd), 0.05);
     }
 }
 
@@ -282,12 +281,12 @@ void GameScene::increaseGameDifficulty2(bool timeElapsed)
         time_interval = 1200;
     } else {
         time_interval = 1800;
-        penaltyTime = penaltyTime + 5;
+        penaltyTime = penaltyTime + 10;
     }
 
-    if (timeElapsed && penaltyTime < 300) {
+    if (timeElapsed && penaltyTime < 500) {
         time_interval = time_interval - penaltyTime;
-        penaltyTime = penaltyTime + 10;
+        penaltyTime = penaltyTime + 25;
     }
 }
 
@@ -303,8 +302,8 @@ void GameScene::popBalls(Ball* ball,
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(
         GameUtils::getRandomPopSound());
 
-    ballPopExplosion(ball);
-    ballPopExplosion(this->getSelectedBall());
+    ballPopExplosion(ball, true);
+    ballPopExplosion(this->getSelectedBall(), true);
 
     this->removeChild(ball);
     this->removeChild(this->getSelectedBall());
@@ -315,13 +314,22 @@ void GameScene::popBalls(Ball* ball,
         Ball* otherBall = (Ball*)(*j);
         if (otherBall->getBallId() == this->getSelectedBall()->getBallId()) {
             _ballArray.erase(j);
-            //otherBall->release();
             break;
         }
     }
-    //ball->release(); //TO CHECK: See if release should be used or if NULL should be used?
 
     this->setSelectedBall(NULL);
+}
+
+void GameScene::popBall(Ball* ball,
+                        std::vector<Ball*>::iterator indexOfBall)
+{
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(
+        GameUtils::getRandomPopSound());
+
+    ballPopExplosion(ball, false);
+    this->removeChild(ball);
+    _ballArray.erase(indexOfBall);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -340,14 +348,26 @@ bool GameScene::didTimeElapse()
     return false;
 }
 
+void GameScene::GameEnd()
+{
+    popBall(_ballArray.front(), _ballArray.begin());
+
+    if (_ballArray.empty()) {
+        unschedule(schedule_selector(GameScene::GameEnd));
+        CCScene* lossScene = LossScene::scene(_score);
+        //        CCDirector::sharedDirector()->replaceScene(
+        //  CCTransitionFade::create(0.5, lossScene));
+        CCDirector::sharedDirector()->replaceScene(lossScene);
+        CCDirector::sharedDirector()->retain();
+        resetGame();
+    }
+}
+
 void GameScene::resetGame()
 {
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(
-        GameUtils::getRandomPopSound());
-    this->removeAllChildren();
-    // this->cleanup(); //using this would stop the multiple ball pops, and would
-    // actually make nice trans to next scene
-    _ballArray.clear();
+    //    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(
+    //        GameUtils::getRandomPopSound());
+    //    this->removeAllChildren();
 
     nextBallId = 0;
     _pairsMatched = 0;
@@ -357,7 +377,7 @@ void GameScene::resetGame()
     _oldScore = 0;
 }
 
-void GameScene::ballPopExplosion(Ball* ball)
+void GameScene::ballPopExplosion(Ball* ball, bool showScore)
 {
     const char* color = ball->getBallColor();
     ccColor4F effectColor = GameUtils::getColor4F(color);
@@ -370,17 +390,19 @@ void GameScene::ballPopExplosion(Ball* ball)
     popEffect->setPosition(ccp(ball->getX(), ball->getY()));
     this->addChild(popEffect);
 
-    char pointsEarnedArray[6];
-    sprintf(pointsEarnedArray, "+%d", getPointsEarned());
-    CCLabelTTF* pointsEarnedLabel = CCLabelTTF::create(
-        pointsEarnedArray, "Marker Felt.ttf", POINTS_LABEL_FONT_SIZE);
-    pointsEarnedLabel->setColor(textColor);
-    pointsEarnedLabel->setPosition(ccp(ball->getX(), ball->getY()));
-    this->addChild(pointsEarnedLabel, ZIndexGameTextLabels);
+    if (showScore) {
+        char pointsEarnedArray[6];
+        sprintf(pointsEarnedArray, "+%d", getPointsEarned());
+        CCLabelTTF* pointsEarnedLabel = CCLabelTTF::create(
+            pointsEarnedArray, "Marker Felt.ttf", POINTS_LABEL_FONT_SIZE);
+        pointsEarnedLabel->setColor(textColor);
+        pointsEarnedLabel->setPosition(ccp(ball->getX(), ball->getY()));
+        this->addChild(pointsEarnedLabel, ZIndexGameTextLabels);
 
-    CCAction* fadeOut = CCFadeOut::create(0.75);
-    pointsEarnedLabel->runAction(fadeOut);
-    pointsEarnedLabel = NULL;
+        CCAction* fadeOut = CCFadeOut::create(0.75);
+        pointsEarnedLabel->runAction(fadeOut);
+        pointsEarnedLabel = NULL;
+    }
 }
 
 void GameScene::removeGoLabel()
@@ -462,4 +484,10 @@ void GameScene::giveBonus()
     CCAction* fadeOut = CCFadeOut::create(1);
     bonusEarnedLabel->runAction(fadeOut);
     bonusEarnedLabel = NULL;
+}
+
+void GameScene::updateTintByBackground()
+{
+    CCAction* action = CCTintBy::create(0.05, -255, -255, -255);
+    _background->runAction(action);
 }
