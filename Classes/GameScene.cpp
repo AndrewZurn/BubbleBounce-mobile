@@ -135,8 +135,8 @@ void GameScene::GameUpdate()
             increaseGameDifficulty2(true);
         }
         // Update all the balls positions (animate the balls);
-        // updateTintByBackground();
         updateBallPositions();
+        // updateTintByBackground();
     } else { // GAME OVER
         unschedule(schedule_selector(GameScene::GameUpdate));
         this->schedule(schedule_selector(GameScene::GameEnd), 0.05);
@@ -264,7 +264,7 @@ void GameScene::increaseGameDifficulty2(bool timeElapsed)
 {
 
     double random = ((double)rand() / (RAND_MAX)); // number between 0 and 1
-    if (!timeElapsed || random <= 0.2) { //if they cleared the screen, or if random <= 0.2
+    if (!timeElapsed || random <= 0.35) { //if they cleared the screen, or if random <= 0.35
         addMoreBallsCount = 2;
     } else {
         addMoreBallsCount = 1;
@@ -278,9 +278,10 @@ void GameScene::increaseGameDifficulty2(bool timeElapsed)
     if (random <= 0.33) {
         time_interval = 600;
     } else if (random <= 0.8) {
-        time_interval = 1200;
+        time_interval = 1100;
+        penaltyTime = penaltyTime + 5;
     } else {
-        time_interval = 1800;
+        time_interval = 1700;
         penaltyTime = penaltyTime + 10;
     }
 
@@ -365,10 +366,6 @@ void GameScene::GameEnd()
 
 void GameScene::resetGame()
 {
-    //    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(
-    //        GameUtils::getRandomPopSound());
-    //    this->removeAllChildren();
-
     nextBallId = 0;
     _pairsMatched = 0;
     time_interval = 2500;
@@ -488,6 +485,7 @@ void GameScene::giveBonus()
 
 void GameScene::updateTintByBackground()
 {
+    //FIXME: This is not working as the game is progressing... need to understand
     CCAction* action = CCTintBy::create(0.05, -255, -255, -255);
     _background->runAction(action);
 }
