@@ -650,7 +650,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "489"
-            endingLineNumber = "489">
+            endingLineNumber = "489"
+            landmarkName = "GameScene::updateTintByBackground()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

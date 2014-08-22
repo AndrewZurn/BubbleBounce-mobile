@@ -276,19 +276,19 @@ void GameScene::increaseGameDifficulty2(bool timeElapsed)
 
     random = ((double)rand() / (RAND_MAX)); // number between 0 and 1
     if (random <= 0.33) {
-        time_interval = 600;
+        time_interval = 750;
     } else if (random <= 0.8) {
-        time_interval = 1100;
-        penaltyTime = penaltyTime + 5;
+        time_interval = 1250;
     } else {
-        time_interval = 1700;
         penaltyTime = penaltyTime + 10;
+        time_interval = 1750;
     }
 
     if (timeElapsed && penaltyTime < 500) {
-        time_interval = time_interval - penaltyTime;
         penaltyTime = penaltyTime + 25;
     }
+
+    time_interval = time_interval - penaltyTime;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
