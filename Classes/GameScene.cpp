@@ -150,14 +150,16 @@ void GameScene::GameUpdate()
 void GameScene::ccTouchesEnded(cocos2d::CCSet* pTouches,
                                cocos2d::CCEvent* event)
 {
-    CCSetIterator i;
-    CCTouch* touch;
+    if (!_gameOver) {
+        CCSetIterator i;
+        CCTouch* touch;
 
-    // for every touch
-    for (i = pTouches->begin(); i != pTouches->end(); i++) {
-        touch = (CCTouch*)(*i);
-        if (touch) { // if touch was found
-            handleBallTouch(touch);
+        // for every touch
+        for (i = pTouches->begin(); i != pTouches->end(); i++) {
+            touch = (CCTouch*)(*i);
+            if (touch) { // if touch was found
+                handleBallTouch(touch);
+            }
         }
     }
 }
