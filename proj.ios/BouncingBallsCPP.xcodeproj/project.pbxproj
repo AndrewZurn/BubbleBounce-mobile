@@ -637,7 +637,7 @@
 		1AFCDA8016D4A25900906EA6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = SOURCE_ROOT; };
 		1AFCDA8116D4A25900906EA6 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* BouncingBallsCPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BouncingBallsCPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* The Bubble Bounce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Bubble Bounce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		298B299118D0668400C1920F /* ButtonReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonReader.cpp; sourceTree = "<group>"; };
@@ -1431,7 +1431,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* BouncingBallsCPP.app */,
+				1D6058910D05DD3D006BFB54 /* The Bubble Bounce.app */,
 			);
 			name = Products;
 			path = ../../projects/BouncingBallsCPP/proj.ios;
@@ -2226,7 +2226,7 @@
 			);
 			name = BouncingBallsCPP;
 			productName = iphone;
-			productReference = 1D6058910D05DD3D006BFB54 /* BouncingBallsCPP.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* The Bubble Bounce.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2617,7 +2617,7 @@
 					"-ObjC",
 					"-lsqlite3",
 				);
-				PRODUCT_NAME = BouncingBallsCPP;
+				PRODUCT_NAME = "The Bubble Bounce";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD2A263B-B8CE-4412-ACA0-9E2BD38976F6";
 				SDKROOT = iphoneos;
@@ -2677,7 +2677,7 @@
 					"-ObjC",
 					"-lsqlite3",
 				);
-				PRODUCT_NAME = BouncingBallsCPP;
+				PRODUCT_NAME = "The Bubble Bounce";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "528EE716-3D86-46B2-AB49-613EF82DC35E";
 				SDKROOT = iphoneos;
