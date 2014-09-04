@@ -66,6 +66,12 @@ bool LossScene::init()
     buttonMenu->setPosition(ccp(windowSize.width / 2, windowSize.height / 1.85));
     this->addChild(buttonMenu, ZIndexButtonMenu);
 
+    //add the help button in bottom corner
+    CCMenuItemImage* helpButton = CCMenuItemImage::create("question_mark.png", "question_mark.png", this, menu_selector(LossScene::helpButtonCallback));
+    CCMenu* helpMenu = CCMenu::create(helpButton, NULL);
+    helpMenu->setPosition(ccp(windowSize.width - helpButton->getContentSize().width + 25, helpButton->getContentSize().height - 45));
+    this->addChild(helpMenu, ZIndexButtonMenu);
+
     this->setTouchEnabled(true);
 
     if (NativeUtils::isSignedIn()) {
@@ -95,4 +101,9 @@ void LossScene::playButtonCallback(CCObject* pSender)
 void LossScene::statsButtonCallback(CCObject* pSender)
 {
     NativeUtils::showLeaderboards();
+}
+
+void LossScene::helpButtonCallback(CCObject* pSender)
+{
+    CCMessageBox("You let too many bubbles onto the screen!\n\n Remember, the objective is to tap pairs of matching colored bubbles to score points and pop the from the screen.  Clearing the screen of bubbles will give you bonus points.  \n\nWatch out though, as the bubbles will begin to appear faster and faster.", "You Lost!");
 }

@@ -57,7 +57,7 @@ bool FirstScene::init()
         createNewBalls();
     }
 
-    //add start game button
+    //add game buttons
     CCMenuItemImage* gameLogo = CCMenuItemImage::create("bouncinballslogo.png", "bouncinballslogo.png", this, NULL);
     CCMenuItemImage* playButton = CCMenuItemImage::create("play_button.png", "play_button_pressed.png",
                                                           this, menu_selector(FirstScene::playButtonCallback));
@@ -67,6 +67,12 @@ bool FirstScene::init()
     buttonMenu->alignItemsVerticallyWithPadding(15);
     buttonMenu->setPosition(ccp(windowSize.width / 2, windowSize.height / 1.75));
     this->addChild(buttonMenu, ZIndexButtonMenu);
+
+    //add the help button in bottom corner
+    CCMenuItemImage* helpButton = CCMenuItemImage::create("question_mark.png", "question_mark.png", this, menu_selector(FirstScene::helpButtonCallback));
+    CCMenu* helpMenu = CCMenu::create(helpButton, NULL);
+    helpMenu->setPosition(ccp(windowSize.width - helpButton->getContentSize().width + 25, helpButton->getContentSize().height - 45));
+    this->addChild(helpMenu, ZIndexButtonMenu);
 
     this->setTouchEnabled(true);
     this->schedule(schedule_selector(FirstScene::GameUpdate));
@@ -191,4 +197,9 @@ void FirstScene::playButtonCallback(CCObject* pSender)
 void FirstScene::statsButtonCallback(CCObject* pSender)
 {
     NativeUtils::showLeaderboards();
+}
+
+void FirstScene::helpButtonCallback(CCObject* pSender)
+{
+    CCMessageBox("Tap pairs of matching colored bubbles to score points.  Clearing the screen of bubbles will give you bonus points.  \n\nWatch out though, as the bubbles will begin to appear faster and faster. Let too many on the screen, and it will be game over!", "Instructions");
 }

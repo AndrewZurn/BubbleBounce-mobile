@@ -23,6 +23,7 @@ private:
     cocos2d::ccColor4F setExplosionColor(Ball* ball);
     void playButtonCallback(CCObject* pSender);
     void statsButtonCallback(CCObject* pSender);
+    void helpButtonCallback(CCObject* pSender);
     const char* getRandomPopSound();
 
 public:
@@ -39,10 +40,14 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(FirstScene);
 
-    std::vector<Ball*> getBallArray() {
-        return _ballArray; }
-    void setBallArray(std::vector<Ball*> ballArray) {
-        _ballArray = ballArray; }
+    std::vector<Ball*> getBallArray()
+    {
+        return _ballArray;
+    }
+    void setBallArray(std::vector<Ball*> ballArray)
+    {
+        _ballArray = ballArray;
+    }
 };
 
 #endif

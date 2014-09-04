@@ -20,7 +20,7 @@ USING_NS_CC;
 int nextBallId = 0;
 int _pairsMatched = 0;
 static int STARTING_BALLS = 10;
-int time_interval = 2800;
+int time_interval = 2900;
 int penaltyTime = 0;
 int addMoreBallsCount = 1;
 int _oldScore = 0;
@@ -28,7 +28,7 @@ static int BALL_COUNT_CEILING = 24;
 
 static int LABEL_FONT_SIZE = 65;
 static int POINTS_LABEL_FONT_SIZE = 60;
-static int CLEARED_BONUS_LABEL_FONT_SIZE = 60;
+static int CLEARED_BONUS_LABEL_FONT_SIZE = 80;
 static int LABEL_MARGIN = 15;
 
 CCSize windowSize;
@@ -477,7 +477,7 @@ void GameScene::giveBonus()
         bonusText, "Marker Felt.ttf", CLEARED_BONUS_LABEL_FONT_SIZE);
     bonusEarnedLabel->setColor(GameUtils::getRandomColor3B());
     //bonusEarnedLabel->setPosition(ccp((windowSize.width / 2) - (bonusEarnedLabel->getDimensions().width / 2), (windowSize.height / 2) - (bonusEarnedLabel->getDimensions().height / 2)));
-    bonusEarnedLabel->setPosition(ccp(_scoreLabel->getPositionX() + _scoreLabel->getDimensions().width + 200, _scoreLabel->getPositionY()));
+    bonusEarnedLabel->setPosition(ccp(_scoreLabel->getPositionX() + _scoreLabel->getDimensions().width + 200, _scoreLabel->getPositionY() - 25));
     this->addChild(bonusEarnedLabel, ZIndexGameTextLabels);
 
     CCAction* fadeOut = CCFadeOut::create(1);
