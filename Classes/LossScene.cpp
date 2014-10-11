@@ -105,5 +105,5 @@ void LossScene::statsButtonCallback(CCObject* pSender)
 
 void LossScene::helpButtonCallback(CCObject* pSender)
 {
-    CCMessageBox("You let too many bubbles onto the screen!\n\n Remember, the objective is to tap pairs of matching colored bubbles to score points and pop the from the screen.  Clearing the screen of bubbles will give you bonus points.  \n\nWatch out though, as the bubbles will begin to appear faster and faster.", "You Lost!");
+    CCMessageBox("You let too many bubbles onto the screen!\n\nRemember, the objective is to tap pairs of matching colored bubbles to score points and pop the from the screen.  Clearing the screen of bubbles will give you bonus points.\n\nWatch out though, as the bubbles will begin to appear faster and faster.", "You Lost!");
 }

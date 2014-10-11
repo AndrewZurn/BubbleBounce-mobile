@@ -36,9 +36,9 @@ cocos2d::ccColor4F GameUtils::getColor4F(const char* color)
     cocos2d::ccColor4F oppColor;
 
     if (strcmp(color, "blue") == 0) {
-        oppColor.r = 18.0f / 255.0f;
-        oppColor.g = 40.0f / 255.0f;
-        oppColor.b = 243.0f / 255.0f;
+        oppColor.r = 136.0f / 255.0f;
+        oppColor.g = 240.0f / 255.0f;
+        oppColor.b = 255.0f / 255.0f;
         oppColor.a = 1.0f;
     } else if (strcmp(color, "orange") == 0) {
         oppColor.r = 243.0f / 255.0f;
@@ -56,9 +56,9 @@ cocos2d::ccColor4F GameUtils::getColor4F(const char* color)
         oppColor.b = 17.0f / 255.0f;
         oppColor.a = 1.0f;
     } else if (strcmp(color, "yellow") == 0) {
-        oppColor.r = 236.0f / 255.0f;
-        oppColor.g = 243.0f / 255.0f;
-        oppColor.b = 18.0f / 255.0f;
+        oppColor.r = 8.0f / 255.0f;
+        oppColor.g = 255.0f / 255.0f;
+        oppColor.b = 0.0f / 255.0f;
         oppColor.a = 1.0f;
     }
 
@@ -68,7 +68,7 @@ cocos2d::ccColor4F GameUtils::getColor4F(const char* color)
 cocos2d::ccColor3B GameUtils::getColor3B(const char* color)
 {
     if (strcmp(color, "blue") == 0) {
-        return cocos2d::ccc3(18, 40, 243);
+        return cocos2d::ccc3(136, 240, 255);
     } else if (strcmp(color, "orange") == 0) {
         return cocos2d::ccc3(243, 108, 18);
     } else if (strcmp(color, "pink") == 0) {
@@ -76,7 +76,7 @@ cocos2d::ccColor3B GameUtils::getColor3B(const char* color)
     } else if (strcmp(color, "red") == 0) {
         return cocos2d::ccc3(235, 17, 17);
     } else if (strcmp(color, "yellow") == 0) {
-        return cocos2d::ccc3(236, 243, 18);
+        return cocos2d::ccc3(8, 255, 0);
     } else {
         return cocos2d::ccc3(0, 0, 0);
     }
@@ -87,7 +87,7 @@ cocos2d::ccColor3B GameUtils::getRandomColor3B()
     double random = ((double)rand() / (RAND_MAX));
 
     if (random <= 0.2) {
-        return cocos2d::ccc3(18, 40, 243); //blue
+        return cocos2d::ccc3(136, 240, 255); //blue
     } else if (random <= 0.4) {
         return cocos2d::ccc3(243, 108, 18); //orange
     } else if (random <= 0.6) {
@@ -95,7 +95,7 @@ cocos2d::ccColor3B GameUtils::getRandomColor3B()
     } else if (random <= 0.8) {
         return cocos2d::ccc3(235, 17, 17); //red
     } else {
-        return cocos2d::ccc3(236, 243, 18); //yellow
+        return cocos2d::ccc3(8, 255, 0); //yellow
     }
 }
 
@@ -105,9 +105,9 @@ cocos2d::ccColor4F GameUtils::getRandomColor4F()
 
     double random = ((double)rand() / (RAND_MAX));
     if (random <= 0.2) { //blue
-        color.r = 18.0f / 255.0f;
-        color.g = 40.0f / 255.0f;
-        color.b = 243.0f / 255.0f;
+        color.r = 136.0f / 255.0f;
+        color.g = 240.0f / 255.0f;
+        color.b = 255.0f / 255.0f;
         color.a = 1.0f;
     } else if (random <= 0.4) { //orange
         color.r = 243.0f / 255.0f;
@@ -125,9 +125,9 @@ cocos2d::ccColor4F GameUtils::getRandomColor4F()
         color.b = 17.0f / 255.0f;
         color.a = 1.0f;
     } else { //yellow
-        color.r = 236.0f / 255.0f;
-        color.g = 243.0f / 255.0f;
-        color.b = 18.0f / 255.0f;
+        color.r = 8.0f / 255.0f;
+        color.g = 255.0f / 255.0f;
+        color.b = 0.0f / 255.0f;
         color.a = 1.0f;
     }
 
